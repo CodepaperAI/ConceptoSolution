@@ -23,8 +23,7 @@ export default function SectionHeading({
   return (
     <div
       className={cn(
-        'max-w-3xl',
-        alignment === 'center' && 'mx-auto text-center',
+        alignment === 'center' && 'mx-auto max-w-3xl text-center',
         className
       )}
     >
@@ -32,7 +31,7 @@ export default function SectionHeading({
         <span
           className={cn(
             'lux-eyebrow',
-            tone === 'light' ? 'text-white/78' : 'text-primary'
+            tone === 'light' ? 'overlay-eyebrow' : 'text-primary'
           )}
         >
           {eyebrow}
@@ -40,7 +39,7 @@ export default function SectionHeading({
       )}
       <h2
         className={cn(
-          'mt-7 font-display text-[2.75rem] leading-[0.94] tracking-[-0.055em] md:text-[3.5rem] lg:text-[4.3rem]',
+          'mt-7 font-display text-[2.25rem] leading-[1.05] tracking-[-0.035em] md:text-[2.75rem] lg:text-[3.25rem]',
           tone === 'light' ? 'text-white' : 'text-text-primary'
         )}
       >
@@ -50,7 +49,7 @@ export default function SectionHeading({
         <p
           className={cn(
             'mt-6 max-w-2xl text-base leading-8 md:text-xl md:leading-9',
-            tone === 'light' ? 'text-white/82' : 'text-text-secondary'
+            tone === 'light' ? 'overlay-copy' : 'text-text-secondary'
           )}
         >
           {subheading}

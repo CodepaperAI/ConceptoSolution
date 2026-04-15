@@ -145,25 +145,36 @@ function NavLinkComponent({
   return (
     <Link
       href={link.href}
-      className={cn(
-        'group relative cursor-pointer text-[12px] font-semibold uppercase tracking-[0.24em] transition-colors duration-200',
-        isScrolled
-          ? isActive
-            ? 'text-primary'
-            : 'text-text-secondary hover:text-primary'
+        className={cn(
+          'group relative cursor-pointer text-[12px] font-semibold uppercase tracking-[0.24em] transition-colors duration-200 rounded-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-transparent',
+          isScrolled
+            ? isActive
+              ? 'text-primary'
+              : 'text-text-secondary hover:text-primary'
           : isActive
             ? 'text-white'
-            : 'text-white/80 hover:text-white'
+            : 'overlay-copy hover:text-white'
       )}
     >
       {link.label}
-      <span
-        className={cn(
-          'absolute -bottom-1.5 left-0 h-px bg-primary transition-all duration-300 ease-out',
-          'w-0 group-hover:w-full',
-          isActive && 'w-full'
-        )}
-      />
+      {isActive && (
+        <motion.span
+          layoutId="nav-active-indicator"
+          className={cn(
+            'absolute -bottom-1.5 left-0 right-0 h-px',
+            isScrolled ? 'bg-primary' : 'bg-white'
+          )}
+          transition={{ type: 'spring', stiffness: 380, damping: 32 }}
+        />
+      )}
+      {!isActive && (
+        <span
+          className={cn(
+            'absolute -bottom-1.5 left-0 h-px transition-all duration-300 ease-out w-0 group-hover:w-full',
+            isScrolled ? 'bg-primary/60' : 'bg-white/60'
+          )}
+        />
+      )}
     </Link>
   )
 }
@@ -182,10 +193,11 @@ function MobileMenuButton({
       type="button"
       className={cn(
         'flex h-11 w-11 items-center justify-center rounded-full border transition-colors duration-200 lg:hidden',
-        isScrolled ? 'border-border/70 text-text-primary hover:text-primary' : 'border-white/12 text-white hover:text-white/80'
+        isScrolled ? 'border-border/70 text-text-primary hover:text-primary' : 'border-white/12 overlay-copy hover:text-white'
       )}
       onClick={onClick}
       aria-label={isOpen ? 'Close menu' : 'Open menu'}
+      aria-expanded={isOpen}
     >
       {isOpen ? <X size={22} /> : <Menu size={22} />}
     </button>
@@ -228,7 +240,7 @@ function MobileMenu({
                 href={link.href}
                 className={cn(
                   'block border-b border-white/8 py-4 font-display text-[2.4rem] leading-none tracking-[-0.04em] transition-colors',
-                  currentPath === link.href ? 'text-primary' : 'text-white/82 hover:text-white'
+                  currentPath === link.href ? 'text-primary' : 'overlay-copy hover:text-white'
                 )}
                 onClick={onClose}
               >
@@ -239,7 +251,7 @@ function MobileMenu({
         </ul>
         <div className="overlay-card mt-auto rounded-[1.75rem] p-6">
           <p className="font-mono text-[10px] uppercase tracking-[0.28em] overlay-meta">
-            Start a Project
+            Get a Quote
           </p>
           <Link
             href={cta.href}

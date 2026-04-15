@@ -22,7 +22,7 @@ interface BlogBoardProps {
   posts: BlogPostCard[]
 }
 
-const categories = ['All', 'Regulations', 'Technology', 'Safety', 'Infrastructure']
+const categories = ['All', 'Microsoft Teams', 'Low Code', 'Power Automate', 'PowerApps']
 
 export default function BlogBoard({ posts }: BlogBoardProps) {
   const [activeCategory, setActiveCategory] = useState('All')
@@ -46,11 +46,12 @@ export default function BlogBoard({ posts }: BlogBoardProps) {
             key={category}
             type="button"
             onClick={() => setActiveCategory(category)}
+            aria-current={activeCategory === category ? 'true' : undefined}
             className={cn(
               'rounded-full border px-5 py-2.5 text-[11px] font-semibold uppercase tracking-[0.18em] transition-all duration-300',
               activeCategory === category
                 ? 'border-primary bg-primary text-white shadow-[0_16px_30px_rgba(124,38,51,0.16)]'
-                : 'border-border bg-white/80 text-text-secondary hover:border-primary/40 hover:bg-white hover:text-primary'
+                : 'border-border bg-white/[0.04] text-text-secondary hover:border-primary/40 hover:bg-white/[0.08] hover:text-text-primary'
             )}
           >
             {category}
@@ -64,7 +65,7 @@ export default function BlogBoard({ posts }: BlogBoardProps) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: motionDurations.medium, ease: motionEasing.standard }}
-          className="grid overflow-hidden rounded-[2rem] border border-border/70 bg-white/84 shadow-panel backdrop-blur-sm lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)]"
+          className="grid overflow-hidden rounded-[2rem] border border-border/70 bg-bg-secondary/70 shadow-panel backdrop-blur-sm lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)]"
         >
           <div className="relative min-h-[340px] overflow-hidden">
             <Image
@@ -74,6 +75,7 @@ export default function BlogBoard({ posts }: BlogBoardProps) {
               placeholder={featuredPost.image.blurDataURL ? 'blur' : 'empty'}
               blurDataURL={featuredPost.image.blurDataURL}
               sizes="(min-width: 1024px) 54vw, 100vw"
+              quality={72}
               className="object-cover transition-transform duration-700 hover:scale-[1.03]"
               style={{ objectPosition: featuredPost.image.objectPosition }}
             />
@@ -114,7 +116,7 @@ export default function BlogBoard({ posts }: BlogBoardProps) {
               delay: index * 0.05,
               ease: motionEasing.standard,
             }}
-            className="group flex flex-col overflow-hidden rounded-[1.75rem] border border-border/70 bg-white/84 shadow-panel backdrop-blur-sm"
+            className="group flex flex-col overflow-hidden rounded-[1.75rem] border border-border/70 bg-bg-secondary/70 shadow-panel backdrop-blur-sm"
           >
             <div className="relative aspect-[16/10] overflow-hidden">
               <Image
@@ -124,6 +126,7 @@ export default function BlogBoard({ posts }: BlogBoardProps) {
                 placeholder={post.image.blurDataURL ? 'blur' : 'empty'}
                 blurDataURL={post.image.blurDataURL}
                 sizes="(min-width: 1280px) 30vw, (min-width: 768px) 48vw, 100vw"
+                quality={68}
                 className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                 style={{ objectPosition: post.image.objectPosition }}
               />

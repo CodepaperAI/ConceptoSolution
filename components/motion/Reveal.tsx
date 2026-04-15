@@ -5,7 +5,7 @@ import { motion, useReducedMotion } from 'framer-motion'
 import { cn } from '@/lib/utils'
 import { motionDurations, motionEasing } from '@/lib/motion'
 
-type Direction = 'up' | 'left' | 'right' | 'none'
+type Direction = 'up' | 'left' | 'right' | 'scale' | 'none'
 
 interface RevealProps {
   children: ReactNode
@@ -30,18 +30,20 @@ export default function Reveal({
 }: RevealProps) {
   const prefersReducedMotion = useReducedMotion()
 
-  const initial =
-    prefersReducedMotion || direction === 'none'
-      ? { opacity: 0 }
-      : direction === 'left'
-        ? { opacity: 0, x: -distance }
-        : direction === 'right'
-          ? { opacity: 0, x: distance }
+  const initial = prefersReducedMotion || direction === 'none'
+    ? { opacity: 0 }
+    : direction === 'left'
+      ? { opacity: 0, x: -distance }
+      : direction === 'right'
+        ? { opacity: 0, x: distance }
+        : direction === 'scale'
+          ? { opacity: 0, scale: 0.94 }
           : { opacity: 0, y: distance }
 
-  const animate =
-    prefersReducedMotion || direction === 'none'
-      ? { opacity: 1 }
+  const animate = prefersReducedMotion || direction === 'none'
+    ? { opacity: 1 }
+    : direction === 'scale'
+      ? { opacity: 1, scale: 1 }
       : { opacity: 1, x: 0, y: 0 }
 
   return (
@@ -52,7 +54,7 @@ export default function Reveal({
       whileInView={animate}
       viewport={{ once, amount }}
       transition={{
-        duration: motionDurations.medium,
+        duration: direction === 'scale' ? motionDurations.slow : motionDurations.medium,
         delay,
         ease: motionEasing.standard,
       }}

@@ -22,7 +22,7 @@ export default function Footer() {
                 className="h-10 w-auto brightness-0 invert"
               />
             </Link>
-            <p className="max-w-sm text-sm leading-6 text-white/68">
+            <p className="max-w-sm text-sm leading-6 overlay-copy-soft">
               {footerCopyright.description}
             </p>
           </div>
@@ -38,7 +38,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.label}
-                  className="group flex h-10 w-10 items-center justify-center rounded-full border border-white/16 bg-white/[0.06] text-white/60 transition-all duration-300 hover:border-secondary hover:bg-secondary/20 hover:text-secondary"
+                  className="overlay-card group flex h-10 w-10 items-center justify-center rounded-full overlay-meta transition-all duration-300 hover:border-secondary hover:bg-secondary/20 hover:text-secondary"
                 >
                   <Icon className="h-4 w-4 transition-transform duration-300 group-hover:scale-110" />
                 </a>
@@ -55,25 +55,25 @@ export default function Footer() {
           {/* Company */}
           <FooterColumn title={footerNavigation.company.title} links={footerNavigation.company.links} />
 
-          {/* Opening Hours */}
+          {/* Credentials */}
           <div>
-            <h3 className="mb-8 font-mono text-xs uppercase tracking-[0.2em] text-white/68">
-              Opening Hours
+            <h3 className="mb-8 font-mono text-xs uppercase tracking-[0.2em] overlay-meta">
+              Credentials
             </h3>
             <ul className="space-y-5">
               {footerWorkingHours.map((item) => (
                 <li key={item.days} className="flex justify-between gap-8 text-sm">
-                  <span className="text-white/60">{item.days}</span>
-                  <span className="shrink-0 text-white/90">{item.hours}</span>
+                  <span className="overlay-meta">{item.days}</span>
+                  <span className="shrink-0 overlay-copy">{item.hours}</span>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Contact Us */}
+          {/* Contact */}
           <div>
-            <h3 className="mb-8 font-mono text-xs uppercase tracking-[0.2em] text-white/68">
-              Contact Us
+            <h3 className="mb-8 font-mono text-xs uppercase tracking-[0.2em] overlay-meta">
+              Contact
             </h3>
             <ul className="space-y-6">
               {footerContact.map((item) => {
@@ -84,12 +84,12 @@ export default function Footer() {
                     {item.href ? (
                       <a
                         href={item.href}
-                        className="min-w-0 text-sm leading-6 text-white/68 transition-colors duration-200 hover:text-white focus-visible:text-white"
+                        className="min-w-0 text-sm leading-6 overlay-copy-soft transition-colors duration-200 hover:text-white focus-visible:text-white"
                       >
                         {item.value}
                       </a>
                     ) : (
-                      <span className="min-w-0 text-sm leading-6 text-white/68">
+                      <span className="min-w-0 text-sm leading-6 overlay-copy-soft">
                         {item.value}
                       </span>
                     )}
@@ -103,19 +103,19 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-white/10 py-7">
           <div className="flex flex-col items-center justify-between gap-5 text-center sm:flex-row">
-            <p className="text-sm text-white/60">
+            <p className="text-sm overlay-meta">
               &copy; {footerCopyright.year} {footerCopyright.companyName}. All rights reserved.
             </p>
             <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
               <Link
                 href="/privacy"
-                className="text-sm text-white/60 transition-colors duration-200 hover:text-white focus-visible:text-white"
+                className="text-sm overlay-meta transition-colors duration-200 hover:text-white focus-visible:text-white"
               >
                 Privacy Policy
               </Link>
               <Link
                 href="/terms"
-                className="text-sm text-white/60 transition-colors duration-200 hover:text-white focus-visible:text-white"
+                className="text-sm overlay-meta transition-colors duration-200 hover:text-white focus-visible:text-white"
               >
                 Terms of Service
               </Link>
@@ -135,7 +135,7 @@ interface FooterColumnProps {
 function FooterColumn({ title, links }: FooterColumnProps) {
   return (
     <div className="min-w-0">
-      <h3 className="mb-8 font-mono text-xs uppercase tracking-[0.2em] text-white/68">
+      <h3 className="mb-8 font-mono text-xs uppercase tracking-[0.2em] overlay-meta">
         {title}
       </h3>
       <ul className="space-y-5">
@@ -143,7 +143,7 @@ function FooterColumn({ title, links }: FooterColumnProps) {
           <li key={link.href} className="min-w-0">
             <Link
               href={link.href}
-              className="block min-w-0 text-sm text-white/68 transition-colors duration-200 hover:text-white focus-visible:text-white"
+              className="block min-w-0 text-sm overlay-copy-soft transition-colors duration-200 hover:text-white hover:underline hover:underline-offset-4 focus-visible:text-white focus-visible:underline focus-visible:underline-offset-4"
             >
               {link.label}
             </Link>

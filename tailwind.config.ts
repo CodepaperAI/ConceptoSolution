@@ -14,20 +14,20 @@ const config: Config = {
         },
         secondary: '#c8ab8d',
         bg: {
-          primary: '#f5efe6',
-          secondary: '#ece3d7',
-          dark: '#15110f',
+          primary: '#0f0c0a',
+          secondary: '#1c1816',
+          dark: '#060403',
         },
         text: {
-          primary: '#241d18',
-          secondary: '#5f544c',
+          primary: '#f5efe6',
+          secondary: '#bfb2a3',
           muted: '#8e7f73',
         },
         accent: '#7c2633',
-        link: '#086ad8',
+        link: '#6ba8ff',
         border: {
-          DEFAULT: '#d7ccbf',
-          dark: '#443932',
+          DEFAULT: '#332a25',
+          dark: '#594a3e',
         },
       },
       fontFamily: {

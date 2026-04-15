@@ -31,9 +31,9 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background-image:
-      radial-gradient(circle at top left, rgba(200, 171, 141, 0.18), transparent 24%),
-      radial-gradient(circle at top right, rgba(124, 38, 51, 0.1), transparent 28%),
-      linear-gradient(180deg, #f7f2ea 0%, #f3ede4 54%, #f7f2ea 100%);
+      radial-gradient(circle at top left, rgba(200, 171, 141, 0.06), transparent 32%),
+      radial-gradient(circle at top right, rgba(124, 38, 51, 0.12), transparent 32%),
+      linear-gradient(180deg, #0f0c0a 0%, #14100e 54%, #0f0c0a 100%);
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -60,11 +60,11 @@
   }
 
   ::-webkit-scrollbar-track {
-    @apply bg-bg-secondary;
+    @apply bg-bg-dark;
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-border rounded-sm;
+    @apply bg-border-dark rounded-sm;
   }
 
   ::-webkit-scrollbar-thumb:hover {
@@ -73,7 +73,7 @@
 
   h1, h2, h3, h4, h5, h6 {
     @apply text-text-primary tracking-tight;
-    text-wrap: balance;
+    text-wrap: pretty;
   }
 
   p {
@@ -113,9 +113,9 @@
   }
 
   .lux-panel {
-    border: 1px solid rgba(116, 93, 80, 0.16);
-    background: rgba(255, 251, 246, 0.78);
-    box-shadow: 0 18px 42px rgba(39, 24, 18, 0.09);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(28, 24, 22, 0.7);
+    box-shadow: 0 18px 42px rgba(0, 0, 0, 0.36);
     backdrop-filter: blur(16px);
     border-radius: 1.75rem;
   }
@@ -174,10 +174,10 @@
   }
 
   .field-shell {
-    border: 1px solid rgba(116, 93, 80, 0.2);
-    background: rgba(255, 251, 246, 0.82);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(28, 24, 22, 0.68);
     border-radius: 1.25rem;
-    box-shadow: 0 12px 30px rgba(38, 24, 18, 0.04);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.24);
     transition:
       border-color 240ms var(--ease-luxury),
       box-shadow 240ms var(--ease-luxury),
@@ -185,8 +185,8 @@
   }
 
   .field-shell:focus-within {
-    border-color: rgba(124, 38, 51, 0.45);
-    box-shadow: 0 20px 44px rgba(124, 38, 51, 0.08);
+    border-color: rgba(200, 171, 141, 0.6);
+    box-shadow: 0 20px 44px rgba(124, 38, 51, 0.2);
     transform: translateY(-1px);
   }
 
@@ -195,7 +195,13 @@
     background: transparent;
     border: 0;
     outline: 0;
-    color: #241d18;
+    color: #f5efe6;
+    border-radius: 0.5rem;
+  }
+
+  .field-input:focus-visible {
+    outline: 2px solid rgba(200, 171, 141, 0.6);
+    outline-offset: 2px;
   }
 
   .field-input::placeholder {
@@ -224,11 +230,11 @@
   }
 
   .overlay-copy-soft {
-    color: rgba(255, 255, 255, 0.74);
+    color: rgba(255, 255, 255, 0.84);
   }
 
   .overlay-meta {
-    color: rgba(255, 255, 255, 0.66);
+    color: rgba(255, 255, 255, 0.78);
   }
 
   .overlay-chip {

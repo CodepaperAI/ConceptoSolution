@@ -7,12 +7,12 @@ export const navLinks: NavLink[] = [
   { label: 'Home', href: '/' },
   { label: 'About Us', href: '/about' },
   { label: 'Services', href: '/services' },
-  { label: 'Portfolio', href: '/projects' },
+  { label: 'Projects', href: '/projects' },
   { label: 'Blog', href: '/blog' },
-  { label: 'Contact Us', href: '/contact' },
+  { label: 'Contact', href: '/contact' },
 ]
 
 export const ctaLink: NavLink = {
-  label: 'Request a Quote',
+  label: 'Get a Free Quote',
   href: '/contact',
 }

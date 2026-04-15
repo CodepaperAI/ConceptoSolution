@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import Image from 'next/image'
 import { ArrowRight, Check } from 'lucide-react'
 import Link from 'next/link'
@@ -8,53 +9,59 @@ import CountUpValue from '@/components/motion/CountUpValue'
 import PageHero from '@/components/ui/PageHero'
 import { aboutPageImages } from '@/data/siteImages'
 
+export const metadata: Metadata = {
+  title: 'About Us',
+  description:
+    'Established in 2003, Concepto Solutions delivers smart home automation, electrical services and IT support across London for homeowners, developers and businesses.',
+}
+
 const values = [
   {
-    title: 'Premium confidence',
+    title: 'Founded in 2003',
     description:
-      'Clients come to us for technical certainty delivered with calm, finish-led judgement rather than noise.',
+      'Concepto Solutions was established in 2003 and has grown from electrical contracting into smart home, audio visual and IT services.',
   },
   {
-    title: 'Architectural clarity',
+    title: 'NICEIC Approved Contractor',
     description:
-      'We coordinate the hidden systems so the visible environment can stay composed and intentional.',
+      'Our electrical work is backed by NICEIC approval, giving clients added confidence in safety, compliance and workmanship.',
   },
   {
-    title: 'Restrained theatrical motion',
+    title: 'TrustMark Registered',
     description:
-      'Movement and automation should elevate the experience without making the building feel over-designed.',
+      'TrustMark registration reflects a government-endorsed standard for reputable contractors working in homes and businesses.',
   },
   {
-    title: 'Smooth-first delivery',
+    title: 'London-based team',
     description:
-      'Our best work reduces friction on site, during handover, and in how the finished space is actually used.',
+      'We support homeowners, developers, architects and commercial businesses across London and the wider UK.',
   },
 ] as const
 
 const approachSteps = [
   {
     number: '01',
-    title: 'Brief with context',
+    title: 'Understand the brief',
     description:
-      'We listen for the operational needs behind the specification, not just the product list in front of it.',
+      'We take time to understand the property, the people using it and whether the project is domestic or commercial.',
   },
   {
     number: '02',
-    title: 'Compose the system',
+    title: 'Recommend the solution',
     description:
-      'Electrical, data, automation, AV, and security are resolved together so the project behaves like one design decision.',
+      'Our team discusses the options and recommends the most suitable and cost-effective mix of electrical, smart home or IT services.',
   },
   {
     number: '03',
-    title: 'Protect the finish',
+    title: 'Install and integrate',
     description:
-      'Delivery stays disciplined on site, with sequencing and detailing set up to protect the quality of the completed environment.',
+      'We deliver the agreed systems with close attention to safety, coordination and the quality of the finished environment.',
   },
   {
     number: '04',
-    title: 'Support after handover',
+    title: 'Maintain and support',
     description:
-      'We stay close through testing, client orientation, and any adjustments needed once the building is in use.',
+      'Testing, handover and ongoing support help keep home technology, electrical systems and business IT reliable after completion.',
   },
 ] as const
 
@@ -62,23 +69,24 @@ export default function AboutPage() {
   return (
     <>
       <PageHero
+        priority
         image={aboutPageImages.hero}
-        eyebrow="About Concepto"
-        title="Precision, accountability, and quietly ambitious technical delivery."
-        description="We serve residential and commercial clients who need the underlying systems to feel coherent, dependable, and well judged from the earliest design conversations through final handover."
+        eyebrow="About Us"
+        title="About Concepto Solutions Ltd"
+        description="Established in 2003, Concepto Solutions is a London-based team delivering smart home automation, audio visual, electrical and IT services. We work with homeowners, developers and businesses across London and the wider UK."
         aside={
           <div className="p-7">
-            <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-white/56">
-              Built Around
+            <p className="font-mono text-[10px] uppercase tracking-[0.3em] overlay-eyebrow">
+              At A Glance
             </p>
             <div className="mt-6 grid gap-5">
               {[
-                'Electrical expertise at the core',
-                'Integrated systems as standard',
-                'Careful coordination across trades',
+                'Founded in 2003',
+                'NICEIC Approved Contractor',
+                'TrustMark Registered',
               ].map((item) => (
                 <div key={item} className="border-t border-white/10 pt-5 first:border-t-0 first:pt-0">
-                  <p className="text-sm leading-7 text-white/84">{item}</p>
+                  <p className="text-sm leading-7 overlay-copy">{item}</p>
                 </div>
               ))}
             </div>
@@ -102,17 +110,17 @@ function StorySection() {
             <Reveal>
               <SectionHeading
                 eyebrow="Our Story"
-                heading="We expanded from electrical delivery into integrated systems because clients kept needing a more joined-up answer."
-                subheading="The demand was consistent: fewer fragmented conversations, fewer coordination gaps on site, and a final result that felt technically complete without sacrificing the architectural finish."
+                heading="Built on electrical. Expanded to smart home, AV and IT."
+                subheading="Concepto Solutions started in electrical contracting and grew to meet the wider technical needs of residential and commercial clients across London and the UK."
               />
             </Reveal>
 
             <Reveal delay={0.1}>
               <div className="mt-10 grid gap-4 sm:grid-cols-3">
                 {[
-                  { value: 20, suffix: '+', label: 'Years of experience' },
-                  { value: 500, suffix: '+', label: 'Project environments' },
-                  { value: 5, suffix: '', label: 'Core disciplines delivered' },
+                  { value: 2003, suffix: '', label: 'Founded' },
+                  { value: 2008, suffix: '', label: 'NICEIC member since' },
+                  { value: 24, suffix: '/7', label: 'UK IT support' },
                 ].map((item, index) => (
                   <div key={item.label} className="lux-panel p-5">
                     <CountUpValue
@@ -129,8 +137,8 @@ function StorySection() {
 
             <Reveal delay={0.18}>
               <blockquote className="mt-10 border-l border-primary/35 pl-6 text-base leading-8 text-text-secondary md:text-lg">
-                We are at our best when the client wants rigor without friction and technical depth
-                without the process becoming theatrical.
+                We take time to understand the brief, explain the options and recommend the most
+                suitable and cost-effective solution.
               </blockquote>
             </Reveal>
           </div>
@@ -145,6 +153,7 @@ function StorySection() {
                   placeholder={aboutPageImages.story.blurDataURL ? 'blur' : 'empty'}
                   blurDataURL={aboutPageImages.story.blurDataURL}
                   sizes="(min-width: 1024px) 44vw, 100vw"
+                  quality={72}
                   className="object-cover"
                   style={{ objectPosition: aboutPageImages.story.objectPosition }}
                 />
@@ -152,11 +161,10 @@ function StorySection() {
               </div>
               <div className="overlay-panel absolute bottom-5 right-5 max-w-[15rem] rounded-[1.4rem] px-5 py-5">
                 <span className="font-mono text-[10px] uppercase tracking-[0.24em] overlay-eyebrow">
-                  Experience-led
+                  London Based
                 </span>
                 <p className="mt-3 text-sm leading-7 overlay-copy">
-                  Our growth has come from solving adjacent technical problems for the same clients
-                  and teams.
+                  Our clients include homeowners, developers, architects and commercial businesses.
                 </p>
               </div>
             </div>
@@ -173,9 +181,9 @@ function ValuesSection() {
       <Container>
         <Reveal>
           <SectionHeading
-            eyebrow="What Shapes The Work"
-            heading="A more premium result usually comes from discipline, not excess."
-            subheading="These principles guide how we specify, coordinate, install, and support the spaces clients trust us with."
+            eyebrow="What We Offer"
+            heading="Accredited electrical. Smart home, AV and business IT."
+            subheading="That mix helps clients brief once, coordinate less and keep their project moving with one dependable team."
             tone="light"
             className="max-w-4xl"
           />
@@ -216,6 +224,7 @@ function ApproachSection() {
                   placeholder={aboutPageImages.approach.blurDataURL ? 'blur' : 'empty'}
                   blurDataURL={aboutPageImages.approach.blurDataURL}
                   sizes="(min-width: 1024px) 40vw, 100vw"
+                  quality={72}
                   className="object-cover"
                   style={{ objectPosition: aboutPageImages.approach.objectPosition }}
                 />
@@ -227,15 +236,15 @@ function ApproachSection() {
             <Reveal>
               <SectionHeading
                 eyebrow="How We Work"
-                heading="Every phase is designed to make the next phase cleaner."
-                subheading="That applies to briefing, coordination, on-site delivery, and the experience of using the finished systems afterwards."
+                heading="Listen. Design. Install. Stay."
+                subheading="That same approach supports smart home projects, electrical packages, security systems and managed IT services."
               />
             </Reveal>
 
             <div className="mt-10 space-y-5">
               {approachSteps.map((step, index) => (
                 <Reveal key={step.number} delay={0.08 + index * 0.05}>
-                  <div className="flex gap-5 rounded-[1.5rem] border border-border/70 bg-white/82 p-5 shadow-panel md:p-6">
+                  <div className="flex gap-5 rounded-[1.5rem] border border-border/70 bg-bg-secondary/80 p-5 shadow-panel md:p-6">
                     <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-primary/20 bg-primary/6 text-primary">
                       <span className="font-mono text-sm font-bold">{step.number}</span>
                     </div>
@@ -256,11 +265,11 @@ function ApproachSection() {
                   href="/contact"
                   className="inline-flex items-center gap-3 rounded-full border border-primary bg-primary px-8 py-4 text-[11px] font-semibold uppercase tracking-[0.2em] text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-primary-hover"
                 >
-                  Start a conversation <ArrowRight size={15} />
+                  Get a Free Quote <ArrowRight size={15} />
                 </Link>
                 <div className="flex items-center gap-3 text-[11px] uppercase tracking-[0.18em] text-text-muted">
                   <Check className="h-4 w-4 text-primary" />
-                  Finish-led delivery mindset
+                  London-based since 2003
                 </div>
               </div>
             </Reveal>

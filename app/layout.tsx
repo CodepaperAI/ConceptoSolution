@@ -25,21 +25,23 @@ const cormorant = Cormorant_Garamond({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Concepto Solutions | Integrated Electrical Contractor',
+    default: 'Concepto Solutions | Smart Home, Electrical & IT',
     template: '%s | Concepto Solutions',
   },
-  description: 'Concepto Solutions is an integrated electrical contractor serving clients across London and the South East. We spec and install electrical, smart home, security, data, and IT infrastructure systems.',
-  keywords: ['electrical contractor', 'smart home', 'security systems', 'data fibre', 'IT support', 'London', 'South East'],
+  description:
+    'London-based specialists in smart home automation, electrical services and IT support for homeowners, developers and businesses.',
+  keywords: ['smart home solutions', 'electrical solutions', 'IT support', 'home automation', 'London', 'NICEIC approved', 'TrustMark registered'],
   authors: [{ name: 'Concepto Solutions Ltd' }],
   creator: 'Concepto Solutions Ltd',
-  metadataBase: new URL('https://conceptosolutions.co.uk'),
+  metadataBase: new URL('https://www.conceptosolutions.co.uk'),
   openGraph: {
     type: 'website',
     locale: 'en_GB',
-    url: 'https://conceptosolutions.co.uk',
+    url: 'https://www.conceptosolutions.co.uk',
     siteName: 'Concepto Solutions',
-    title: 'Concepto Solutions | Integrated Electrical Contractor',
-    description: 'Concepto Solutions is an integrated electrical contractor serving clients across London and the South East.',
+    title: 'Concepto Solutions | Smart Home, Electrical & IT',
+    description:
+      'London-based specialists in smart home automation, electrical services and IT support for homeowners, developers and businesses.',
     images: [
       {
         url: '/assets/images/logo-200x42.png',
@@ -51,8 +53,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Concepto Solutions | Integrated Electrical Contractor',
-    description: 'Concepto Solutions is an integrated electrical contractor serving clients across London and the South East.',
+    title: 'Concepto Solutions | Smart Home, Electrical & IT',
+    description:
+      'London-based specialists in smart home automation, electrical services and IT support for homeowners, developers and businesses.',
     images: ['/assets/images/logo-200x42.png'],
   },
   robots: {
@@ -66,9 +69,7 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  verification: {
-    google: 'your-google-verification-code',
-  },
+  // verification: { google: 'ADD_REAL_CODE_HERE' },
 }
 
 export default function RootLayout({
@@ -79,8 +80,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${outfit.variable} ${jetbrainsMono.variable} ${cormorant.variable}`}>
       <body className="min-h-screen flex flex-col bg-bg-primary text-text-secondary font-sans antialiased">
+        <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[200] focus:rounded-full focus:bg-primary focus:px-6 focus:py-3 focus:text-sm focus:font-semibold focus:text-white focus:shadow-luxury">
+          Skip to main content
+        </a>
         <Navbar />
-        <main className="flex-1 pt-16 lg:pt-20">
+        <main id="main-content" className="flex-1 pt-16 lg:pt-20">
           {children}
         </main>
         <Footer />

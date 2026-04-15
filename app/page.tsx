@@ -18,42 +18,7 @@ import Reveal from '@/components/motion/Reveal'
 import CountUpValue from '@/components/motion/CountUpValue'
 import HomeHero from '@/components/home/HomeHero'
 import { homeImages } from '@/data/siteImages'
-
-const featuredProjects = [
-  {
-    title: 'SIGNIA COURT',
-    location: 'Wembley, HA9',
-    category: 'Residential',
-    year: '2024',
-    description:
-      'A coordinated apartment scheme where lighting, power, and integrated living systems needed to feel seamless room to room.',
-    image: homeImages.featuredProjects.signiaCourt,
-    span: 'xl:col-span-7',
-    aspect: 'aspect-[16/10]',
-  },
-  {
-    title: 'MAYFAIR RESIDENCE',
-    location: 'Mayfair, W1',
-    category: 'Private Client',
-    year: '2024',
-    description:
-      'Discreet technical infrastructure hidden behind a calm, hospitality-led residential finish.',
-    image: homeImages.featuredProjects.mayfairResidence,
-    span: 'xl:col-span-5',
-    aspect: 'aspect-[16/11]',
-  },
-  {
-    title: 'CITY OF LONDON OFFICE',
-    location: 'EC2A, London',
-    category: 'Commercial',
-    year: '2024',
-    description:
-      'An office environment delivered with joined-up electrical, data, display, and operational support.',
-    image: homeImages.featuredProjects.cityOffice,
-    span: 'xl:col-span-5',
-    aspect: 'aspect-[16/11]',
-  },
-] as const
+import { homeFeaturedProjects } from '@/data/projects'
 
 const serviceCards: {
   id: string
@@ -65,44 +30,101 @@ const serviceCards: {
   {
     id: 'electrical',
     title: 'Electrical',
-    description: 'Clean core infrastructure and lighting that supports the wider technical brief.',
+    description:
+      'NICEIC-approved installation, testing, maintenance and upgrades for homes, workplaces and managed buildings.',
     image: homeImages.serviceCards.electrical,
     icon: Zap,
   },
   {
     id: 'smart-home',
     title: 'Smart Home',
-    description: 'Lighting, comfort, control, and everyday convenience composed into one system.',
+    description:
+      'Smart home control, climate control, lighting and blind automation, security integration and multi-room audio.',
     image: homeImages.serviceCards.smartHome,
     icon: HomeIcon,
   },
   {
     id: 'security',
     title: 'Security',
-    description: 'Discreet protection, monitoring, and access that never fights the architecture.',
+    description:
+      'CCTV, door entry, video entry and fire systems designed to protect homes, developments and business premises.',
     image: homeImages.serviceCards.security,
     icon: Shield,
   },
   {
     id: 'data-fibre',
-    title: 'Data & Fibre',
-    description: 'Reliable structured cabling and network foundations designed for long-term resilience.',
+    title: 'Data & Networks',
+    description:
+      'Data wiring, structured cabling and IT networking design that create reliable connectivity across the building.',
     image: homeImages.serviceCards.dataFibre,
     icon: Database,
   },
   {
+    id: 'it-support',
+    title: 'IT Support',
+    description:
+      '24/7 UK-based IT support, Microsoft platform solutions, managed services and cloud migration for businesses.',
+    image: homeImages.serviceCards.itSupport,
+    icon: Server,
+  },
+  {
     id: 'av',
-    title: 'AV Integration',
-    description: 'Display, media, and control systems delivered with a finish-led installation standard.',
+    title: 'Audio Visual',
+    description:
+      'Audio-visual installation that supports home cinema, entertainment spaces and simple day-to-day control.',
     image: homeImages.serviceCards.av,
     icon: Cpu,
   },
+] as const
+
+const bentoLayout = [
+  // Card 0 — Electrical (feature, wide)
   {
-    id: 'it-support',
-    title: 'IT Support',
-    description: 'Operational continuity, handover confidence, and support after practical completion.',
-    image: homeImages.serviceCards.itSupport,
-    icon: Server,
+    span: 'md:col-span-2 xl:col-span-8',
+    aspect: 'aspect-[16/9]',
+    titleSize: 'text-[2.4rem] md:text-[2.8rem]',
+    tag: 'Featured',
+    imageSizes: '(min-width: 1280px) 65vw, (min-width: 768px) 100vw, 100vw',
+  },
+  // Card 1 — Smart Home (narrow, grows to match feature height on desktop)
+  {
+    span: 'md:col-span-1 xl:col-span-4',
+    aspect: 'aspect-[4/3] xl:aspect-auto xl:flex-1 xl:min-h-[420px]',
+    titleSize: 'text-[1.85rem]',
+    tag: 'Service',
+    imageSizes: '(min-width: 1280px) 32vw, (min-width: 768px) 48vw, 100vw',
+  },
+  // Card 2 — Security (middle row, 1 of 3)
+  {
+    span: 'md:col-span-1 xl:col-span-4',
+    aspect: 'aspect-[4/3]',
+    titleSize: 'text-[1.85rem]',
+    tag: 'Service',
+    imageSizes: '(min-width: 1280px) 32vw, (min-width: 768px) 48vw, 100vw',
+  },
+  // Card 3 — Data & Networks
+  {
+    span: 'md:col-span-1 xl:col-span-4',
+    aspect: 'aspect-[4/3]',
+    titleSize: 'text-[1.85rem]',
+    tag: 'Service',
+    imageSizes: '(min-width: 1280px) 32vw, (min-width: 768px) 48vw, 100vw',
+  },
+  // Card 4 — Audio Visual
+  {
+    span: 'md:col-span-1 xl:col-span-4',
+    aspect: 'aspect-[4/3]',
+    titleSize: 'text-[1.85rem]',
+    tag: 'Service',
+    imageSizes: '(min-width: 1280px) 32vw, (min-width: 768px) 48vw, 100vw',
+  },
+  // Card 5 — Audio Visual (panoramic, full-width)
+  {
+    span: 'md:col-span-2 xl:col-span-12',
+    aspect: 'aspect-[16/6] md:aspect-[16/5]',
+    titleSize: 'text-[2.4rem] md:text-[2.8rem]',
+    tag: 'Signature',
+    imageSizes: '(min-width: 768px) 100vw, 100vw',
   },
 ] as const
 
@@ -111,32 +133,32 @@ const processSteps = [
     number: '01',
     title: 'Consultation',
     description:
-      'We review the site, the brief, the programme, and how the space needs to operate before specification begins.',
+      'We discuss the site, the brief and whether the requirement is residential or commercial before recommending the right route forward.',
   },
   {
     number: '02',
     title: 'Specification',
     description:
-      'Electrical, lighting, AV, data, and security scopes are resolved together so the installation works as a system.',
+      'Electrical, smart home, security, data and IT requirements are reviewed together so the solution fits the project and budget.',
   },
   {
     number: '03',
-    title: 'Delivery',
+    title: 'Installation',
     description:
-      'Trades are coordinated, sequencing is clear, and finishes are protected throughout the build.',
+      'Our team installs and integrates the agreed systems with close attention to compliance, coordination and finish quality.',
   },
   {
     number: '04',
-    title: 'Aftercare',
+    title: 'Support',
     description:
-      'Testing, handover, and post-completion support keep the result practical long after installation.',
+      'Testing, handover, maintenance and ongoing IT support help keep the completed systems reliable over time.',
   },
 ] as const
 
 const credibilityStats = [
-  { value: 20, suffix: '+', label: 'Years of delivery' },
-  { value: 500, suffix: '+', label: 'Projects completed' },
-  { value: 100, suffix: '%', label: 'Attention to finish' },
+  { value: 2003, suffix: '', label: 'Founded' },
+  { value: 24, suffix: '/7', label: 'UK-based IT support' },
+  { value: 2, suffix: '', label: 'Key accreditations' },
 ] as const
 
 export default function HomePage() {
@@ -155,56 +177,59 @@ function FeaturedProjectsSection() {
   return (
     <section className="section-defer py-24 md:py-32 lg:py-36">
       <Container>
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,0.84fr)_minmax(0,1.16fr)] lg:items-end lg:gap-16">
-          <Reveal>
-            <SectionHeading
-              eyebrow="Selected Work"
-              heading="Integrated delivery that disappears into the quality of the finish."
-              subheading="Our strongest projects feel calm on the surface because the infrastructure behind them has already been resolved properly."
-            />
+        <Reveal>
+          <SectionHeading
+            eyebrow="Where We Work"
+            heading="Residential and commercial projects, supported end-to-end."
+          />
+        </Reveal>
+        <div className="mt-10 grid gap-10 lg:grid-cols-2 lg:items-end lg:gap-16">
+          <Reveal delay={0.06}>
+            <p className="max-w-xl text-base leading-8 text-text-secondary md:text-lg md:leading-9">
+              From private homes to business environments, the common thread is practical integration,
+              dependable installation and support that lasts beyond handover.
+            </p>
           </Reveal>
-          <Reveal delay={0.08} className="lg:justify-self-end">
+          <Reveal delay={0.12} className="lg:justify-self-end">
             <div className="max-w-xl lg:ml-auto">
               <p className="text-base leading-8 text-text-secondary md:text-lg md:leading-9">
-                Concepto is typically brought in when the brief needs more than a single trade.
-                We coordinate the technical layers early so the final spaces feel precise, quiet,
-                and fully considered.
+                Concepto Solutions works with homeowners, developers, architects and businesses that
+                want one team to understand the wider technical picture. That joined-up approach
+                helps us recommend the most suitable and cost-effective solution for each project.
               </p>
               <Link
                 href="/projects"
                 className="mt-8 inline-flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-primary transition-transform duration-300 hover:translate-x-1"
               >
-                View all projects <ChevronRight size={15} />
+                Explore the portfolio <ChevronRight size={15} />
               </Link>
             </div>
           </Reveal>
         </div>
 
-        <div className="mt-14 grid gap-6 xl:grid-cols-12">
-          {featuredProjects.map((project, index) => (
-            <Reveal
-              key={project.title}
-              delay={0.08 + index * 0.06}
-              className={project.span}
-            >
+        {/* Row 1: featured card (wider) + second card */}
+        <div className="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-[minmax(0,7fr)_minmax(0,5fr)]">
+          {homeFeaturedProjects.slice(0, 2).map((project, index) => (
+            <Reveal key={project.slug} delay={0.08 + index * 0.12} direction="scale">
               <Link
-                href="/projects"
-                className="group block overflow-hidden rounded-[2rem] border border-border/70 bg-[#f8f3eb] shadow-panel"
+                href={`/projects/${project.slug}`}
+                className="group flex h-full flex-col overflow-hidden rounded-[2rem] border border-border/70 bg-bg-secondary shadow-panel"
               >
-                <div className={`relative overflow-hidden ${project.aspect}`}>
+                <div className={`relative overflow-hidden ${index === 0 ? 'aspect-[16/10]' : 'aspect-[16/11] xl:aspect-auto xl:flex-1 xl:min-h-[420px]'}`}>
                   <Image
-                    src={project.image.src}
-                    alt={project.image.alt}
+                    src={project.heroImage.src}
+                    alt={project.heroImage.alt}
                     fill
-                    placeholder={project.image.blurDataURL ? 'blur' : 'empty'}
-                    blurDataURL={project.image.blurDataURL}
+                    placeholder={project.heroImage.blurDataURL ? 'blur' : 'empty'}
+                    blurDataURL={project.heroImage.blurDataURL}
                     sizes={
-                      project.span === 'xl:col-span-7'
-                        ? '(min-width: 1280px) 54vw, 100vw'
-                        : '(min-width: 1280px) 38vw, 100vw'
+                      index === 0
+                        ? '(min-width: 1280px) 54vw, (min-width: 768px) 48vw, 100vw'
+                        : '(min-width: 1280px) 38vw, (min-width: 768px) 48vw, 100vw'
                     }
+                    quality={72}
                     className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-                    style={{ objectPosition: project.image.objectPosition }}
+                    style={{ objectPosition: project.heroImage.objectPosition }}
                   />
                   <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(14,11,10,0.5)_0%,rgba(14,11,10,0.3)_28%,rgba(14,11,10,0.46)_56%,rgba(14,11,10,0.92)_100%)]" />
                   <div className="absolute inset-x-0 bottom-0 p-7 md:p-8">
@@ -219,8 +244,8 @@ function FeaturedProjectsSection() {
                     <h3 className="mt-5 font-display text-[2rem] leading-[0.94] tracking-[-0.05em] text-white [text-shadow:0_8px_24px_rgba(0,0,0,0.36)] md:text-[2.35rem]">
                       {project.title}
                     </h3>
-                    <p className="mt-4 max-w-xl text-sm leading-7 text-white/88 [text-shadow:0_6px_20px_rgba(0,0,0,0.3)] md:text-base">
-                      {project.description}
+                    <p className="mt-4 max-w-xl text-sm leading-7 overlay-copy [text-shadow:0_6px_20px_rgba(0,0,0,0.3)] md:text-base">
+                      {project.shortDescription}
                     </p>
                   </div>
                 </div>
@@ -228,6 +253,49 @@ function FeaturedProjectsSection() {
             </Reveal>
           ))}
         </div>
+
+        {/* Row 2: third card full width */}
+        {homeFeaturedProjects[2] && (
+          <div className="mt-6">
+            <Reveal delay={0.2} direction="left" distance={60}>
+              <Link
+                href={`/projects/${homeFeaturedProjects[2].slug}`}
+                className="group block overflow-hidden rounded-[2rem] border border-border/70 bg-bg-secondary shadow-panel"
+              >
+                <div className="relative overflow-hidden aspect-[16/7] md:aspect-[16/6]">
+                  <Image
+                    src={homeFeaturedProjects[2].heroImage.src}
+                    alt={homeFeaturedProjects[2].heroImage.alt}
+                    fill
+                    placeholder={homeFeaturedProjects[2].heroImage.blurDataURL ? 'blur' : 'empty'}
+                    blurDataURL={homeFeaturedProjects[2].heroImage.blurDataURL}
+                    sizes="(min-width: 768px) 100vw, 100vw"
+                    quality={72}
+                    className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                    style={{ objectPosition: homeFeaturedProjects[2].heroImage.objectPosition }}
+                  />
+                  <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(14,11,10,0.5)_0%,rgba(14,11,10,0.3)_28%,rgba(14,11,10,0.46)_56%,rgba(14,11,10,0.92)_100%)]" />
+                  <div className="absolute inset-x-0 bottom-0 p-7 md:p-8">
+                    <div className="flex flex-wrap items-center gap-3">
+                      <span className="overlay-chip rounded-full px-3 py-1.5 font-mono text-[9px] uppercase tracking-[0.2em]">
+                        {homeFeaturedProjects[2].category}
+                      </span>
+                      <span className="overlay-chip-soft rounded-full px-3 py-1.5 font-mono text-[9px] uppercase tracking-[0.2em]">
+                        {homeFeaturedProjects[2].location} / {homeFeaturedProjects[2].year}
+                      </span>
+                    </div>
+                    <h3 className="mt-5 font-display text-[2rem] leading-[0.94] tracking-[-0.05em] text-white [text-shadow:0_8px_24px_rgba(0,0,0,0.36)] md:text-[2.35rem]">
+                      {homeFeaturedProjects[2].title}
+                    </h3>
+                    <p className="mt-4 max-w-xl text-sm leading-7 overlay-copy [text-shadow:0_6px_20px_rgba(0,0,0,0.3)] md:text-base">
+                      {homeFeaturedProjects[2].shortDescription}
+                    </p>
+                  </div>
+                </div>
+              </Link>
+            </Reveal>
+          </div>
+        )}
       </Container>
     </section>
   )
@@ -240,52 +308,63 @@ function ServicesSection() {
       <Container className="relative z-10">
         <Reveal>
           <SectionHeading
-            eyebrow="Integrated Disciplines"
-            heading="One technical partner across the systems clients notice and the ones they never should."
-            subheading="The structure is simple: fewer handoffs, cleaner communication, and a result that behaves like one joined-up project."
+            eyebrow="Core Services"
+            heading="One London team. Smart home, electrical and IT."
+            subheading="The wider scope can include audio visual, CCTV, fire systems, data wiring and Microsoft-based support, depending on what the project needs."
             alignment="center"
             tone="light"
             className="mx-auto"
           />
         </Reveal>
 
-        <div className="mt-16 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-          {serviceCards.map((service, index) => (
-            <Reveal key={service.id} delay={0.06 + index * 0.05}>
-              <Link
-                href={`/services#${service.id}`}
-                className="group overlay-card block overflow-hidden rounded-[1.8rem] shadow-[0_22px_58px_rgba(0,0,0,0.16)] transition-all duration-500 hover:-translate-y-1 hover:border-white/22 hover:bg-white/[0.08]"
+        {/* Bento layout: 3 rows — feature + narrow | 3 equal | panoramic */}
+        <div className="mt-16 grid gap-6 md:grid-cols-2 xl:grid-cols-12">
+          {serviceCards.map((service, index) => {
+            const bento = bentoLayout[index]
+            return (
+              <Reveal
+                key={service.id}
+                delay={0.06 + index * 0.08}
+                direction={index === 0 || index === 5 ? 'scale' : index === 1 ? 'right' : index === 4 ? 'left' : 'up'}
+                distance={32}
+                className={bento.span}
               >
-                <div className="relative aspect-[16/11] overflow-hidden">
-                  <Image
-                    src={service.image.src}
-                    alt={service.image.alt}
-                    fill
-                    placeholder={service.image.blurDataURL ? 'blur' : 'empty'}
-                    blurDataURL={service.image.blurDataURL}
-                    sizes="(min-width: 1280px) 30vw, (min-width: 768px) 46vw, 100vw"
-                    className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-                    style={{ objectPosition: service.image.objectPosition }}
-                  />
-                  <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(12,10,9,0.12)_0%,rgba(12,10,9,0.34)_42%,rgba(12,10,9,0.84)_100%)]" />
-                </div>
-                <div className="p-7">
-                  <div className="flex items-center justify-between gap-4">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-full border border-white/12 bg-white/[0.06]">
-                      <service.icon className="h-5 w-5 text-secondary" strokeWidth={1.7} />
-                    </div>
-                    <span className="font-mono text-[10px] uppercase tracking-[0.24em] overlay-meta">
-                      Service
-                    </span>
+                <Link
+                  href={`/services#${service.id}`}
+                  className="group overlay-card flex h-full flex-col overflow-hidden rounded-[1.8rem] shadow-[0_22px_58px_rgba(0,0,0,0.16)] transition-all duration-500 hover:-translate-y-1 hover:border-white/22 hover:bg-white/[0.08]"
+                >
+                  <div className={`relative ${bento.aspect} overflow-hidden`}>
+                    <Image
+                      src={service.image.src}
+                      alt={service.image.alt}
+                      fill
+                      placeholder={service.image.blurDataURL ? 'blur' : 'empty'}
+                      blurDataURL={service.image.blurDataURL}
+                      sizes={bento.imageSizes}
+                      quality={70}
+                      className="object-cover transition-transform duration-700 group-hover:scale-[1.05]"
+                      style={{ objectPosition: service.image.objectPosition }}
+                    />
+                    <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(12,10,9,0.12)_0%,rgba(12,10,9,0.34)_42%,rgba(12,10,9,0.84)_100%)]" />
                   </div>
-                  <h3 className="mt-7 font-display text-[2rem] leading-[0.96] tracking-[-0.045em] text-white">
-                    {service.title}
-                  </h3>
-                  <p className="mt-4 text-sm leading-7 overlay-copy-soft">{service.description}</p>
-                </div>
-              </Link>
-            </Reveal>
-          ))}
+                  <div className="flex flex-1 flex-col p-7">
+                    <div className="flex items-center justify-between gap-4">
+                      <div className="overlay-card flex h-12 w-12 items-center justify-center rounded-full transition-transform duration-500 group-hover:rotate-[-8deg]">
+                        <service.icon className="h-5 w-5 text-secondary" strokeWidth={1.7} />
+                      </div>
+                      <span className="font-mono text-[10px] uppercase tracking-[0.24em] overlay-meta">
+                        {bento.tag}
+                      </span>
+                    </div>
+                    <h3 className={`mt-7 font-display leading-[0.96] tracking-[-0.045em] text-white ${bento.titleSize}`}>
+                      {service.title}
+                    </h3>
+                    <p className="mt-4 text-sm leading-7 overlay-copy-soft">{service.description}</p>
+                  </div>
+                </Link>
+              </Reveal>
+            )
+          })}
         </div>
       </Container>
     </section>
@@ -307,6 +386,7 @@ function EditorialSection() {
                   placeholder={homeImages.about.blurDataURL ? 'blur' : 'empty'}
                   blurDataURL={homeImages.about.blurDataURL}
                   sizes="(min-width: 1024px) 42vw, 100vw"
+                  quality={72}
                   className="object-cover"
                   style={{ objectPosition: homeImages.about.objectPosition }}
                 />
@@ -314,10 +394,10 @@ function EditorialSection() {
               </div>
               <div className="overlay-panel absolute bottom-5 left-5 max-w-[15rem] rounded-[1.5rem] px-5 py-5">
                 <span className="font-mono text-[10px] uppercase tracking-[0.24em] overlay-eyebrow">
-                  Studio Note
+                  Company Note
                 </span>
                 <p className="mt-3 text-sm leading-7 overlay-copy">
-                  The strongest technical work usually reads as effortless in the room itself.
+                  We work closely with clients from the outset to understand the brief and recommend the right solution.
                 </p>
               </div>
             </div>
@@ -326,15 +406,15 @@ function EditorialSection() {
           <div>
             <Reveal>
               <SectionHeading
-                eyebrow="Why Clients Stay"
-                heading="We started in electrical delivery and expanded so clients could brief once and coordinate less."
-                subheading="That means clearer decisions earlier, a more coherent scope on site, and a handover that feels resolved rather than pieced together."
+                eyebrow="About Concepto"
+                heading="Since 2003. Joined-up electrical, smart home and IT expertise."
+                subheading="Our services include smart home automation, audio-visual installation, electrical solutions and 24/7 UK-based IT support."
               />
             </Reveal>
 
             <div className="mt-10 grid gap-4 sm:grid-cols-3">
               {credibilityStats.map((stat, index) => (
-                <Reveal key={stat.label} delay={0.1 + index * 0.06}>
+                <Reveal key={stat.label} delay={0.1 + index * 0.1} direction="scale">
                   <div className="lux-panel p-5">
                     <CountUpValue
                       value={stat.value}
@@ -350,8 +430,8 @@ function EditorialSection() {
 
             <Reveal delay={0.22}>
               <blockquote className="mt-10 border-l border-primary/38 pl-6 text-base leading-8 text-text-secondary md:text-lg">
-                "Our role is to make the technical side feel calm. When the client sees fewer
-                compromises at the finish stage, the earlier coordination has done its job."
+                We work closely with each client from the outset so the recommended solution fits
+                the brief, the budget and the way the building will be used.
               </blockquote>
             </Reveal>
 
@@ -359,14 +439,14 @@ function EditorialSection() {
               <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
                 <Link
                   href="/about"
-                  className="inline-flex items-center gap-3 rounded-full border border-border bg-white/82 px-7 py-4 text-[11px] font-semibold uppercase tracking-[0.2em] text-text-primary shadow-panel transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/30 hover:text-primary"
+                  className="inline-flex items-center gap-3 rounded-full border border-border bg-white/[0.06] px-7 py-4 text-[11px] font-semibold uppercase tracking-[0.2em] text-text-primary shadow-panel transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/45 hover:bg-white/[0.1]"
                 >
-                  Read our story <ArrowRight size={15} />
+                  Read about us <ArrowRight size={15} />
                 </Link>
                 <div className="flex flex-wrap gap-4 text-[11px] font-medium uppercase tracking-[0.18em] text-text-muted">
-                  <span>NICEIC</span>
-                  <span>Part P</span>
-                  <span>18th Edition</span>
+                  <span>NICEIC Approved Contractor</span>
+                  <span>TrustMark Registered</span>
+                  <span>London Based</span>
                 </div>
               </div>
             </Reveal>
@@ -386,13 +466,13 @@ function ProcessSection() {
           <Reveal>
             <div className="lux-panel-dark p-8 md:p-10">
               <SectionHeading
-                eyebrow="Working Method"
-                heading="A process structured for clarity before, during, and after site delivery."
-                subheading="The aim is not complexity. It is controlled sequencing, technical consistency, and fewer surprises once the project is moving."
+                eyebrow="How We Work"
+                heading="A clear route from first call to ongoing support."
+                subheading="Every stage is designed to keep the project practical, efficient and well coordinated."
                 tone="light"
               />
               <div className="mt-10 grid gap-4 sm:grid-cols-2">
-                {['Single point of accountability', 'Coordinated technical scope', 'Finish-led installation mindset', 'Post-handover support'].map((item) => (
+                {['Residential and commercial projects', 'Smart home, electrical and IT', 'Tailored recommendations', 'Maintenance and support'].map((item) => (
                   <div
                     key={item}
                     className="overlay-card rounded-[1.3rem] px-5 py-5"
@@ -405,14 +485,19 @@ function ProcessSection() {
                 href="/contact"
                 className="mt-10 inline-flex items-center gap-3 rounded-full bg-white px-8 py-4 text-[11px] font-semibold uppercase tracking-[0.2em] text-black transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#f0e8dc]"
               >
-                Request a consultation <ArrowRight size={15} />
+                Get a Free Quote <ArrowRight size={15} />
               </Link>
             </div>
           </Reveal>
 
           <div className="grid gap-4 md:grid-cols-2">
             {processSteps.map((step, index) => (
-              <Reveal key={step.number} delay={0.08 + index * 0.06}>
+              <Reveal
+                key={step.number}
+                delay={0.08 + index * 0.1}
+                direction={index % 2 === 0 ? 'left' : 'right'}
+                distance={32}
+              >
                 <div className="overlay-card h-full rounded-[1.6rem] p-6 text-white shadow-[0_16px_40px_rgba(0,0,0,0.16)] md:p-7">
                   <div className="flex items-center justify-between gap-4">
                     <div className="flex h-14 w-14 items-center justify-center rounded-full border border-primary/28 bg-primary/10 text-primary">

@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import {
@@ -16,6 +17,12 @@ import Reveal from '@/components/motion/Reveal'
 import PageHero from '@/components/ui/PageHero'
 import { servicesPageImages } from '@/data/siteImages'
 
+export const metadata: Metadata = {
+  title: 'Services',
+  description:
+    'Electrical, smart home automation, security, data networking and IT support services for residential and commercial projects across London.',
+}
+
 const services: {
   id: string
   title: string
@@ -30,94 +37,129 @@ const services: {
     id: 'electrical',
     title: 'Electrical Solutions',
     description:
-      'The core infrastructure that gives the rest of the building permission to work beautifully.',
+      'NICEIC-approved electrical installation, maintenance and testing for homes, commercial premises and managed buildings.',
     detail:
-      'From new-build packages to upgrades within occupied properties, we deliver electrical scopes with the same finish-led care as the visible design layers around them.',
+      'Our electricians and engineers work to BS 7671 standards on new installations, rewires, consumer units, lighting, inspections and ongoing maintenance.',
     image: servicesPageImages.details.electrical,
     icon: Zap,
-    capabilities: ['Power and lighting design support', 'New installations and rewires', 'Distribution upgrades', 'Testing and certification'],
-    deliverables: ['Residential schemes', 'Commercial fit-outs'],
+    capabilities: [
+      'Electrical installations',
+      'House rewiring and consumer units',
+      'Lighting and power',
+      'Electrical testing and inspection',
+      'PAT testing and maintenance',
+      'Emergency lighting and smoke alarms',
+    ],
+    deliverables: ['Homeowners', 'Building managers'],
   },
   {
     id: 'smart-home',
     title: 'Smart Home Solutions',
     description:
-      'Comfort, control, and automation that feel intuitive rather than over-complicated.',
+      'Smart home control, climate control, lighting and blind automation, security and multi-room audio for London homes.',
     detail:
-      'We integrate controls into the rhythm of the home so lighting, scenes, audio, and key behaviours are easy to understand from day one.',
+      'We work with Control4, Crestron and Lutron to create systems that are simple to use today and flexible enough for future upgrades.',
     image: servicesPageImages.details.smartHome,
     icon: HomeIcon,
-    capabilities: ['Lighting control', 'Climate and blind integration', 'Scene programming', 'Whole-home user journeys'],
-    deliverables: ['Private residences', 'Multi-room refurbishments'],
+    capabilities: [
+      'Smart home control',
+      'Climate control',
+      'Lighting and blind automation',
+      'Multi-room audio',
+      'Integrated security',
+      'Audio visual installation',
+    ],
+    deliverables: ['Homeowners', 'Developers'],
   },
   {
     id: 'security',
     title: 'Security Systems',
     description:
-      'Protection, monitoring, and access layers designed to support the property without dominating it.',
+      'CCTV, door entry, video entry and fire systems that protect homes, developments and commercial premises.',
     detail:
-      'Security works best when it is dependable, discreet, and aligned with how the building is actually used. We design for that balance.',
+      'Security sits alongside our wider electrical and smart home offer, helping clients combine safety, access and monitoring in one coordinated installation.',
     image: servicesPageImages.details.security,
     icon: Shield,
-    capabilities: ['CCTV and remote viewing', 'Access control', 'Intruder alarms', 'Video entry and perimeter logic'],
-    deliverables: ['Residential security', 'Business premises'],
+    capabilities: [
+      'CCTV systems',
+      'Door entry systems',
+      'Video entry systems',
+      'Fire systems',
+      'Smoke alarms',
+      'Integrated security solutions',
+    ],
+    deliverables: ['Residential properties', 'Commercial buildings'],
   },
   {
     id: 'data-fibre',
-    title: 'Data & Fibre',
+    title: 'Data & Networking',
     description:
-      'Structured infrastructure that gives modern offices and connected homes a durable technical backbone.',
+      'Data wiring and IT networking design that support reliable connectivity across offices, developments and connected homes.',
     detail:
-      'We plan data routes and cabinet strategy with future use in mind so networks stay reliable as the building evolves.',
+      'From structured cabling to network design and installation, we create the backbone that supports digital workspaces, smart systems and daily operations.',
     image: servicesPageImages.details.dataFibre,
     icon: Database,
-    capabilities: ['Structured cabling', 'Fibre backbone design', 'Comms cabinets', 'Wireless coverage planning'],
-    deliverables: ['Office environments', 'High-connectivity homes'],
+    capabilities: [
+      'Data wiring',
+      'IT networking design',
+      'Structured cabling',
+      'Network installation',
+      'Connected workspace infrastructure',
+      'Reliable wired and wireless coverage',
+    ],
+    deliverables: ['Businesses', 'Developers'],
   },
   {
     id: 'it-support',
     title: 'IT Support',
     description:
-      'Operational stability after installation, with pragmatic support when systems need attention.',
+      '24/7 UK-based IT support, managed services, cloud migration and Microsoft platform solutions for businesses.',
     detail:
-      'For commercial clients especially, support is part of the deliverable. We help bridge the gap between installation, handover, and ongoing use.',
+      'We assess your IT needs, recommend the right solution and provide ongoing support so teams can keep working without unnecessary disruption.',
     image: servicesPageImages.details.itSupport,
     icon: Server,
-    capabilities: ['Workstation deployment', 'Network support', 'Server room setup', 'Managed support responses'],
-    deliverables: ['SME operations', 'Post-handover support'],
+    capabilities: [
+      'Collaboration and communication',
+      'Business process automation',
+      'Information management and compliance',
+      'Microsoft platform solutions',
+      'Managed services and support',
+      'Cloud migration',
+    ],
+    deliverables: ['Businesses', 'Modern workplaces'],
   },
 ] as const
 
 const advantageCards = [
   {
-    title: 'Single point of accountability',
+    title: 'Established in 2003',
     description:
-      'Clients get one coordinated lead rather than chasing multiple technical packages across the same programme.',
+      'More than two decades of delivery gives clients confidence across residential and commercial projects.',
   },
   {
-    title: 'Better sequencing on site',
+    title: 'NICEIC Approved Contractor',
     description:
-      'Joined-up scopes reduce clashes between trades and help protect finished surfaces during delivery.',
+      'Electrical work is delivered to recognised UK standards with safety and compliance built into the process.',
   },
   {
-    title: 'Consistent technical judgement',
+    title: 'TrustMark Registered',
     description:
-      'Decisions about power, data, automation, and security are made with the whole building in mind.',
+      'Clients benefit from an additional layer of assurance through a government-endorsed quality scheme.',
   },
   {
-    title: 'Cleaner handover',
+    title: 'Smart home and AV expertise',
     description:
-      'Testing, documentation, and user orientation are easier when the installation has been coordinated from the start.',
+      'Automation, lighting control, audio visual and integrated security can be planned together instead of in isolation.',
   },
   {
-    title: 'Future-ready infrastructure',
+    title: '24/7 IT support',
     description:
-      'We design for growth, adaptation, and sensible service access rather than only the immediate brief.',
+      'Business clients can rely on managed support, Microsoft solutions and practical day-to-day technical help.',
   },
   {
-    title: 'A calmer client experience',
+    title: 'London-based delivery',
     description:
-      'The real benefit is less friction: fewer surprises, fewer fragmented conversations, and more confidence at each stage.',
+      'We support homeowners, developers and businesses across London and the wider UK with one dependable team.',
   },
 ] as const
 
@@ -125,17 +167,18 @@ export default function ServicesPage() {
   return (
     <>
       <PageHero
+        priority
         image={servicesPageImages.hero}
         eyebrow="Our Services"
-        title="Integrated technical disciplines for projects that need more than a single trade."
-        description="We deliver core electrical work, smart systems, security, data, and operational support in a way that reduces coordination noise and strengthens the finished environment."
+        title="Electrical, Smart Home & IT"
+        description="Concepto Solutions delivers smart home automation, electrical services and business IT support, with related audio visual, CCTV, fire and networking work handled by one team."
         aside={
           <div className="p-7">
-            <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-white/56">
+            <p className="font-mono text-[10px] uppercase tracking-[0.3em] overlay-eyebrow">
               Core Disciplines
             </p>
             <div className="mt-6 flex flex-wrap gap-2">
-              {['Electrical', 'Smart Home', 'Security', 'Data & Fibre', 'IT Support'].map((item) => (
+              {['Electrical Solutions', 'Smart Home Solutions', 'Security Systems', 'Data Wiring', 'IT Support'].map((item) => (
                 <span
                   key={item}
                   className="overlay-card rounded-full px-3 py-2 text-[11px] uppercase tracking-[0.18em] overlay-copy"
@@ -163,7 +206,7 @@ function ServicesDetailSection() {
           {services.map((service, index) => (
             <Reveal key={service.id} id={service.id}>
               <div
-                className={`grid gap-8 rounded-[2rem] border border-border/70 bg-white/82 p-6 shadow-panel md:p-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:items-center lg:gap-12 ${
+                className={`grid gap-8 rounded-[2rem] border border-border/70 bg-bg-secondary/80 p-6 shadow-panel md:p-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:items-center lg:gap-12 ${
                   index % 2 === 1 ? 'lg:[&>*:first-child]:order-2 lg:[&>*:last-child]:order-1' : ''
                 }`}
               >
@@ -200,7 +243,7 @@ function ServicesDetailSection() {
                         ))}
                       </ul>
                     </div>
-                    <div className="rounded-[1.5rem] border border-border/60 bg-[#f7f1e8] p-5">
+                    <div className="rounded-[1.5rem] border border-border/60 bg-bg-secondary p-5">
                       <span className="font-mono text-[10px] uppercase tracking-[0.24em] text-text-muted">
                         Often Used In
                       </span>
@@ -227,6 +270,7 @@ function ServicesDetailSection() {
                       placeholder={service.image.blurDataURL ? 'blur' : 'empty'}
                       blurDataURL={service.image.blurDataURL}
                       sizes="(min-width: 1024px) 40vw, 100vw"
+                      quality={72}
                       className="object-cover"
                       style={{ objectPosition: service.image.objectPosition }}
                     />
@@ -248,8 +292,8 @@ function AdvantagesSection() {
         <Reveal>
           <SectionHeading
             eyebrow="Why Concepto"
-            heading="The advantage is less fragmentation, not more complexity."
-            subheading="A joined-up technical partner creates benefits that show up in programme control, site calm, finish quality, and handover confidence."
+            heading="Accredited work. Integrated systems. Long-term support."
+            subheading="The benefit is a single team that can advise clearly, install properly and stay available after handover."
             tone="light"
             className="max-w-4xl"
           />
@@ -283,18 +327,18 @@ function ServicesCtaSection() {
                 Next Step
               </span>
               <h2 className="mt-7 font-display text-[2.6rem] leading-[0.94] tracking-[-0.05em] text-white md:text-[3.4rem]">
-                Ready to discuss the technical scope behind your project?
+                Need the right service mix for your project?
               </h2>
               <p className="mt-5 max-w-2xl text-base leading-8 overlay-copy md:text-lg">
-                We can review the brief, identify the right disciplines, and help shape a clearer
-                route into delivery.
+                We can review the brief, identify the appropriate disciplines and recommend the
+                most suitable next step.
               </p>
             </div>
             <Link
               href="/contact"
               className="mt-8 inline-flex items-center gap-3 rounded-full bg-white px-8 py-4 text-[11px] font-semibold uppercase tracking-[0.2em] text-primary transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#f1e9df] lg:mt-0"
             >
-              Get in touch <ArrowRight size={15} />
+              Get a Free Quote <ArrowRight size={15} />
             </Link>
           </div>
         </Reveal>

@@ -22,11 +22,11 @@ export const footerNavigation = {
   services: {
     title: 'Services',
     links: [
-      { label: 'Electrical', href: '/services#electrical' },
-      { label: 'Smart Home & AV', href: '/services#smart-home' },
-      { label: 'Security Systems', href: '/services#security' },
-      { label: 'Data & Fibre', href: '/services#data-fibre' },
-      { label: 'IT Infrastructure', href: '/services#it-support' },
+      { label: 'Electrical Solutions', href: '/services#electrical' },
+      { label: 'Smart Home Solutions', href: '/services#smart-home' },
+      { label: 'Security & CCTV', href: '/services#security' },
+      { label: 'Data Wiring & Networks', href: '/services#data-fibre' },
+      { label: 'IT Support', href: '/services#it-support' },
     ],
   },
   company: {
@@ -56,7 +56,7 @@ export const footerContact: FooterContact[] = [
       </svg>
     ),
     label: 'Phone',
-    value: '+44 (0)845 388 8348',
+    value: '0845 388 8348',
     href: 'tel:+448453888348',
   },
   {
@@ -83,14 +83,15 @@ export const footerContact: FooterContact[] = [
 ]
 
 export const footerWorkingHours = [
-  { days: 'Monday - Friday', hours: '8:00am - 6:00pm' },
-  { days: 'Saturday', hours: '9:00am - 1:00pm' },
-  { days: 'Sunday', hours: 'Closed' },
+  { days: 'NICEIC', hours: 'Approved Contractor' },
+  { days: 'TrustMark', hours: 'Registered' },
+  { days: 'Founded', hours: '2003' },
 ]
 
 export const footerCopyright = {
   year: new Date().getFullYear(),
   companyName: 'Concepto Solutions Ltd',
-  tagline: 'Integrated Electrical Contractor',
-  description: 'We spec and install electrical, smart home, AV, security, data, and IT infrastructure systems.',
+  tagline: 'Smart Home, Electrical & IT Specialists',
+  description:
+    'Established in 2003, Concepto Solutions Ltd provides smart home automation, electrical services and IT support for homeowners, developers and businesses.',
 }

@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import { Clock, Mail, MapPin, Phone } from 'lucide-react'
 import Container from '@/components/ui/Container'
 import SectionHeading from '@/components/ui/SectionHeading'
@@ -5,6 +6,12 @@ import Reveal from '@/components/motion/Reveal'
 import PageHero from '@/components/ui/PageHero'
 import ContactFormCard from '@/components/contact/ContactFormCard'
 import { contactPageImages } from '@/data/siteImages'
+
+export const metadata: Metadata = {
+  title: 'Contact',
+  description:
+    'Get in touch with Concepto Solutions for a free survey and quote on smart home, electrical or IT support services in London.',
+}
 
 const contactItems = [
   {
@@ -15,7 +22,7 @@ const contactItems = [
   {
     icon: Phone,
     label: 'Phone',
-    value: '+44 (0)845 388 8348',
+    value: '0845 388 8348',
     href: 'tel:+448453888348',
   },
   {
@@ -26,38 +33,40 @@ const contactItems = [
   },
   {
     icon: Clock,
-    label: 'Hours',
-    value: 'Monday to Friday, 8am to 6pm',
+    label: 'Support',
+    value: '24/7 UK-based IT support',
   },
 ] as const
 
 const nextSteps = [
-  'We review the brief and identify the likely technical disciplines involved.',
-  'An initial conversation helps us understand the site, programme, and key priorities.',
-  'We advise on the next sensible step, whether that is a visit, scope review, or formal quotation.',
+  'Tell us whether you need smart home automation, electrical work or business IT support.',
+  'We review the brief and recommend the most suitable next step for the project stage.',
+  'If needed, we arrange a site visit or prepare a competitive quotation.',
 ] as const
 
 export default function ContactPage() {
   return (
     <>
       <PageHero
+        priority
+        showCta={false}
         image={contactPageImages.hero}
         eyebrow="Contact"
-        title="Start the conversation early enough to make the technical side easier."
-        description="Whether you are planning a residential project, a commercial fit-out, or an integrated upgrade, we can help shape a cleaner path into specification and delivery."
+        title="Contact Concepto Solutions London"
+        description="Speak to our team about smart home automation, electrical work, CCTV, data wiring or business IT support. We are based at Unit 23, Westmoreland Road, NW9 9BW."
         aside={
           <div className="p-7">
-            <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-white/56">
-              Response Standard
+            <p className="font-mono text-[10px] uppercase tracking-[0.3em] overlay-eyebrow">
+              Direct Contact
             </p>
             <div className="mt-6 grid gap-5">
               {[
-                'Initial reply within one business day',
-                'Clear next-step guidance',
-                'Technical input matched to project stage',
+                '0845 388 8348',
+                'info@conceptosolutions.co.uk',
+                'NICEIC Approved Contractor',
               ].map((item) => (
                 <div key={item} className="border-t border-white/10 pt-5 first:border-t-0 first:pt-0">
-                  <p className="text-sm leading-7 text-white/84">{item}</p>
+                  <p className="text-sm leading-7 overlay-copy">{item}</p>
                 </div>
               ))}
             </div>
@@ -77,8 +86,8 @@ export default function ContactPage() {
                 <div className="lux-panel p-8 md:p-9">
                   <SectionHeading
                     eyebrow="Contact Information"
-                    heading="A direct route into the team."
-                    subheading="If the brief is still forming, that is fine. Early conversations are often the most useful."
+                    heading="A direct route to the team."
+                    subheading="We work with homeowners, developers and businesses, and we are happy to discuss new enquiries, site visits and quotations."
                   />
                   <ul className="mt-10 space-y-5">
                     {contactItems.map((item) => {
@@ -110,14 +119,14 @@ export default function ContactPage() {
               </Reveal>
 
               <Reveal delay={0.14}>
-                <div className="rounded-[1.8rem] border border-border/70 bg-[#120f0d] p-8 text-white shadow-[0_20px_48px_rgba(0,0,0,0.12)]">
+                <div className="overlay-panel rounded-[1.8rem] p-8 text-white shadow-[0_20px_48px_rgba(0,0,0,0.12)]">
                   <span className="font-mono text-[10px] uppercase tracking-[0.28em] overlay-eyebrow">
                     What Happens Next
                   </span>
                   <div className="mt-8 space-y-5">
                     {nextSteps.map((step, index) => (
                       <div key={step} className="flex gap-4">
-                        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/12 bg-white/[0.05]">
+                        <div className="overlay-card flex h-10 w-10 shrink-0 items-center justify-center rounded-full">
                           <span className="font-mono text-xs text-secondary">0{index + 1}</span>
                         </div>
                         <p className="text-sm leading-7 overlay-copy">{step}</p>
