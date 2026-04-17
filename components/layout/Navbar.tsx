@@ -56,7 +56,7 @@ export default function Navbar() {
       >
         <nav
           className={cn(
-            'mx-auto flex h-16 max-w-[1480px] items-center justify-between rounded-full border px-5 shadow-[0_18px_40px_rgba(24,18,15,0.08)] backdrop-blur-xl lg:h-[4.8rem] lg:px-7',
+            'mx-auto flex h-[4.5rem] max-w-[1480px] items-center gap-4 rounded-full border px-5 shadow-[0_18px_40px_rgba(24,18,15,0.08)] backdrop-blur-xl lg:h-[5.5rem] lg:px-7',
             isScrolled ? 'border-border/90 bg-[rgba(252,248,243,0.9)]' : 'border-white/12 bg-[rgba(17,13,12,0.28)]'
           )}
         >
@@ -92,7 +92,7 @@ function Logo({ isScrolled }: { isScrolled: boolean }) {
         alt="Concepto Solutions Ltd"
         width={200}
         height={42}
-        className={cn('h-8 w-auto transition-opacity duration-300 lg:h-9', isScrolled ? 'opacity-100' : 'opacity-92')}
+        className={cn('h-10 w-auto transition-opacity duration-300 lg:h-12', isScrolled ? 'opacity-100' : 'opacity-92')}
       />
     </Link>
   )
@@ -106,8 +106,8 @@ function DesktopNav({
   isScrolled: boolean
 }) {
   return (
-    <div className="hidden items-center gap-10 lg:flex xl:gap-12">
-      <ul className="flex items-center gap-7 xl:gap-9">
+    <div className="hidden flex-1 items-center justify-end gap-8 lg:flex xl:gap-10">
+      <ul className="flex flex-1 items-center justify-around px-6 xl:px-10">
         {navLinks.map((link) => (
           <li key={link.href}>
             <NavLinkComponent
@@ -146,7 +146,7 @@ function NavLinkComponent({
     <Link
       href={link.href}
         className={cn(
-          'group relative cursor-pointer text-[12px] font-semibold uppercase tracking-[0.24em] transition-colors duration-200 rounded-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-transparent',
+          'group relative cursor-pointer whitespace-nowrap text-[13px] font-semibold uppercase tracking-[0.22em] transition-colors duration-200 rounded-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-transparent lg:text-sm',
           isScrolled
             ? isActive
               ? 'text-primary'

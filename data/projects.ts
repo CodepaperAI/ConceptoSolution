@@ -65,7 +65,7 @@ export const projectEntries: ProjectEntry[] = [
     supportDescription:
       'The emphasis is on integrating technology in a way that feels composed and intuitive, allowing the visual quality of the home to stay front and center.',
     location: 'Mayfair, W1',
-    category: 'Private Client',
+    category: 'Multi Dwelling Unit',
     year: '2024',
     services: ['Smart Home', 'AV', 'Lighting'],
     heroImage: projectsPageImages.cards.mayfairResidence,
@@ -169,7 +169,7 @@ export const projectEntries: ProjectEntry[] = [
     supportDescription:
       'Retail projects benefit from infrastructure that is robust behind the scenes while remaining visually controlled across customer-facing areas.',
     location: 'West End, W1',
-    category: 'Commercial',
+    category: 'Retail',
     year: '2023',
     services: ['Lighting', 'Electrical', 'Data'],
     heroImage: projectsPageImages.cards.westEndRetail,
@@ -184,9 +184,45 @@ export const projectEntries: ProjectEntry[] = [
       aspect: 'aspect-[16/11]',
     },
   },
+  {
+    slug: 'boutique-hotel',
+    legacySlugs: [],
+    title: 'BOUTIQUE HOTEL',
+    summary:
+      'A hospitality portfolio project delivered with integrated lighting, data and audio-visual systems across guest and front-of-house environments.',
+    shortDescription:
+      'Hospitality environment supported by integrated lighting, AV and guest-facing technology.',
+    supportDescription:
+      'Hotel and hospitality projects benefit from systems that remain quietly dependable across long operational hours while supporting a considered guest experience.',
+    location: 'Central London',
+    category: 'Hospitality',
+    year: '2024',
+    services: ['Lighting', 'Audio Visual', 'Data'],
+    heroImage: projectsPageImages.cards.nottingHillHome,
+    galleryImages: [
+      homeImages.serviceCards.av,
+      homeImages.serviceCards.smartHome,
+      aboutPageImages.story,
+    ],
+    ctaCopy: 'Discuss a Hospitality Project',
+    homeFeature: {
+      span: 'xl:col-span-4',
+      aspect: 'aspect-[16/11]',
+    },
+  },
 ]
 
-export const homeFeaturedProjects = projectEntries.slice(0, 3)
+const hospitalityEntry = projectEntries[projectEntries.length - 1]
+const westEndRetailEntry = projectEntries.find((p) => p.slug === 'west-end-retail')!
+
+// Homepage features 5 projects spanning Residential / Multi Dwelling / Commercial / Retail / Hospitality
+export const homeFeaturedProjects = [
+  projectEntries[0], // Signia Court — Residential
+  projectEntries[1], // Mayfair Residence — Multi Dwelling Unit
+  projectEntries[2], // City of London Office — Commercial
+  westEndRetailEntry, // West End Retail — Retail
+  hospitalityEntry, // Boutique Hotel — Hospitality
+]
 
 export function getProjectBySlug(slug: string) {
   return projectEntries.find(

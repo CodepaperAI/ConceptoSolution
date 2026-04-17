@@ -6,13 +6,12 @@ export interface NavLink {
 export const navLinks: NavLink[] = [
   { label: 'Home', href: '/' },
   { label: 'About Us', href: '/about' },
-  { label: 'Services', href: '/services' },
+  { label: 'Explore Our Services', href: '/services' },
   { label: 'Projects', href: '/projects' },
-  { label: 'Blog', href: '/blog' },
-  { label: 'Contact', href: '/contact' },
+  { label: 'Testimonials', href: '/blog' },
 ]
 
 export const ctaLink: NavLink = {
-  label: 'Get a Free Quote',
+  label: 'Contact Us',
   href: '/contact',
 }

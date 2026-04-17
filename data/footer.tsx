@@ -41,11 +41,11 @@ export const footerNavigation = {
 }
 
 export const footerSocial = [
-  { icon: FaFacebookF, label: 'Facebook', href: 'https://facebook.com' },
-  { icon: FaXTwitter, label: 'Twitter', href: 'https://twitter.com' },
-  { icon: FaLinkedinIn, label: 'LinkedIn', href: 'https://linkedin.com' },
-  { icon: FaInstagram, label: 'Instagram', href: 'https://instagram.com' },
-  { icon: FaYoutube, label: 'YouTube', href: 'https://youtube.com' },
+  { icon: FaFacebookF, label: 'Facebook', href: 'https://facebook.com', hoverColor: '#1877F2' },
+  { icon: FaXTwitter, label: 'Twitter', href: 'https://twitter.com', hoverColor: '#ffffff' },
+  { icon: FaLinkedinIn, label: 'LinkedIn', href: 'https://linkedin.com', hoverColor: '#0A66C2' },
+  { icon: FaInstagram, label: 'Instagram', href: 'https://instagram.com', hoverColor: '#E1306C' },
+  { icon: FaYoutube, label: 'YouTube', href: 'https://youtube.com', hoverColor: '#FF0000' },
 ]
 
 export const footerContact: FooterContact[] = [

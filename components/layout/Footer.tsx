@@ -10,40 +10,43 @@ export default function Footer() {
       <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(21,17,15,0.97)_0%,rgba(21,17,15,0.94)_100%)]" />
 
       <Container className="relative z-10">
-        {/* Top Section: Brand + Social */}
-        <div className="flex flex-col gap-8 border-b border-white/10 py-12 sm:flex-row sm:items-center sm:justify-between">
-          <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:gap-10">
-            <Link href="/" className="shrink-0">
-              <Image
-                src="/assets/images/logo-200x42.png"
-                alt="Concepto Solutions Ltd"
-                width={200}
-                height={42}
-                className="h-10 w-auto brightness-0 invert"
-              />
-            </Link>
-            <p className="max-w-sm text-sm leading-6 overlay-copy-soft">
-              {footerCopyright.description}
-            </p>
-          </div>
+        {/* Top Section: Brand + Social (tile outlined) */}
+        <div className="mt-12 rounded-[1.5rem] border border-white/10 bg-white/[0.02] p-6 md:p-8">
+          <div className="flex flex-col gap-8 sm:flex-row sm:items-center sm:justify-between">
+            <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:gap-10">
+              <Link href="/" className="shrink-0">
+                <Image
+                  src="/assets/images/logo-200x42.png"
+                  alt="Concepto Solutions Ltd"
+                  width={200}
+                  height={42}
+                  className="h-10 w-auto brightness-0 invert"
+                />
+              </Link>
+              <p className="max-w-sm text-sm leading-6 overlay-copy-soft">
+                {footerCopyright.description}
+              </p>
+            </div>
 
-          {/* Social Icons */}
-          <div className="flex items-center gap-3">
-            {footerSocial.map((social) => {
-              const Icon = social.icon
-              return (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={social.label}
-                  className="overlay-card group flex h-10 w-10 items-center justify-center rounded-full overlay-meta transition-all duration-300 hover:border-secondary hover:bg-secondary/20 hover:text-secondary"
-                >
-                  <Icon className="h-4 w-4 transition-transform duration-300 group-hover:scale-110" />
-                </a>
-              )
-            })}
+            {/* Social Icons */}
+            <div className="flex items-center gap-3">
+              {footerSocial.map((social) => {
+                const Icon = social.icon
+                return (
+                  <a
+                    key={social.label}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={social.label}
+                    style={{ '--brand-color': social.hoverColor } as React.CSSProperties}
+                    className="overlay-card group flex h-10 w-10 items-center justify-center rounded-full overlay-meta transition-all duration-300 hover:border-[var(--brand-color)] hover:bg-[color-mix(in_srgb,var(--brand-color)_18%,transparent)] hover:text-[var(--brand-color)]"
+                  >
+                    <Icon className="h-4 w-4 transition-transform duration-300 group-hover:scale-110" />
+                  </a>
+                )
+              })}
+            </div>
           </div>
         </div>
 

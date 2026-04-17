@@ -1,9 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import Link from 'next/link'
 import Image from 'next/image'
-import { ArrowRight } from 'lucide-react'
 import { AnimatePresence, motion, useReducedMotion, useScroll, useTransform } from 'framer-motion'
 import Container from '@/components/ui/Container'
 import { homeImages } from '@/data/siteImages'
@@ -13,10 +11,25 @@ const heroSlides = [
   homeImages.hero,
   homeImages.featuredProjects.signiaCourt,
   homeImages.featuredProjects.mayfairResidence,
+  homeImages.featuredProjects.cityOffice,
   homeImages.serviceCards.electrical,
+  homeImages.serviceCards.smartHome,
+  homeImages.serviceCards.security,
+  homeImages.serviceCards.dataFibre,
+  homeImages.serviceCards.av,
+  homeImages.serviceCards.itSupport,
+] as const
+
+const heroTaglines = [
+  'At Concepto Solutions, we deliver high-quality electrical and audio-visual installations for homes and businesses. From design to completion, we create seamless, reliable systems tailored to your space.',
+  "Whether you're upgrading your home, fitting out a commercial property, or integrating smart technology, our team combines technical expertise with practical experience to deliver results you can depend on.",
+  'From lighting and power to multi-room audio, home cinemas, and integrated smart systems, we handle every detail with precision and care.',
+  'Concepto Solutions delivers bespoke electrical and audio-visual installations built around performance, reliability, and design.',
+  "We don't just install systems — we create environments that are intuitive, efficient, and built to last.",
 ] as const
 
 const SLIDE_INTERVAL_MS = 6000
+const IMAGES_PER_TAGLINE = 2
 
 export default function HomeHero() {
   const prefersReducedMotion = useReducedMotion()
@@ -35,6 +48,8 @@ export default function HomeHero() {
   }, [prefersReducedMotion])
 
   const activeSlide = heroSlides[activeIndex]
+  const taglineIndex = Math.floor(activeIndex / IMAGES_PER_TAGLINE) % heroTaglines.length
+  const activeTagline = heroTaglines[taglineIndex]
 
   return (
     <section className="relative -mt-16 min-h-[calc(100svh+4rem)] overflow-hidden pt-16 lg:-mt-20 lg:min-h-[calc(100svh+5rem)] lg:pt-20">
@@ -75,41 +90,37 @@ export default function HomeHero() {
           className="w-full"
         >
           <div className="max-w-4xl min-w-0">
-            <motion.div variants={fadeUp(22)} transition={{ duration: motionDurations.medium, ease: motionEasing.standard }}>
-              <span className="lux-eyebrow overlay-eyebrow">Concepto Solutions Ltd</span>
-            </motion.div>
             <motion.h1
               variants={fadeUp(30)}
               transition={{ duration: motionDurations.hero, ease: motionEasing.standard }}
-              className="mt-8 text-balance font-display text-[clamp(3.2rem,8vw,7rem)] leading-[0.86] tracking-[-0.07em] text-white [text-shadow:0_14px_42px_rgba(0,0,0,0.34)]"
+              className="text-balance font-sans text-[clamp(2.8rem,7vw,6rem)] font-semibold leading-[1] tracking-[-0.04em] text-white [text-shadow:0_14px_42px_rgba(0,0,0,0.34)]"
             >
-              Smart Home, Electrical
-              <span className="mt-2 block overlay-copy">&amp; IT solutions.</span>
+              Electrical &amp; Smart Home
             </motion.h1>
-            <motion.p
+
+            <motion.div
               variants={fadeUp(24)}
               transition={{ duration: motionDurations.medium, ease: motionEasing.standard }}
-              className="mt-8 max-w-2xl text-base leading-8 overlay-copy [text-shadow:0_10px_30px_rgba(0,0,0,0.24)] md:text-xl md:leading-9"
+              className="mt-8 min-h-[12rem] max-w-2xl md:min-h-[10rem]"
             >
-              London-based specialists in smart home automation, electrical services and IT support for homeowners, developers and businesses.
-            </motion.p>
-            <motion.div
-              variants={fadeUp(20)}
-              transition={{ duration: motionDurations.medium, ease: motionEasing.standard }}
-              className="mt-12 flex flex-col gap-4 sm:flex-row"
-            >
-              <Link href="/contact" className="lux-button-primary inline-flex items-center justify-center gap-3">
-                Get a Free Quote <ArrowRight size={16} />
-              </Link>
-              <Link href="/services" className="lux-button-secondary inline-flex items-center justify-center gap-3 text-white">
-                Discover More
-              </Link>
+              <AnimatePresence mode="wait">
+                <motion.p
+                  key={taglineIndex}
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -12 }}
+                  transition={{ duration: 0.6, ease: motionEasing.standard }}
+                  className="text-base leading-8 overlay-copy [text-shadow:0_10px_30px_rgba(0,0,0,0.24)] md:text-xl md:leading-9"
+                >
+                  {activeTagline}
+                </motion.p>
+              </AnimatePresence>
             </motion.div>
 
             <motion.div
               variants={fadeUp(16)}
               transition={{ duration: motionDurations.medium, ease: motionEasing.standard, delay: 0.2 }}
-              className="mt-14 flex items-center gap-3"
+              className="mt-10 flex items-center gap-3"
               role="group"
               aria-label="Hero slideshow controls"
             >
@@ -120,7 +131,7 @@ export default function HomeHero() {
                   onClick={() => setActiveIndex(index)}
                   aria-label={`Show slide ${index + 1}`}
                   aria-current={index === activeIndex ? 'true' : undefined}
-                  className="group relative h-1 w-12 overflow-hidden rounded-full bg-white/20 transition-all duration-300 hover:bg-white/30"
+                  className="group relative h-1 w-8 overflow-hidden rounded-full bg-white/20 transition-all duration-300 hover:bg-white/30"
                 >
                   <span
                     className={`absolute inset-y-0 left-0 bg-white transition-[width] duration-500 ${
