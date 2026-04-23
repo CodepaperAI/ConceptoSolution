@@ -39,7 +39,7 @@ export default function SectionHeading({
       )}
       <h2
         className={cn(
-          'mt-7 font-display text-[2.25rem] leading-[1.05] tracking-[-0.035em] md:text-[2.75rem] lg:text-[3.25rem]',
+          'mt-7 font-sans font-semibold text-[2.25rem] leading-[1.05] tracking-[-0.035em] md:text-[2.75rem] lg:text-[3.25rem]',
           tone === 'light' ? 'text-white' : 'text-text-primary'
         )}
       >

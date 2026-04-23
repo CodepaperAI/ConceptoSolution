@@ -31,102 +31,110 @@ const services: {
   image: (typeof servicesPageImages.details)[keyof typeof servicesPageImages.details]
   icon: LucideIcon
   capabilities: string[]
-  deliverables: string[]
 }[] = [
   {
     id: 'electrical',
     title: 'Electrical Solutions',
     description:
-      'NICEIC-approved electrical installation, maintenance and testing for homes, commercial premises and managed buildings.',
-    detail:
-      'Our electricians and engineers work to BS 7671 standards on new installations, rewires, consumer units, lighting, inspections and ongoing maintenance.',
+      'NICEIC-approved electrical installation, maintenance, and testing for homes, commercial premises, and managed buildings—delivered safely, reliably, and to the highest standards.',
+    detail: 'Focus on clarity, safety, and compliance.',
     image: servicesPageImages.details.electrical,
     icon: Zap,
     capabilities: [
-      'Electrical installations',
-      'House rewiring and consumer units',
-      'Lighting and power',
-      'Electrical testing and inspection',
-      'PAT testing and maintenance',
-      'Emergency lighting and smoke alarms',
+      'Full electrical installations (domestic & commercial)',
+      'Consumer unit (fuse board) upgrades and replacements',
+      'Electrical fault finding and diagnostics',
+      'Indoor and outdoor lighting installation (LED upgrades, feature lighting)',
+      'Socket, switch, and circuit installations',
+      'Rewiring (partial and full property rewires)',
+      'EV charger installation',
+      'Electrical safety inspections (EICR certificates)',
+      'Maintenance and repair services',
     ],
-    deliverables: ['Homeowners', 'Building managers'],
   },
   {
     id: 'smart-home',
     title: 'Smart Home Solutions',
     description:
-      'Smart home control, climate control, lighting and blind automation, security and multi-room audio for London homes.',
-    detail:
-      'We work with Control4, Crestron and Lutron to create systems that are simple to use today and flexible enough for future upgrades.',
+      'Smart home control systems integrating climate, lighting, and blind automation, along with advanced security and seamless multi-room audio—designed to enhance comfort, efficiency, and everyday living.',
+    detail: 'Modern, convenient, and premium.',
     image: servicesPageImages.details.smartHome,
     icon: HomeIcon,
     capabilities: [
-      'Smart home control',
-      'Climate control',
-      'Lighting and blind automation',
-      'Multi-room audio',
-      'Integrated security',
-      'Audio visual installation',
+      'Smart lighting system design and installation',
+      'Voice-controlled home automation (Alexa, Google Home, Apple HomeKit)',
+      'Smart heating and thermostat integration',
+      'Automated blinds and curtain systems',
+      'Smart energy monitoring and control',
+      'Centralised home control systems (apps & touch panels)',
+      'Multi-room audio and entertainment systems',
+      'Integration of smart security systems',
+      'Custom automation setups tailored to lifestyle needs',
+      'System setup, configuration, and user training',
     ],
-    deliverables: ['Homeowners', 'Developers'],
   },
   {
     id: 'security',
     title: 'Security Systems',
     description:
-      'CCTV, door entry, video entry and fire systems that protect homes, developments and commercial premises.',
-    detail:
-      'Security sits alongside our wider electrical and smart home offer, helping clients combine safety, access and monitoring in one coordinated installation.',
+      'CCTV, door entry, video entry, and fire systems designed to protect homes, residential developments, and commercial premises with reliable, compliant security solutions.',
+    detail: 'Protection and reliability.',
     image: servicesPageImages.details.security,
     icon: Shield,
     capabilities: [
-      'CCTV systems',
-      'Door entry systems',
-      'Video entry systems',
-      'Fire systems',
-      'Smoke alarms',
-      'Integrated security solutions',
+      'CCTV system installation (HD/IP cameras)',
+      'Remote monitoring setup via mobile devices',
+      'Intruder alarm systems (wired & wireless)',
+      'Access control systems (keypads, fobs, biometric)',
+      'Video door entry systems',
+      'Motion detection and perimeter security solutions',
+      'System upgrades and maintenance',
+      'Security risk assessments and site surveys',
+      'Integration with smart home systems',
+      'Ongoing support and servicing',
     ],
-    deliverables: ['Residential properties', 'Commercial buildings'],
   },
   {
     id: 'data-fibre',
     title: 'Data & Networking',
     description:
-      'Data wiring and IT networking design that support reliable connectivity across offices, developments and connected homes.',
-    detail:
-      'From structured cabling to network design and installation, we create the backbone that supports digital workspaces, smart systems and daily operations.',
+      'Data cabling and IT network design built on robust infrastructure to deliver fast, reliable connectivity across offices, residential developments, and modern connected homes.',
+    detail: 'Professional infrastructure work.',
     image: servicesPageImages.details.dataFibre,
     icon: Database,
     capabilities: [
-      'Data wiring',
-      'IT networking design',
-      'Structured cabling',
-      'Network installation',
-      'Connected workspace infrastructure',
-      'Reliable wired and wireless coverage',
+      'Structured cabling installation (Cat5e, Cat6, Cat6a)',
+      'Network design and planning for homes and businesses',
+      'Wi-Fi installation and optimisation (full coverage solutions)',
+      'Network cabinet and patch panel setup',
+      'Data point installation and testing',
+      'Fibre optic cabling',
+      'Network troubleshooting and performance optimisation',
+      'Secure network configuration (firewalls, VLANs)',
+      'Expansion of existing network infrastructure',
+      'Documentation and labelling of network systems',
     ],
-    deliverables: ['Businesses', 'Developers'],
   },
   {
     id: 'it-support',
     title: 'IT Support',
     description:
-      '24/7 UK-based IT support, managed services, cloud migration and Microsoft platform solutions for businesses.',
-    detail:
-      'We assess your IT needs, recommend the right solution and provide ongoing support so teams can keep working without unnecessary disruption.',
+      '24/7 UK-based IT support, managed services, cloud migration and Microsoft platform solutions for businesses—dependable support that keeps teams working without disruption.',
+    detail: 'Dependable and business-friendly.',
     image: servicesPageImages.details.itSupport,
     icon: Server,
     capabilities: [
-      'Collaboration and communication',
-      'Business process automation',
-      'Information management and compliance',
-      'Microsoft platform solutions',
-      'Managed services and support',
-      'Cloud migration',
+      'On-site and remote technical support',
+      'Computer and laptop setup and repairs',
+      'Software installation and troubleshooting',
+      'Network and server support',
+      'Data backup and recovery solutions',
+      'Cybersecurity basics (antivirus, firewall setup)',
+      'Email and cloud service setup (Microsoft 365, Google Workspace)',
+      'System upgrades and performance optimisation',
+      'Hardware procurement and installation',
+      'Ongoing maintenance contracts and support plans',
     ],
-    deliverables: ['Businesses', 'Modern workplaces'],
   },
 ] as const
 
@@ -140,11 +148,6 @@ const advantageCards = [
     title: 'NICEIC Approved Contractor',
     description:
       'Electrical work is delivered to recognised UK standards with safety and compliance built into the process.',
-  },
-  {
-    title: 'TrustMark Registered',
-    description:
-      'Clients benefit from an additional layer of assurance through a government-endorsed quality scheme.',
   },
   {
     title: 'Smart home and AV expertise',
@@ -168,27 +171,11 @@ export default function ServicesPage() {
     <>
       <PageHero
         priority
+        showCta={false}
         image={servicesPageImages.hero}
         eyebrow="Our Services"
         title="Electrical, Smart Home & IT"
         description="Concepto Solutions delivers smart home automation, electrical services and business IT support, with related audio visual, CCTV, fire and networking work handled by one team."
-        aside={
-          <div className="p-7">
-            <p className="font-mono text-[10px] uppercase tracking-[0.3em] overlay-eyebrow">
-              Core Disciplines
-            </p>
-            <div className="mt-6 flex flex-wrap gap-2">
-              {['Electrical Solutions', 'Smart Home Solutions', 'Security Systems', 'Data Wiring', 'IT Support'].map((item) => (
-                <span
-                  key={item}
-                  className="overlay-card rounded-full px-3 py-2 text-[11px] uppercase tracking-[0.18em] overlay-copy"
-                >
-                  {item}
-                </span>
-              ))}
-            </div>
-          </div>
-        }
       />
 
       <ServicesDetailSection />
@@ -211,15 +198,10 @@ function ServicesDetailSection() {
                 }`}
               >
                 <div>
-                  <div className="flex items-center gap-4">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-full border border-primary/20 bg-primary/7 text-primary">
-                      <service.icon className="h-5 w-5" strokeWidth={1.8} />
-                    </div>
-                    <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-text-muted">
-                      Integrated Service
-                    </span>
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full border border-primary/20 bg-primary/7 text-primary">
+                    <service.icon className="h-5 w-5" strokeWidth={1.8} />
                   </div>
-                  <h2 className="mt-7 font-display text-[2.5rem] leading-[0.94] tracking-[-0.05em] text-text-primary md:text-[3rem]">
+                  <h2 className="mt-7 font-sans font-semibold text-[2.5rem] leading-[0.94] tracking-[-0.05em] text-text-primary md:text-[3rem]">
                     {service.title}
                   </h2>
                   <p className="mt-4 max-w-xl text-lg leading-8 text-text-secondary">
@@ -229,35 +211,18 @@ function ServicesDetailSection() {
                     {service.detail}
                   </p>
 
-                  <div className="mt-8 grid gap-6 md:grid-cols-[minmax(0,1fr)_minmax(220px,0.72fr)]">
-                    <div>
-                      <span className="font-mono text-[10px] uppercase tracking-[0.24em] text-text-muted">
-                        Typical Scope
-                      </span>
-                      <ul className="mt-4 space-y-3">
-                        {service.capabilities.map((capability) => (
-                          <li key={capability} className="flex gap-3 text-sm leading-7 text-text-secondary">
-                            <Check className="mt-1 h-4 w-4 shrink-0 text-primary" />
-                            <span>{capability}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                    <div className="rounded-[1.5rem] border border-border/60 bg-bg-secondary p-5">
-                      <span className="font-mono text-[10px] uppercase tracking-[0.24em] text-text-muted">
-                        Often Used In
-                      </span>
-                      <div className="mt-4 flex flex-wrap gap-2">
-                        {service.deliverables.map((item) => (
-                          <span
-                            key={item}
-                            className="rounded-full border border-primary/14 bg-primary/6 px-3 py-2 text-[11px] uppercase tracking-[0.16em] text-primary"
-                          >
-                            {item}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
+                  <div className="mt-8">
+                    <span className="font-mono text-[10px] uppercase tracking-[0.24em] text-text-muted">
+                      Typical Scope
+                    </span>
+                    <ul className="mt-4 grid gap-3 sm:grid-cols-2">
+                      {service.capabilities.map((capability) => (
+                        <li key={capability} className="flex gap-3 text-sm leading-7 text-text-secondary">
+                          <Check className="mt-1 h-4 w-4 shrink-0 text-primary" />
+                          <span>{capability}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
 
@@ -303,7 +268,7 @@ function AdvantagesSection() {
           {advantageCards.map((card, index) => (
             <Reveal key={card.title} delay={0.06 + index * 0.05}>
               <div className="overlay-card h-full rounded-[1.75rem] p-7 text-white shadow-[0_16px_40px_rgba(0,0,0,0.12)]">
-                <h3 className="font-display text-[1.8rem] leading-[0.98] tracking-[-0.04em] text-white">
+                <h3 className="font-sans font-semibold text-[1.8rem] leading-[0.98] tracking-[-0.04em] text-white">
                   {card.title}
                 </h3>
                 <p className="mt-4 text-sm leading-7 overlay-copy-soft">{card.description}</p>
@@ -326,7 +291,7 @@ function ServicesCtaSection() {
               <span className="font-mono text-[10px] uppercase tracking-[0.28em] overlay-eyebrow">
                 Next Step
               </span>
-              <h2 className="mt-7 font-display text-[2.6rem] leading-[0.94] tracking-[-0.05em] text-white md:text-[3.4rem]">
+              <h2 className="mt-7 font-sans font-semibold text-[2.6rem] leading-[0.94] tracking-[-0.05em] text-white md:text-[3.4rem]">
                 Need the right service mix for your project?
               </h2>
               <p className="mt-5 max-w-2xl text-base leading-8 overlay-copy md:text-lg">

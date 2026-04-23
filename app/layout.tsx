@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   },
   description:
     'London-based specialists in smart home automation, electrical services and IT support for homeowners, developers and businesses.',
-  keywords: ['smart home solutions', 'electrical solutions', 'IT support', 'home automation', 'London', 'NICEIC approved', 'TrustMark registered'],
+  keywords: ['smart home solutions', 'electrical solutions', 'IT support', 'home automation', 'London', 'NICEIC approved'],
   authors: [{ name: 'Concepto Solutions Ltd' }],
   creator: 'Concepto Solutions Ltd',
   metadataBase: new URL('https://www.conceptosolutions.co.uk'),

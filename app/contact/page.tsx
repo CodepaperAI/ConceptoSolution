@@ -54,24 +54,6 @@ export default function ContactPage() {
         eyebrow="Contact"
         title="Contact Concepto Solutions London"
         description="Speak to our team about smart home automation, electrical work, CCTV, data wiring or business IT support. We are based at Unit 23, Westmoreland Road, NW9 9BW."
-        aside={
-          <div className="p-7">
-            <p className="font-mono text-[10px] uppercase tracking-[0.3em] overlay-eyebrow">
-              Direct Contact
-            </p>
-            <div className="mt-6 grid gap-5">
-              {[
-                '0845 388 8348',
-                'info@conceptosolutions.co.uk',
-                'NICEIC Approved Contractor',
-              ].map((item) => (
-                <div key={item} className="border-t border-white/10 pt-5 first:border-t-0 first:pt-0">
-                  <p className="text-sm leading-7 overlay-copy">{item}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        }
       />
 
       <section className="section-defer py-24 md:py-32 lg:py-36">

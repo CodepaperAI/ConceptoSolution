@@ -239,7 +239,7 @@ function MobileMenu({
               <Link
                 href={link.href}
                 className={cn(
-                  'block border-b border-white/8 py-4 font-display text-[2.4rem] leading-none tracking-[-0.04em] transition-colors',
+                  'block border-b border-white/8 py-4 font-sans font-semibold text-[2.4rem] leading-none tracking-[-0.04em] transition-colors',
                   currentPath === link.href ? 'text-primary' : 'overlay-copy hover:text-white'
                 )}
                 onClick={onClose}

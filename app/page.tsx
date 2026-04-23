@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import {
+  ArrowRight,
+  Check,
   ChevronRight,
   Database,
   Home as HomeIcon,
@@ -108,12 +110,26 @@ const bentoLayout = [
   },
 ] as const
 
+const accreditations = [
+  'Control4 Advanced Technician',
+  'Lutron Certified Direct Dealer',
+  'Savant',
+  'KNX',
+  '2N',
+  'Comlit',
+  'AMX Certified Programmer and Installer',
+  'BPT Certified Installer',
+  'Paxton Installer and Programmer',
+  'Texecom Installer',
+] as const
+
 export default function HomePage() {
   return (
     <>
       <HomeHero />
       <FeaturedProjectsSection />
       <ServicesSection />
+      <EditorialSection />
     </>
   )
 }
@@ -186,7 +202,7 @@ function FeaturedProjectsSection() {
                         {project.location} / {project.year}
                       </span>
                     </div>
-                    <h3 className="mt-5 font-display text-[2rem] leading-[0.94] tracking-[-0.05em] text-white [text-shadow:0_8px_24px_rgba(0,0,0,0.36)] md:text-[2.35rem]">
+                    <h3 className="mt-5 font-sans font-semibold text-[2rem] leading-[0.94] tracking-[-0.05em] text-white [text-shadow:0_8px_24px_rgba(0,0,0,0.36)] md:text-[2.35rem]">
                       {project.title}
                     </h3>
                     <p className="mt-4 max-w-xl text-sm leading-7 text-white/90 [text-shadow:0_6px_20px_rgba(0,0,0,0.5)] md:text-base">
@@ -229,7 +245,7 @@ function FeaturedProjectsSection() {
                         {homeFeaturedProjects[2].location} / {homeFeaturedProjects[2].year}
                       </span>
                     </div>
-                    <h3 className="mt-5 font-display text-[2rem] leading-[0.94] tracking-[-0.05em] text-white [text-shadow:0_8px_24px_rgba(0,0,0,0.36)] md:text-[2.35rem]">
+                    <h3 className="mt-5 font-sans font-semibold text-[2rem] leading-[0.94] tracking-[-0.05em] text-white [text-shadow:0_8px_24px_rgba(0,0,0,0.36)] md:text-[2.35rem]">
                       {homeFeaturedProjects[2].title}
                     </h3>
                     <p className="mt-4 max-w-xl text-sm leading-7 text-white/90 [text-shadow:0_6px_20px_rgba(0,0,0,0.5)] md:text-base">
@@ -273,7 +289,7 @@ function FeaturedProjectsSection() {
                           {project.location} / {project.year}
                         </span>
                       </div>
-                      <h3 className="mt-5 font-display text-[2rem] leading-[0.94] tracking-[-0.05em] text-white [text-shadow:0_8px_24px_rgba(0,0,0,0.36)] md:text-[2.35rem]">
+                      <h3 className="mt-5 font-sans font-semibold text-[2rem] leading-[0.94] tracking-[-0.05em] text-white [text-shadow:0_8px_24px_rgba(0,0,0,0.36)] md:text-[2.35rem]">
                         {project.title}
                       </h3>
                       <p className="mt-4 max-w-xl text-sm leading-7 text-white/90 [text-shadow:0_6px_20px_rgba(0,0,0,0.5)] md:text-base">
@@ -346,7 +362,7 @@ function ServicesSection() {
                         {bento.tag}
                       </span>
                     </div>
-                    <h3 className={`mt-7 font-display leading-[0.96] tracking-[-0.045em] text-white ${bento.titleSize}`}>
+                    <h3 className={`mt-7 font-sans font-semibold leading-[0.96] tracking-[-0.045em] text-white ${bento.titleSize}`}>
                       {service.title}
                     </h3>
                     <p className="mt-4 text-sm leading-7 overlay-copy-soft">{service.description}</p>
@@ -361,3 +377,78 @@ function ServicesSection() {
   )
 }
 
+
+function EditorialSection() {
+  return (
+    <section className="section-defer relative overflow-hidden bg-[#0d0a09] py-24 md:py-32 lg:py-36">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(124,38,51,0.22),transparent_32%),radial-gradient(circle_at_bottom_left,rgba(200,171,141,0.1),transparent_32%)]" />
+      <Container className="relative z-10">
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,0.88fr)_minmax(0,1.12fr)] lg:items-center lg:gap-16">
+          <Reveal direction="right">
+            <div className="relative overflow-hidden rounded-[2.2rem] shadow-luxury">
+              <div className="relative aspect-[4/5] md:aspect-[5/4]">
+                <Image
+                  src={homeImages.about.src}
+                  alt={homeImages.about.alt}
+                  fill
+                  placeholder={homeImages.about.blurDataURL ? 'blur' : 'empty'}
+                  blurDataURL={homeImages.about.blurDataURL}
+                  sizes="(min-width: 1024px) 42vw, 100vw"
+                  quality={72}
+                  className="object-cover"
+                  style={{ objectPosition: homeImages.about.objectPosition }}
+                />
+                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(14,11,10,0.08)_0%,rgba(14,11,10,0.42)_100%)]" />
+              </div>
+              <div className="overlay-panel absolute bottom-5 left-5 max-w-[17rem] rounded-[1.4rem] px-5 py-5">
+                <span className="font-mono text-[10px] uppercase tracking-[0.24em] overlay-eyebrow">
+                  Company Note
+                </span>
+                <p className="mt-3 text-sm leading-7 text-white">
+                  Every project begins with a clear understanding of the client&apos;s needs, allowing
+                  us to deliver solutions that are both practical and precisely suited to the space.
+                </p>
+              </div>
+            </div>
+          </Reveal>
+
+          <div>
+            <Reveal>
+              <SectionHeading
+                eyebrow="About Concepto"
+                heading="Established in 2003. Delivering fully integrated electrical and smart home solutions."
+                subheading="Our services cover smart home automation, audio-visual installation and electrical systems."
+                tone="light"
+              />
+            </Reveal>
+
+            <Reveal delay={0.12}>
+              <div className="mt-10 grid gap-x-6 gap-y-3 sm:grid-cols-2">
+                {accreditations.map((item) => (
+                  <div key={item} className="flex items-start gap-3">
+                    <Check className="mt-1 h-4 w-4 shrink-0 text-primary" strokeWidth={2.5} />
+                    <span className="text-sm leading-7 text-white">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </Reveal>
+
+            <Reveal delay={0.22}>
+              <div className="mt-10 flex flex-wrap items-center gap-6">
+                <Link
+                  href="/about"
+                  className="inline-flex items-center gap-3 whitespace-nowrap rounded-full border border-white/20 bg-white/[0.06] px-7 py-4 text-[11px] font-semibold uppercase tracking-[0.22em] text-white transition-all duration-300 hover:-translate-y-0.5 hover:border-primary hover:bg-primary"
+                >
+                  Read about us <ArrowRight size={15} />
+                </Link>
+                <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-white/70">
+                  NICEIC Approved · London Based
+                </span>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </Container>
+    </section>
+  )
+}

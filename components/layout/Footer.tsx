@@ -20,7 +20,7 @@ export default function Footer() {
                   alt="Concepto Solutions Ltd"
                   width={200}
                   height={42}
-                  className="h-10 w-auto brightness-0 invert"
+                  className="h-10 w-auto"
                 />
               </Link>
               <p className="max-w-sm text-sm leading-6 overlay-copy-soft">

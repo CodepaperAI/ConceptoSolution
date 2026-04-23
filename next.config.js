@@ -8,34 +8,66 @@ const nextConfig = {
   },
   async redirects() {
     return [
+      // Legacy service-page slugs → real projects that best represent that service
       {
         source: '/projects/private-home-automation',
-        destination: '/projects/signia-court',
+        destination: '/projects/littleton',
         permanent: true,
       },
       {
         source: '/projects/commercial-electrical-services',
-        destination: '/projects/city-of-london-office',
+        destination: '/projects/miller-knoll',
         permanent: true,
       },
       {
         source: '/projects/integrated-security-systems',
-        destination: '/projects/mayfair-residence',
+        destination: '/projects/alvyn-court',
         permanent: true,
       },
       {
         source: '/projects/business-it-support',
-        destination: '/projects/kingsland-office',
+        destination: '/projects/naught-one-london',
         permanent: true,
       },
       {
         source: '/projects/audio-visual-installation',
-        destination: '/projects/notting-hill-home',
+        destination: '/projects/goldwin-london',
         permanent: true,
       },
       {
         source: '/projects/data-network-cabling',
-        destination: '/projects/west-end-retail',
+        destination: '/projects/chester-square',
+        permanent: true,
+      },
+      // Replaced demo-portfolio slugs → their real equivalents
+      {
+        source: '/projects/mayfair-residence',
+        destination: '/projects/chester-square',
+        permanent: true,
+      },
+      {
+        source: '/projects/city-of-london-office',
+        destination: '/projects/miller-knoll',
+        permanent: true,
+      },
+      {
+        source: '/projects/kingsland-office',
+        destination: '/projects/naught-one-london',
+        permanent: true,
+      },
+      {
+        source: '/projects/notting-hill-home',
+        destination: '/projects/chesterfield-hill',
+        permanent: true,
+      },
+      {
+        source: '/projects/west-end-retail',
+        destination: '/projects/goldwin-london',
+        permanent: true,
+      },
+      {
+        source: '/projects/boutique-hotel',
+        destination: '/projects/seasons-of-india',
         permanent: true,
       },
     ]

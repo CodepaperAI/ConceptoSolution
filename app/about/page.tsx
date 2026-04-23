@@ -1,11 +1,8 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
-import { ArrowRight, Check } from 'lucide-react'
-import Link from 'next/link'
 import Container from '@/components/ui/Container'
 import SectionHeading from '@/components/ui/SectionHeading'
 import Reveal from '@/components/motion/Reveal'
-import CountUpValue from '@/components/motion/CountUpValue'
 import PageHero from '@/components/ui/PageHero'
 import { aboutPageImages } from '@/data/siteImages'
 
@@ -15,55 +12,23 @@ export const metadata: Metadata = {
     'Established in 2003, Concepto Solutions delivers smart home automation, electrical services and IT support across London for homeowners, developers and businesses.',
 }
 
-const values = [
-  {
-    title: 'Founded in 2003',
-    description:
-      'Concepto Solutions was established in 2003 and has grown from electrical contracting into smart home, audio visual and IT services.',
-  },
-  {
-    title: 'NICEIC Approved Contractor',
-    description:
-      'Our electrical work is backed by NICEIC approval, giving clients added confidence in safety, compliance and workmanship.',
-  },
-  {
-    title: 'TrustMark Registered',
-    description:
-      'TrustMark registration reflects a government-endorsed standard for reputable contractors working in homes and businesses.',
-  },
-  {
-    title: 'London-based team',
-    description:
-      'We support homeowners, developers, architects and commercial businesses across London and the wider UK.',
-  },
+const londonLocations = ['Mayfair', 'Oxford Street', 'Regent Street', 'Soho', 'Battersea'] as const
+
+const clientBrands = [
+  'Longchamp',
+  'Rimowa',
+  'Goldwin',
+  'Diptyque',
+  'Rolex',
+  'Miller Knoll',
+  'Herman Miller',
+  'Holly Hunt',
+  'Osprey',
+  'Ritu Seasons of India',
+  'The OWO Residences',
 ] as const
 
-const approachSteps = [
-  {
-    number: '01',
-    title: 'Understand the brief',
-    description:
-      'We take time to understand the property, the people using it and whether the project is domestic or commercial.',
-  },
-  {
-    number: '02',
-    title: 'Recommend the solution',
-    description:
-      'Our team discusses the options and recommends the most suitable and cost-effective mix of electrical, smart home or IT services.',
-  },
-  {
-    number: '03',
-    title: 'Install and integrate',
-    description:
-      'We deliver the agreed systems with close attention to safety, coordination and the quality of the finished environment.',
-  },
-  {
-    number: '04',
-    title: 'Maintain and support',
-    description:
-      'Testing, handover and ongoing support help keep home technology, electrical systems and business IT reliable after completion.',
-  },
-] as const
+const internationalReach = ['Oman', 'Dubai', 'China', 'India'] as const
 
 export default function AboutPage() {
   return (
@@ -74,160 +39,373 @@ export default function AboutPage() {
         eyebrow="About Us"
         title="About Concepto Solutions Ltd"
         description="Established in 2003, Concepto Solutions is a London-based team delivering smart home automation, audio visual, electrical and IT services. We work with homeowners, developers and businesses across London and the wider UK."
-        aside={
-          <div className="p-7">
-            <p className="font-mono text-[10px] uppercase tracking-[0.3em] overlay-eyebrow">
-              At A Glance
-            </p>
-            <div className="mt-6 grid gap-5">
-              {[
-                'Founded in 2003',
-                'NICEIC Approved Contractor',
-                'TrustMark Registered',
-              ].map((item) => (
-                <div key={item} className="border-t border-white/10 pt-5 first:border-t-0 first:pt-0">
-                  <p className="text-sm leading-7 overlay-copy">{item}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        }
       />
 
-      <StorySection />
-      <ValuesSection />
-      <ApproachSection />
+      <ChapterOneBuiltOnBelief />
+      <StatsStrip />
+      <ChapterTwoNewChapter />
+      <ChapterThreeOurReach />
+      <PhilosophySection />
+      <ClosingTagline />
+      <OurFounderSection />
     </>
   )
 }
 
-function StorySection() {
+function ChapterOneBuiltOnBelief() {
   return (
     <section className="section-defer py-24 md:py-32 lg:py-36">
       <Container>
-        <div className="grid gap-12 lg:grid-cols-[minmax(0,1.02fr)_minmax(0,0.98fr)] lg:items-center lg:gap-16">
-          <div>
-            <Reveal>
-              <SectionHeading
-                eyebrow="Our Story"
-                heading="Built on electrical. Expanded to smart home, AV and IT."
-                subheading="Concepto Solutions started in electrical contracting and grew to meet the wider technical needs of residential and commercial clients across London and the UK."
-              />
-            </Reveal>
-
-            <Reveal delay={0.1}>
-              <div className="mt-10 grid gap-4 sm:grid-cols-3">
-                {[
-                  { value: 2003, suffix: '', label: 'Founded' },
-                  { value: 2008, suffix: '', label: 'NICEIC member since' },
-                  { value: 24, suffix: '/7', label: 'UK IT support' },
-                ].map((item, index) => (
-                  <div key={item.label} className="lux-panel p-5">
-                    <CountUpValue
-                      value={item.value}
-                      suffix={item.suffix}
-                      delay={index * 0.08}
-                      className="font-display text-[2.3rem] leading-none tracking-[-0.04em] text-primary"
-                    />
-                    <p className="mt-3 text-sm leading-6 text-text-secondary">{item.label}</p>
-                  </div>
-                ))}
-              </div>
-            </Reveal>
-
-            <Reveal delay={0.18}>
-              <blockquote className="mt-10 border-l border-primary/35 pl-6 text-base leading-8 text-text-secondary md:text-lg">
-                We take time to understand the brief, explain the options and recommend the most
-                suitable and cost-effective solution.
-              </blockquote>
-            </Reveal>
-          </div>
-
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:items-start lg:gap-20">
           <Reveal direction="left">
-            <div className="relative overflow-hidden rounded-[2.2rem] shadow-luxury">
-              <div className="relative aspect-[4/5] md:aspect-[5/4]">
-                <Image
-                  src={aboutPageImages.story.src}
-                  alt={aboutPageImages.story.alt}
-                  fill
-                  placeholder={aboutPageImages.story.blurDataURL ? 'blur' : 'empty'}
-                  blurDataURL={aboutPageImages.story.blurDataURL}
-                  sizes="(min-width: 1024px) 44vw, 100vw"
-                  quality={72}
-                  className="object-cover"
-                  style={{ objectPosition: aboutPageImages.story.objectPosition }}
-                />
-                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(16,12,10,0.04)_0%,rgba(16,12,10,0.3)_48%,rgba(16,12,10,0.68)_100%)]" />
-              </div>
-              <div className="overlay-panel absolute bottom-5 right-5 max-w-[15rem] rounded-[1.4rem] px-5 py-5">
-                <span className="font-mono text-[10px] uppercase tracking-[0.24em] overlay-eyebrow">
-                  London Based
-                </span>
-                <p className="mt-3 text-sm leading-7 overlay-copy">
-                  Our clients include homeowners, developers, architects and commercial businesses.
-                </p>
-              </div>
+            <div>
+              <span className="font-mono text-[11px] uppercase tracking-[0.32em] text-primary">
+                Chapter 01
+              </span>
+              <p className="mt-6 font-sans text-[10rem] font-semibold leading-[0.85] tracking-[-0.06em] text-primary/75 md:text-[12rem] lg:text-[14rem]">
+                2003
+              </p>
+              <p className="mt-6 font-mono text-xs uppercase tracking-[0.28em] text-text-muted">
+                Built on Belief
+              </p>
             </div>
           </Reveal>
-        </div>
-      </Container>
-    </section>
-  )
-}
 
-function ValuesSection() {
-  return (
-    <section className="section-defer bg-[#120f0d] py-24 md:py-32 lg:py-36">
-      <Container>
-        <Reveal>
-          <SectionHeading
-            eyebrow="What We Offer"
-            heading="Accredited electrical. Smart home, AV and business IT."
-            subheading="That mix helps clients brief once, coordinate less and keep their project moving with one dependable team."
-            tone="light"
-            className="max-w-4xl"
-          />
-        </Reveal>
-
-        <div className="mt-16 grid gap-6 md:grid-cols-2">
-          {values.map((value, index) => (
-            <Reveal key={value.title} delay={0.06 + index * 0.06}>
-              <div className="overlay-card h-full rounded-[1.8rem] p-7 text-white shadow-[0_18px_46px_rgba(0,0,0,0.14)] md:p-8">
-                <span className="font-mono text-[10px] uppercase tracking-[0.28em] overlay-meta">
-                  0{index + 1}
-                </span>
-                <h3 className="mt-7 font-display text-[2rem] leading-[0.96] tracking-[-0.04em] text-white">
-                  {value.title}
-                </h3>
-                <p className="mt-4 text-sm leading-7 overlay-copy-soft">{value.description}</p>
-              </div>
+          <div>
+            <Reveal delay={0.05}>
+              <p className="font-sans text-[1.5rem] font-semibold leading-[1.3] tracking-[-0.02em] text-text-primary md:text-[1.8rem]">
+                An idea took shape. Not in a boardroom. Not backed by investors. But built on belief.
+              </p>
             </Reveal>
-          ))}
+
+            <div className="mt-10 space-y-6 text-base leading-8 text-text-secondary md:text-lg md:leading-9">
+              <Reveal delay={0.12}>
+                <p>
+                  Two technically driven professionals chose to step away from certainty and create
+                  something of their own. What began in 2003 laid the foundation for what would
+                  become Concepto Solutions Ltd, a company defined not by scale, but by standards.
+                  From day one, it was about craftsmanship, precision and independence. About doing
+                  the work properly, or not at all.
+                </p>
+              </Reveal>
+              <Reveal delay={0.18}>
+                <p>
+                  The early years were disciplined. Long days. Relentless refinement. A growing team
+                  united by a shared expectation of excellence. As trust deepened and projects became
+                  more ambitious, the vision expanded beyond installation into integration, beyond
+                  hardware into experience.
+                </p>
+              </Reveal>
+            </div>
+          </div>
         </div>
       </Container>
     </section>
   )
 }
 
-function ApproachSection() {
+function StatsStrip() {
+  return (
+    <section className="border-y border-border/70 bg-bg-secondary/40 py-10">
+      <Container>
+        <Reveal direction="scale">
+          <div className="flex flex-col items-center justify-center gap-4 text-center md:flex-row md:gap-10">
+            <StatItem value="23" label="Years" />
+            <StatDivider />
+            <StatItem value="4" label="Countries" />
+            <StatDivider />
+            <StatItem value="1" label="Standard" />
+          </div>
+        </Reveal>
+      </Container>
+    </section>
+  )
+}
+
+function StatItem({ value, label }: { value: string; label: string }) {
+  return (
+    <div className="flex items-baseline gap-3">
+      <span className="font-sans text-3xl font-semibold text-primary md:text-4xl">{value}</span>
+      <span className="font-mono text-[11px] uppercase tracking-[0.32em] text-text-secondary">
+        {label}
+      </span>
+    </div>
+  )
+}
+
+function StatDivider() {
+  return <span className="hidden font-mono text-2xl text-text-muted md:inline">·</span>
+}
+
+function ChapterTwoNewChapter() {
   return (
     <section className="section-defer py-24 md:py-32 lg:py-36">
       <Container>
-        <div className="grid gap-12 lg:grid-cols-[minmax(0,0.94fr)_minmax(0,1.06fr)] lg:items-start lg:gap-16">
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:items-center lg:gap-16">
           <Reveal direction="right">
-            <div className="relative overflow-hidden rounded-[2.1rem] shadow-luxury">
-              <div className="relative aspect-[4/5] md:aspect-[6/5]">
+            <div className="relative overflow-hidden rounded-[2.2rem] shadow-luxury">
+              <div className="relative aspect-[4/5] md:aspect-[5/4]">
                 <Image
                   src={aboutPageImages.approach.src}
                   alt={aboutPageImages.approach.alt}
                   fill
                   placeholder={aboutPageImages.approach.blurDataURL ? 'blur' : 'empty'}
                   blurDataURL={aboutPageImages.approach.blurDataURL}
-                  sizes="(min-width: 1024px) 40vw, 100vw"
+                  sizes="(min-width: 1024px) 42vw, 100vw"
                   quality={72}
                   className="object-cover"
                   style={{ objectPosition: aboutPageImages.approach.objectPosition }}
                 />
+                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(14,11,10,0.06)_0%,rgba(14,11,10,0.4)_100%)]" />
+              </div>
+            </div>
+          </Reveal>
+
+          <div>
+            <Reveal>
+              <span className="font-mono text-[11px] uppercase tracking-[0.32em] text-primary">
+                Chapter 02
+              </span>
+              <h2 className="mt-6 font-sans font-semibold text-[2.25rem] leading-[1.05] tracking-[-0.035em] text-text-primary md:text-[2.75rem] lg:text-[3.25rem]">
+                A New Chapter
+              </h2>
+            </Reveal>
+
+            <Reveal delay={0.1}>
+              <p className="mt-8 text-base leading-8 text-text-secondary md:text-lg md:leading-9">
+                In 2009, the company entered its next chapter as Concepto Solutions Ltd. With Arvin
+                Halai taking full leadership, the direction became even clearer, more focused and
+                more intentional. The foundation remained the same, the same team, the same clients,
+                the same commitment to quality, but the ambition grew stronger.
+              </p>
+            </Reveal>
+
+            <Reveal delay={0.18}>
+              <div className="mt-8 rounded-[1.5rem] border-l-2 border-primary bg-bg-secondary/40 px-6 py-6 md:px-8">
+                <p className="font-sans text-[1.1rem] leading-9 text-text-primary md:text-[1.2rem]">
+                  Electrical systems became the backbone of intelligent spaces.
+                  <br />
+                  Networks became the invisible architecture of modern living.
+                  <br />
+                  Audio-visual environments became immersive, intuitive and effortless.
+                </p>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </Container>
+    </section>
+  )
+}
+
+function ChapterThreeOurReach() {
+  return (
+    <section className="section-defer bg-bg-secondary/30 py-24 md:py-32 lg:py-36">
+      <Container>
+        <Reveal>
+          <span className="font-mono text-[11px] uppercase tracking-[0.32em] text-primary">
+            Chapter 03
+          </span>
+          <h2 className="mt-6 max-w-4xl font-sans font-semibold text-[2.25rem] leading-[1.05] tracking-[-0.035em] text-text-primary md:text-[2.75rem] lg:text-[3.25rem]">
+            Our Reach
+          </h2>
+        </Reveal>
+
+        <div className="mt-14 grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16">
+          <div className="space-y-6 text-base leading-8 text-text-secondary md:text-lg md:leading-9">
+            <Reveal delay={0.08}>
+              <p>
+                Over more than two decades of continuous evolution, Concepto Solutions has delivered
+                projects ranging from refined private residences to large multi-dwelling developments,
+                from commercial environments to flagship retail destinations.
+              </p>
+            </Reveal>
+            <Reveal delay={0.14}>
+              <p>
+                Our work can be found across London&apos;s most distinguished addresses. Within these
+                iconic locations, we have delivered environments for some of the world&apos;s most
+                respected brands.
+              </p>
+            </Reveal>
+            <Reveal delay={0.2}>
+              <p>
+                From the refined dining experience of Ritu Seasons of India to private residences such
+                as the prestigious The OWO Residences, each project reflects the same uncompromising
+                standard.
+              </p>
+            </Reveal>
+            <Reveal delay={0.26}>
+              <p>
+                From London, we expanded internationally, delivering projects in Oman, Dubai, China
+                and India, integrating world-class technology into architecturally exceptional spaces
+                across continents.
+              </p>
+            </Reveal>
+          </div>
+
+          <div className="space-y-10">
+            <Reveal delay={0.12}>
+              <div>
+                <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-text-muted">
+                  London Addresses
+                </span>
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {londonLocations.map((loc) => (
+                    <span
+                      key={loc}
+                      className="rounded-full border border-primary/30 bg-primary/5 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.2em] text-primary"
+                    >
+                      {loc}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </Reveal>
+
+            <Reveal delay={0.2}>
+              <div>
+                <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-text-muted">
+                  Selected Clients
+                </span>
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {clientBrands.map((brand) => (
+                    <span
+                      key={brand}
+                      className="rounded-full border border-border bg-bg-secondary/70 px-4 py-2.5 font-sans text-sm text-text-primary"
+                    >
+                      {brand}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </Reveal>
+
+            <Reveal delay={0.3}>
+              <div className="rounded-[1.5rem] border border-border/70 bg-bg-secondary/50 px-6 py-5">
+                <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-text-muted">
+                  International Work
+                </span>
+                <div className="mt-3 flex flex-wrap items-center gap-x-6 gap-y-2">
+                  {internationalReach.map((country, idx) => (
+                    <span key={country} className="flex items-center gap-6">
+                      <span className="font-sans font-semibold text-lg text-text-primary md:text-xl">
+                        {country}
+                      </span>
+                      {idx < internationalReach.length - 1 && (
+                        <span className="font-mono text-text-muted">·</span>
+                      )}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </Container>
+    </section>
+  )
+}
+
+function PhilosophySection() {
+  return (
+    <section className="relative overflow-hidden bg-[#0d0a09] py-28 md:py-36 lg:py-44">
+      <div className="absolute inset-0">
+        <Image
+          src={aboutPageImages.hero.src}
+          alt=""
+          fill
+          placeholder={aboutPageImages.hero.blurDataURL ? 'blur' : 'empty'}
+          blurDataURL={aboutPageImages.hero.blurDataURL}
+          sizes="100vw"
+          quality={72}
+          className="object-cover opacity-30"
+          style={{ objectPosition: aboutPageImages.hero.objectPosition }}
+        />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(13,10,9,0.88)_0%,rgba(13,10,9,0.72)_50%,rgba(13,10,9,0.94)_100%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(13,10,9,0.6)_100%)]" />
+      </div>
+
+      <Container className="relative z-10">
+        <div className="mx-auto max-w-4xl text-center">
+          <Reveal>
+            <span className="font-mono text-[11px] uppercase tracking-[0.36em] text-secondary">
+              The Philosophy
+            </span>
+          </Reveal>
+          <div className="mt-12 space-y-5 font-sans font-semibold leading-[1.2] tracking-[-0.02em] text-white">
+            <Reveal delay={0.1}>
+              <p className="text-[clamp(1.6rem,3.2vw,2.4rem)] text-white/75">
+                The philosophy has never changed.
+              </p>
+            </Reveal>
+            <Reveal delay={0.2}>
+              <p className="text-[clamp(2.2rem,4.8vw,3.6rem)]">
+                Technology should not dominate a space.
+              </p>
+            </Reveal>
+            <Reveal delay={0.3}>
+              <p className="text-[clamp(2.2rem,4.8vw,3.6rem)] text-secondary">
+                It should define it quietly.
+              </p>
+            </Reveal>
+            <Reveal delay={0.4}>
+              <p className="text-[clamp(2.2rem,4.8vw,3.6rem)]">It should not complicate.</p>
+            </Reveal>
+            <Reveal delay={0.5}>
+              <p className="text-[clamp(2.2rem,4.8vw,3.6rem)] text-secondary">It should empower.</p>
+            </Reveal>
+          </div>
+        </div>
+      </Container>
+    </section>
+  )
+}
+
+function ClosingTagline() {
+  return (
+    <section className="section-defer py-24 md:py-28 lg:py-32">
+      <Container>
+        <div className="mx-auto max-w-4xl border-y border-border/70 py-16 text-center md:py-20">
+          <Reveal direction="scale">
+            <span className="font-mono text-[11px] uppercase tracking-[0.36em] text-primary">
+              The Belief
+            </span>
+            <p className="mt-8 font-sans font-semibold text-[clamp(1.8rem,4vw,3rem)] leading-[1.1] tracking-[-0.03em] text-text-primary">
+              We were not built for short-term growth.
+              <br />
+              We were built to last.
+            </p>
+            <p className="mt-10 text-sm leading-7 text-text-muted md:text-base">
+              After 23 years, Concepto Solutions Ltd remains driven by the same belief that started
+              it all — build with integrity, engineer with precision, and create environments where
+              technology and design exist in perfect balance.
+            </p>
+          </Reveal>
+        </div>
+      </Container>
+    </section>
+  )
+}
+
+function OurFounderSection() {
+  return (
+    <section className="section-defer bg-[#0d0a09] py-24 md:py-32 lg:py-36">
+      <Container>
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,0.88fr)_minmax(0,1.12fr)] lg:items-center lg:gap-16">
+          <Reveal direction="right">
+            <div className="relative overflow-hidden rounded-[2rem] shadow-luxury">
+              <div className="relative aspect-[4/5]">
+                <Image
+                  src={aboutPageImages.story.src}
+                  alt="Arvin Halai, Founder of Concepto Solutions Ltd"
+                  fill
+                  placeholder={aboutPageImages.story.blurDataURL ? 'blur' : 'empty'}
+                  blurDataURL={aboutPageImages.story.blurDataURL}
+                  sizes="(min-width: 1024px) 40vw, 100vw"
+                  quality={72}
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(14,11,10,0.05)_0%,rgba(14,11,10,0.3)_100%)]" />
               </div>
             </div>
           </Reveal>
@@ -235,44 +413,60 @@ function ApproachSection() {
           <div>
             <Reveal>
               <SectionHeading
-                eyebrow="How We Work"
-                heading="Listen. Design. Install. Stay."
-                subheading="That same approach supports smart home projects, electrical packages, security systems and managed IT services."
+                eyebrow="Our Founder"
+                heading="Arvin Halai"
+                subheading="Founder, Concepto Solutions Ltd"
+                tone="light"
               />
             </Reveal>
 
-            <div className="mt-10 space-y-5">
-              {approachSteps.map((step, index) => (
-                <Reveal key={step.number} delay={0.08 + index * 0.05}>
-                  <div className="flex gap-5 rounded-[1.5rem] border border-border/70 bg-bg-secondary/80 p-5 shadow-panel md:p-6">
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-primary/20 bg-primary/6 text-primary">
-                      <span className="font-mono text-sm font-bold">{step.number}</span>
-                    </div>
-                    <div>
-                      <h3 className="font-display text-[1.55rem] leading-[0.96] tracking-[-0.035em] text-text-primary">
-                        {step.title}
-                      </h3>
-                      <p className="mt-3 text-sm leading-7 text-text-secondary">{step.description}</p>
-                    </div>
-                  </div>
-                </Reveal>
-              ))}
-            </div>
+            <div className="mt-10 space-y-5 text-base leading-8 overlay-copy md:text-lg md:leading-9">
+              <Reveal delay={0.08}>
+                <p className="text-white">Before there was a company, there was a standard.</p>
+              </Reveal>
+              <Reveal delay={0.12}>
+                <p>
+                  Arvin Halai began his career in IT, working as a technician servicing systems and
+                  supporting clients. It was in those early years he saw the gap, solutions were being
+                  delivered, but rarely with long-term thinking or true integration. There was an
+                  opportunity to do things differently.
+                </p>
+              </Reveal>
+              <Reveal delay={0.16}>
+                <p>
+                  In 2003, he chose to act on it. Stepping away from certainty, he set out to build a
+                  company defined by quality, discipline and accountability. Every project would be
+                  approached with intent, where electrical, AV and network systems work seamlessly as
+                  one.
+                </p>
+              </Reveal>
 
-            <Reveal delay={0.3}>
-              <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center gap-3 rounded-full border border-primary bg-primary px-8 py-4 text-[11px] font-semibold uppercase tracking-[0.2em] text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-primary-hover"
-                >
-                  Get a Free Quote <ArrowRight size={15} />
-                </Link>
-                <div className="flex items-center gap-3 text-[11px] uppercase tracking-[0.18em] text-text-muted">
-                  <Check className="h-4 w-4 text-primary" />
-                  London-based since 2003
-                </div>
-              </div>
-            </Reveal>
+              <Reveal delay={0.2}>
+                <blockquote className="my-10 border-l-2 border-primary pl-6 md:pl-8">
+                  <p className="font-sans font-semibold text-[1.6rem] leading-[1.2] tracking-[-0.02em] text-white md:text-[2rem]">
+                    &ldquo;Good enough is never enough.&rdquo;
+                  </p>
+                  <footer className="mt-4 font-mono text-[10px] uppercase tracking-[0.28em] text-secondary">
+                    Arvin Halai · Founder
+                  </footer>
+                </blockquote>
+              </Reveal>
+
+              <Reveal delay={0.24}>
+                <p>
+                  By 2009, under his full leadership, that vision became sharper and more focused.
+                  The goal was clear, deliver intelligent environments where technology integrates
+                  effortlessly into the space.
+                </p>
+              </Reveal>
+              <Reveal delay={0.28}>
+                <p>
+                  His approach remains consistent. Detail matters. Standards are non-negotiable. More
+                  than two decades on, that same mindset continues to define Concepto Solutions Ltd,
+                  built not for rapid growth, but to last.
+                </p>
+              </Reveal>
+            </div>
           </div>
         </div>
       </Container>

@@ -83,7 +83,7 @@ export default function BlogBoard({ posts }: BlogBoardProps) {
           <div className="flex flex-col justify-between p-8 md:p-10">
             <div>
               <span className="lux-eyebrow text-primary">{featuredPost.category}</span>
-              <h3 className="mt-6 font-display text-[2.25rem] leading-[0.95] tracking-[-0.05em] text-text-primary md:text-[2.7rem]">
+              <h3 className="mt-6 font-sans font-semibold text-[2.25rem] leading-[0.95] tracking-[-0.05em] text-text-primary md:text-[2.7rem]">
                 {featuredPost.title}
               </h3>
               <p className="mt-5 max-w-xl text-base leading-8 text-text-secondary md:text-lg">
@@ -133,7 +133,7 @@ export default function BlogBoard({ posts }: BlogBoardProps) {
             </div>
             <div className="flex flex-1 flex-col p-7">
               <span className="lux-eyebrow text-primary">{post.category}</span>
-              <h3 className="mt-5 font-display text-[1.75rem] leading-[0.98] tracking-[-0.04em] text-text-primary">
+              <h3 className="mt-5 font-sans font-semibold text-[1.75rem] leading-[0.98] tracking-[-0.04em] text-text-primary">
                 {post.title}
               </h3>
               <p className="mt-4 flex-1 text-base leading-8 text-text-secondary">{post.excerpt}</p>

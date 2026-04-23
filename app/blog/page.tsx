@@ -1,135 +1,97 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
-import { ArrowRight } from 'lucide-react'
 import Container from '@/components/ui/Container'
 import SectionHeading from '@/components/ui/SectionHeading'
 import Reveal from '@/components/motion/Reveal'
 import PageHero from '@/components/ui/PageHero'
-import BlogBoard, { type BlogPostCard } from '@/components/blog/BlogBoard'
 import { blogPageImages } from '@/data/siteImages'
 
 export const metadata: Metadata = {
-  title: 'Blog',
+  title: 'Testimonials',
   description:
-    'IT, Microsoft and automation insights from Concepto Solutions — articles on Teams, Power Automate, PowerApps and low-code tools.',
+    'What our clients say about Concepto Solutions — feedback from homeowners, developers, architects and businesses across London and beyond.',
 }
 
-const posts: BlogPostCard[] = [
+const testimonials = [
   {
-    id: '1',
-    title: 'Staying productive while working remotely with Microsoft Teams',
-    excerpt:
-      'A practical look at how Microsoft Teams can support collaboration, communication and day-to-day productivity for remote teams.',
-    category: 'Microsoft Teams',
-    date: '28 Feb 2019',
-    readTime: '4 min read',
-    image: blogPageImages.posts.regulations,
+    name: 'Nat Reynolds',
+    role: 'Chief Accountant',
+    initials: 'NR',
+    quote:
+      'Vitae suscipit tellus mauris a diam maecenas sed enim ut. Mauris augue neque gravida in fermentum. Praesent semper feugiat nibh sed pulvinar proin.',
   },
   {
-    id: '2',
-    title: 'Prolific app maker ignites low code revolution at Schlumberger',
-    excerpt:
-      'An example of how low-code tools can speed up process improvement and help large organisations move faster.',
-    category: 'Low Code',
-    date: '28 Feb 2019',
-    readTime: '4 min read',
-    image: blogPageImages.posts.technology,
+    name: 'Celia Almeda',
+    role: 'Secretary',
+    initials: 'CA',
+    quote:
+      'Pharetra vel turpis nunc eget lorem. Quisque id diam vel quam elementum pulvinar etiam. Urna porttitor rhoncus dolor purus non enim praesent elementum.',
   },
   {
-    id: '3',
-    title: 'Digitally Transform Your Enterprise with Power Automate: Our Journey to Enable Your Digital Transformation, Part 1',
-    excerpt:
-      'A Power Automate-focused article on business automation and the practical steps involved in digital transformation.',
-    category: 'Power Automate',
-    date: '28 Feb 2019',
-    readTime: '4 min read',
-    image: blogPageImages.posts.safety,
-  },
-  {
-    id: '4',
-    title: 'Kelly Roofing uses PowerApps to capture photos at work sites',
-    excerpt:
-      'A PowerApps case study showing how mobile tools can improve site reporting and field data capture.',
-    category: 'PowerApps',
-    date: '18 Feb 2019',
-    readTime: '4 min read',
-    image: blogPageImages.posts.infrastructure,
+    name: 'Bob Roberts',
+    role: 'Sales Manager',
+    initials: 'BR',
+    quote:
+      'Mauris augue neque gravida in fermentum. Praesent semper feugiat nibh sed pulvinar proin. Nibh nisl dictumst vestibulum rhoncus est pellentesque elit.',
   },
 ] as const
 
-export default function BlogPage() {
+export default function TestimonialsPage() {
   return (
     <>
       <PageHero
         priority
+        showCta={false}
         image={blogPageImages.hero}
-        eyebrow="Insights"
-        title="IT, Microsoft & Automation Insights"
-        description="This page reflects the themes on Concepto's official blog, including Microsoft Teams, low-code tools, Power Automate and PowerApps for business users."
-        aside={
-          <div className="p-7">
-            <p className="font-mono text-[10px] uppercase tracking-[0.3em] overlay-eyebrow">
-              Editorial Themes
-            </p>
-            <div className="mt-6 flex flex-wrap gap-2">
-              {['Microsoft Teams', 'Low Code', 'Power Automate', 'PowerApps'].map((item) => (
-                <span
-                  key={item}
-                  className="overlay-card rounded-full px-3 py-2 text-[11px] uppercase tracking-[0.18em] overlay-copy"
-                >
-                  {item}
-                </span>
-              ))}
-            </div>
-          </div>
-        }
+        eyebrow="Testimonials"
+        title="What Our Clients Say"
+        description="We place huge value on strong relationships and have seen the benefit they bring to our business. Customer feedback is vital in helping us to get it right."
       />
 
-      <section className="section-defer py-24 md:py-32 lg:py-36">
-        <Container>
-          <Reveal>
-            <SectionHeading
-              eyebrow="Blog Archive"
-              heading="Articles from the official archive."
-              subheading="These posts focus on collaboration, automation and practical digital workplace improvements for business users."
-              className="max-w-4xl"
-            />
-          </Reveal>
-
-          <div className="mt-16">
-            <BlogBoard posts={posts} />
-          </div>
-        </Container>
-      </section>
-
-      <BlogCtaSection />
+      <TestimonialsSection />
     </>
   )
 }
 
-function BlogCtaSection() {
+function TestimonialsSection() {
   return (
-    <section className="pb-24 md:pb-32 lg:pb-36">
+    <section className="section-defer py-24 md:py-32 lg:py-36">
       <Container>
         <Reveal>
-          <div className="lux-panel px-8 py-10 md:px-10 md:py-12 lg:flex lg:items-end lg:justify-between lg:gap-10">
-            <div className="max-w-3xl">
-              <span className="lux-eyebrow text-primary">Need business IT support</span>
-              <h2 className="mt-7 font-display text-[2.45rem] leading-[0.95] tracking-[-0.05em] text-text-primary md:text-[3.15rem]">
-                Concepto Solutions can help with Microsoft platforms, managed services and day-to-day IT support.
-              </h2>
-              <p className="mt-5 max-w-2xl text-base leading-8 text-text-secondary md:text-lg">
-                We provide 24/7 UK-based IT support, cloud migration and Microsoft platform
-                solutions for businesses.
-              </p>
-            </div>
-            <Link
-              href="/contact"
-              className="mt-8 inline-flex items-center gap-3 rounded-full border border-primary bg-primary px-8 py-4 text-[11px] font-semibold uppercase tracking-[0.2em] text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-primary-hover lg:mt-0"
-            >
-              Contact the team <ArrowRight size={15} />
-            </Link>
-          </div>
+          <SectionHeading
+            eyebrow="Testimonials"
+            heading="What Clients Say"
+            subheading="We place huge value on strong relationships and have seen the benefit they bring to our business. Customer feedback is vital in helping us to get it right."
+            alignment="center"
+          />
+        </Reveal>
+
+        <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {testimonials.map((item, index) => (
+            <Reveal key={item.name} delay={0.08 + index * 0.08} direction="scale">
+              <article className="flex h-full flex-col rounded-[1.75rem] border border-border/70 bg-bg-secondary/70 p-8 shadow-panel backdrop-blur-sm">
+                <div className="flex h-16 w-16 items-center justify-center rounded-full border border-primary/30 bg-primary/10 font-sans font-semibold text-lg text-primary">
+                  {item.initials}
+                </div>
+                <p className="mt-7 flex-1 text-base leading-8 text-text-secondary">
+                  <span className="mr-1 font-sans text-2xl leading-none text-primary">&ldquo;</span>
+                  {item.quote}
+                  <span className="ml-1 font-sans text-2xl leading-none text-primary">&rdquo;</span>
+                </p>
+                <div className="mt-8 border-t border-border/60 pt-6">
+                  <p className="font-sans font-semibold text-base text-text-primary">{item.name}</p>
+                  <p className="mt-1 font-mono text-[11px] uppercase tracking-[0.2em] text-text-muted">
+                    {item.role}
+                  </p>
+                </div>
+              </article>
+            </Reveal>
+          ))}
+        </div>
+
+        <Reveal delay={0.32}>
+          <p className="mt-14 text-center text-sm text-text-muted">
+            Real client testimonials coming soon. The entries above are placeholders.
+          </p>
         </Reveal>
       </Container>
     </section>

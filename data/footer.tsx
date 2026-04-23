@@ -84,8 +84,8 @@ export const footerContact: FooterContact[] = [
 
 export const footerWorkingHours = [
   { days: 'NICEIC', hours: 'Approved Contractor' },
-  { days: 'TrustMark', hours: 'Registered' },
   { days: 'Founded', hours: '2003' },
+  { days: 'London', hours: 'Based' },
 ]
 
 export const footerCopyright = {
