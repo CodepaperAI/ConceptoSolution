@@ -15,14 +15,26 @@ import Container from '@/components/ui/Container'
 import SectionHeading from '@/components/ui/SectionHeading'
 import Reveal from '@/components/motion/Reveal'
 import HomeHero from '@/components/home/HomeHero'
-import { homeImages } from '@/data/siteImages'
+import PhotoCarousel from '@/components/ui/PhotoCarousel'
+import { carouselImages, homeImages, type SiteImage } from '@/data/siteImages'
 import { homeFeaturedProjects } from '@/data/projects'
+
+// Service tile carousel slides come from carouselImages (generated from
+// Website/Core service/ + Website/IT/ per the client DOCX). Fallback to the
+// legacy single image if a slot's slide set is empty.
+const cardSlides = (
+  slot: keyof typeof carouselImages.serviceCards,
+  fallback: SiteImage
+): SiteImage[] =>
+  carouselImages.serviceCards[slot].length > 0
+    ? carouselImages.serviceCards[slot]
+    : [fallback]
 
 const serviceCards: {
   id: string
   title: string
   description: string
-  image: (typeof homeImages.serviceCards)[keyof typeof homeImages.serviceCards]
+  slides: SiteImage[]
   icon: LucideIcon
 }[] = [
   {
@@ -30,7 +42,7 @@ const serviceCards: {
     title: 'Electrical',
     description:
       'NICEIC-approved installation, testing, maintenance and upgrades for homes, workplaces and managed buildings.',
-    image: homeImages.serviceCards.electrical,
+    slides: cardSlides('electrical', homeImages.serviceCards.electrical),
     icon: Zap,
   },
   {
@@ -38,7 +50,7 @@ const serviceCards: {
     title: 'Smart Home',
     description:
       'Smart home control, climate control, lighting and blind automation, security integration, multi-room audio, home cinema and entertainment systems.',
-    image: homeImages.serviceCards.smartHome,
+    slides: cardSlides('smartHome', homeImages.serviceCards.smartHome),
     icon: HomeIcon,
   },
   {
@@ -46,7 +58,7 @@ const serviceCards: {
     title: 'Security',
     description:
       'CCTV, door entry, video entry and fire systems designed to protect homes, developments and business premises.',
-    image: homeImages.serviceCards.security,
+    slides: cardSlides('security', homeImages.serviceCards.security),
     icon: Shield,
   },
   {
@@ -54,7 +66,7 @@ const serviceCards: {
     title: 'Data & Networks',
     description:
       'Data wiring, structured cabling and IT networking design that create reliable connectivity across the building.',
-    image: homeImages.serviceCards.dataFibre,
+    slides: cardSlides('dataFibre', homeImages.serviceCards.dataFibre),
     icon: Database,
   },
   {
@@ -62,7 +74,7 @@ const serviceCards: {
     title: 'IT Support',
     description:
       '24/7 UK-based IT support, Microsoft platform solutions, managed services and cloud migration for businesses.',
-    image: homeImages.serviceCards.itSupport,
+    slides: cardSlides('itSupport', homeImages.serviceCards.itSupport),
     icon: Server,
   },
 ] as const
@@ -340,17 +352,14 @@ function ServicesSection() {
                   className="group overlay-card flex h-full flex-col overflow-hidden rounded-[1.8rem] shadow-[0_22px_58px_rgba(0,0,0,0.16)] transition-all duration-500 hover:-translate-y-1 hover:border-white/22 hover:bg-white/[0.08]"
                 >
                   <div className={`relative ${bento.aspect} overflow-hidden`}>
-                    <Image
-                      src={service.image.src}
-                      alt={service.image.alt}
-                      fill
-                      placeholder={service.image.blurDataURL ? 'blur' : 'empty'}
-                      blurDataURL={service.image.blurDataURL}
-                      sizes={bento.imageSizes}
-                      quality={70}
-                      className="object-cover transition-transform duration-700 group-hover:scale-[1.05]"
-                      style={{ objectPosition: service.image.objectPosition }}
-                    />
+                    <div className="absolute inset-0 transition-transform duration-700 group-hover:scale-[1.05]">
+                      <PhotoCarousel
+                        slides={service.slides}
+                        sizes={bento.imageSizes}
+                        quality={70}
+                        intervalMs={6500 + index * 400}
+                      />
+                    </div>
                     <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(12,10,9,0.12)_0%,rgba(12,10,9,0.34)_42%,rgba(12,10,9,0.84)_100%)]" />
                   </div>
                   <div className="flex flex-1 flex-col p-7">

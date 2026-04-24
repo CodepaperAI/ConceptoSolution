@@ -4,7 +4,12 @@ import Container from '@/components/ui/Container'
 import SectionHeading from '@/components/ui/SectionHeading'
 import Reveal from '@/components/motion/Reveal'
 import PageHero from '@/components/ui/PageHero'
-import { aboutPageImages } from '@/data/siteImages'
+import { aboutPageImages, carouselImages } from '@/data/siteImages'
+
+// DOCX: the About Us hero should be IMG_0140 (same interior-lighting shot that
+// leads the Electrical carousel). Fall back to the legacy About hero if the
+// site-photo ingest hasn't run yet.
+const aboutHeroImage = carouselImages.aboutHero[0] ?? aboutPageImages.hero
 
 export const metadata: Metadata = {
   title: 'About Us',
@@ -35,7 +40,7 @@ export default function AboutPage() {
     <>
       <PageHero
         priority
-        image={aboutPageImages.hero}
+        image={aboutHeroImage}
         eyebrow="About Us"
         title="About Concepto Solutions Ltd"
         description="Established in 2003, Concepto Solutions is a London-based team delivering smart home automation, audio visual, electrical and IT services. We work with homeowners, developers and businesses across London and the wider UK."
@@ -393,20 +398,30 @@ function OurFounderSection() {
       <Container>
         <div className="grid gap-12 lg:grid-cols-[minmax(0,0.88fr)_minmax(0,1.12fr)] lg:items-center lg:gap-16">
           <Reveal direction="right">
-            <div className="relative overflow-hidden rounded-[2rem] shadow-luxury">
-              <div className="relative aspect-[4/5]">
+            <div className="relative mx-auto max-w-[300px] lg:mx-0">
+              <div className="absolute -inset-6 -z-10 rounded-[2.5rem] bg-[radial-gradient(circle_at_30%_20%,rgba(200,171,141,0.22),transparent_60%),radial-gradient(circle_at_70%_80%,rgba(124,38,51,0.28),transparent_60%)] blur-2xl" />
+              <div className="relative aspect-square overflow-hidden rounded-[2rem] border border-white/8 shadow-luxury ring-1 ring-white/5">
                 <Image
-                  src={aboutPageImages.story.src}
-                  alt="Arvin Halai, Founder of Concepto Solutions Ltd"
+                  src={aboutPageImages.founder.src}
+                  alt={aboutPageImages.founder.alt}
                   fill
-                  placeholder={aboutPageImages.story.blurDataURL ? 'blur' : 'empty'}
-                  blurDataURL={aboutPageImages.story.blurDataURL}
-                  sizes="(min-width: 1024px) 40vw, 100vw"
-                  quality={72}
+                  placeholder={aboutPageImages.founder.blurDataURL ? 'blur' : 'empty'}
+                  blurDataURL={aboutPageImages.founder.blurDataURL}
+                  sizes="(min-width: 1024px) 280px, (min-width: 640px) 300px, 80vw"
+                  quality={88}
                   className="object-cover"
+                  style={{ objectPosition: aboutPageImages.founder.objectPosition }}
                 />
-                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(14,11,10,0.05)_0%,rgba(14,11,10,0.3)_100%)]" />
+                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(14,11,10,0)_60%,rgba(14,11,10,0.38)_100%)]" />
               </div>
+              <figcaption className="mt-6 text-center lg:text-left">
+                <span className="block font-sans font-semibold text-[1.15rem] leading-tight tracking-[-0.015em] text-white">
+                  Arvin Halai
+                </span>
+                <span className="mt-2 block font-mono text-[10px] uppercase tracking-[0.28em] text-secondary">
+                  Founder · Concepto Solutions Ltd
+                </span>
+              </figcaption>
             </div>
           </Reveal>
 

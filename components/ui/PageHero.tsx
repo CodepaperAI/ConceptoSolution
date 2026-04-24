@@ -68,19 +68,19 @@ export default function PageHero({
           </>
         )}
       </div>
-      <Container className="relative z-10 flex min-h-[calc(100svh-4rem)] items-center py-20 lg:min-h-[calc(100svh-5rem)] lg:py-24">
+      <Container className="relative z-10 flex min-h-[calc(100svh-4rem)] items-center py-14 md:py-20 lg:min-h-[calc(100svh-5rem)] lg:py-24">
         <div className="grid w-full gap-10 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-end xl:gap-16">
           <div className="max-w-4xl min-w-0">
             <Reveal>
               <span className="lux-eyebrow overlay-eyebrow">{eyebrow}</span>
             </Reveal>
             <Reveal delay={0.08}>
-              <h1 className="mt-7 max-w-5xl text-balance font-sans font-semibold text-[clamp(2.9rem,7vw,5.75rem)] leading-[0.9] tracking-[-0.055em] text-white [text-shadow:0_10px_34px_rgba(0,0,0,0.3)]">
+              <h1 className="mt-5 max-w-5xl text-balance font-sans font-semibold text-[clamp(2.1rem,8vw,5.75rem)] leading-[1.02] tracking-[-0.045em] text-white [text-shadow:0_10px_34px_rgba(0,0,0,0.3)] md:mt-7 md:leading-[0.9] md:tracking-[-0.055em]">
                 {title}
               </h1>
             </Reveal>
             <Reveal delay={0.16}>
-              <p className="mt-8 max-w-2xl text-base leading-8 overlay-copy [text-shadow:0_8px_26px_rgba(0,0,0,0.24)] md:text-xl md:leading-9">
+              <p className="mt-6 max-w-2xl text-sm leading-7 overlay-copy [text-shadow:0_8px_26px_rgba(0,0,0,0.24)] md:mt-8 md:text-xl md:leading-9">
                 {description}
               </p>
             </Reveal>
@@ -88,7 +88,7 @@ export default function PageHero({
               <Reveal delay={0.24}>
                 <Link
                   href={ctaHref}
-                  className="lux-button-primary mt-10 inline-flex items-center gap-3"
+                  className="lux-button-primary mt-8 inline-flex items-center gap-3 md:mt-10"
                 >
                   {ctaLabel} <ArrowRight size={16} />
                 </Link>

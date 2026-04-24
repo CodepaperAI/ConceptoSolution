@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import Image from 'next/image'
 import Link from 'next/link'
 import {
   ArrowRight,
@@ -15,7 +14,8 @@ import Container from '@/components/ui/Container'
 import SectionHeading from '@/components/ui/SectionHeading'
 import Reveal from '@/components/motion/Reveal'
 import PageHero from '@/components/ui/PageHero'
-import { servicesPageImages } from '@/data/siteImages'
+import PhotoCarousel from '@/components/ui/PhotoCarousel'
+import { carouselImages, servicesPageImages, type SiteImage } from '@/data/siteImages'
 
 export const metadata: Metadata = {
   title: 'Services',
@@ -23,12 +23,22 @@ export const metadata: Metadata = {
     'Electrical, smart home automation, security, data networking and IT support services for residential and commercial projects across London.',
 }
 
+// Service-detail carousel slides come from carouselImages (DOCX mapping).
+// Fallback to the legacy single-image if the slot's slide set is empty.
+const detailSlides = (
+  slot: keyof typeof carouselImages.serviceCards,
+  fallback: SiteImage
+): SiteImage[] =>
+  carouselImages.serviceCards[slot].length > 0
+    ? carouselImages.serviceCards[slot]
+    : [fallback]
+
 const services: {
   id: string
   title: string
   description: string
   detail: string
-  image: (typeof servicesPageImages.details)[keyof typeof servicesPageImages.details]
+  slides: SiteImage[]
   icon: LucideIcon
   capabilities: string[]
 }[] = [
@@ -38,7 +48,7 @@ const services: {
     description:
       'NICEIC-approved electrical installation, maintenance, and testing for homes, commercial premises, and managed buildings—delivered safely, reliably, and to the highest standards.',
     detail: 'Focus on clarity, safety, and compliance.',
-    image: servicesPageImages.details.electrical,
+    slides: detailSlides('electrical', servicesPageImages.details.electrical),
     icon: Zap,
     capabilities: [
       'Full electrical installations (domestic & commercial)',
@@ -58,7 +68,7 @@ const services: {
     description:
       'Smart home control systems integrating climate, lighting, and blind automation, along with advanced security and seamless multi-room audio—designed to enhance comfort, efficiency, and everyday living.',
     detail: 'Modern, convenient, and premium.',
-    image: servicesPageImages.details.smartHome,
+    slides: detailSlides('smartHome', servicesPageImages.details.smartHome),
     icon: HomeIcon,
     capabilities: [
       'Smart lighting system design and installation',
@@ -79,7 +89,7 @@ const services: {
     description:
       'CCTV, door entry, video entry, and fire systems designed to protect homes, residential developments, and commercial premises with reliable, compliant security solutions.',
     detail: 'Protection and reliability.',
-    image: servicesPageImages.details.security,
+    slides: detailSlides('security', servicesPageImages.details.security),
     icon: Shield,
     capabilities: [
       'CCTV system installation (HD/IP cameras)',
@@ -100,7 +110,7 @@ const services: {
     description:
       'Data cabling and IT network design built on robust infrastructure to deliver fast, reliable connectivity across offices, residential developments, and modern connected homes.',
     detail: 'Professional infrastructure work.',
-    image: servicesPageImages.details.dataFibre,
+    slides: detailSlides('dataFibre', servicesPageImages.details.dataFibre),
     icon: Database,
     capabilities: [
       'Structured cabling installation (Cat5e, Cat6, Cat6a)',
@@ -121,7 +131,7 @@ const services: {
     description:
       '24/7 UK-based IT support, managed services, cloud migration and Microsoft platform solutions for businesses—dependable support that keeps teams working without disruption.',
     detail: 'Dependable and business-friendly.',
-    image: servicesPageImages.details.itSupport,
+    slides: detailSlides('itSupport', servicesPageImages.details.itSupport),
     icon: Server,
     capabilities: [
       'On-site and remote technical support',
@@ -228,16 +238,11 @@ function ServicesDetailSection() {
 
                 <div className="relative overflow-hidden rounded-[1.8rem] shadow-[0_22px_54px_rgba(34,22,18,0.12)]">
                   <div className="relative aspect-[4/3]">
-                    <Image
-                      src={service.image.src}
-                      alt={service.image.alt}
-                      fill
-                      placeholder={service.image.blurDataURL ? 'blur' : 'empty'}
-                      blurDataURL={service.image.blurDataURL}
+                    <PhotoCarousel
+                      slides={service.slides}
                       sizes="(min-width: 1024px) 40vw, 100vw"
                       quality={72}
-                      className="object-cover"
-                      style={{ objectPosition: service.image.objectPosition }}
+                      intervalMs={7000 + index * 500}
                     />
                   </div>
                 </div>

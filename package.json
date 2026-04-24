@@ -10,7 +10,8 @@
     "start": "next start",
     "lint": "next lint",
     "clean": "node -e \"require('fs').rmSync('.next',{ recursive: true, force: true })\"",
-    "ingest:portfolio": "node scripts/ingest-portfolio.mjs"
+    "ingest:portfolio": "node scripts/ingest-portfolio.mjs",
+    "ingest:site-photos": "node scripts/ingest-site-photos.mjs"
   },
   "dependencies": {
     "clsx": "^2.1.1",

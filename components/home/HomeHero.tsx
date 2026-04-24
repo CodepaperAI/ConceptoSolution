@@ -4,21 +4,14 @@ import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { AnimatePresence, motion, useReducedMotion, useScroll, useTransform } from 'framer-motion'
 import Container from '@/components/ui/Container'
-import { homeImages } from '@/data/siteImages'
+import { carouselImages, homeImages } from '@/data/siteImages'
 import { motionDurations, motionEasing, staggerContainer, fadeUp } from '@/lib/motion'
 
-const heroSlides = [
-  homeImages.hero,
-  homeImages.featuredProjects.signiaCourt,
-  homeImages.featuredProjects.mayfairResidence,
-  homeImages.featuredProjects.cityOffice,
-  homeImages.serviceCards.electrical,
-  homeImages.serviceCards.smartHome,
-  homeImages.serviceCards.security,
-  homeImages.serviceCards.dataFibre,
-  homeImages.serviceCards.av,
-  homeImages.serviceCards.itSupport,
-] as const
+// Per client DOCX: "Home Hero Section — All Files in this Folder Home_Herosection".
+// Slides are ingested by scripts/ingest-site-photos.mjs.
+// Fallback to the legacy single-image hero if the generated set is empty.
+const heroSlides =
+  carouselImages.homeHero.length > 0 ? carouselImages.homeHero : [homeImages.hero]
 
 const heroTaglines = [
   'At Concepto Solutions, we deliver high-quality electrical and audio-visual installations for homes and businesses. From design to completion, we create seamless, reliable systems tailored to your space.',
@@ -78,11 +71,14 @@ export default function HomeHero() {
           </motion.div>
         </AnimatePresence>
       </motion.div>
-      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(14,11,10,0.94)_0%,rgba(14,11,10,0.84)_30%,rgba(14,11,10,0.56)_58%,rgba(14,11,10,0.32)_100%)]" />
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(14,11,10,0.32)_0%,rgba(14,11,10,0.12)_30%,rgba(14,11,10,0.56)_100%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(199,169,142,0.2),transparent_30%),radial-gradient(circle_at_bottom_right,rgba(122,35,48,0.24),transparent_30%)]" />
+      {/* Subtle overlays — keep photos visible while preserving text legibility.
+          Earlier version had a 94%-black left wash that made every slide look
+          nearly opaque. See PageHero.tsx `overlay="subtle"` for the matching
+          pattern used on project detail pages. */}
+      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(14,11,10,0.70)_0%,rgba(14,11,10,0.48)_28%,rgba(14,11,10,0.22)_58%,rgba(14,11,10,0.08)_88%,rgba(14,11,10,0.04)_100%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(14,11,10,0.18)_0%,rgba(14,11,10,0.06)_40%,rgba(14,11,10,0.46)_100%)]" />
 
-      <Container className="relative z-10 flex min-h-[calc(100svh-4rem)] items-center py-20 lg:min-h-[calc(100svh-5rem)] lg:py-24">
+      <Container className="relative z-10 flex min-h-[calc(100svh-4rem)] items-center py-14 md:py-20 lg:min-h-[calc(100svh-5rem)] lg:py-24">
         <motion.div
           initial="hidden"
           animate="visible"
@@ -93,7 +89,7 @@ export default function HomeHero() {
             <motion.h1
               variants={fadeUp(30)}
               transition={{ duration: motionDurations.hero, ease: motionEasing.standard }}
-              className="text-balance font-sans text-[clamp(2.8rem,7vw,6rem)] font-semibold leading-[1] tracking-[-0.04em] text-white [text-shadow:0_14px_42px_rgba(0,0,0,0.34)]"
+              className="text-balance font-sans text-[clamp(2rem,8vw,6rem)] font-semibold leading-[1.04] tracking-[-0.04em] text-white [text-shadow:0_14px_42px_rgba(0,0,0,0.34)] md:leading-[1]"
             >
               Electrical &amp; Smart Home
             </motion.h1>
@@ -101,7 +97,7 @@ export default function HomeHero() {
             <motion.div
               variants={fadeUp(24)}
               transition={{ duration: motionDurations.medium, ease: motionEasing.standard }}
-              className="mt-8 min-h-[12rem] max-w-2xl md:min-h-[10rem]"
+              className="mt-6 min-h-[9rem] max-w-2xl md:mt-8 md:min-h-[10rem]"
             >
               <AnimatePresence mode="wait">
                 <motion.p
@@ -110,7 +106,7 @@ export default function HomeHero() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -12 }}
                   transition={{ duration: 0.6, ease: motionEasing.standard }}
-                  className="text-base leading-8 overlay-copy [text-shadow:0_10px_30px_rgba(0,0,0,0.24)] md:text-xl md:leading-9"
+                  className="text-sm leading-7 overlay-copy [text-shadow:0_10px_30px_rgba(0,0,0,0.24)] md:text-xl md:leading-9"
                 >
                   {activeTagline}
                 </motion.p>
@@ -120,26 +116,53 @@ export default function HomeHero() {
             <motion.div
               variants={fadeUp(16)}
               transition={{ duration: motionDurations.medium, ease: motionEasing.standard, delay: 0.2 }}
-              className="mt-10 flex items-center gap-3"
+              className="mt-8 flex items-center gap-4 md:mt-10"
               role="group"
               aria-label="Hero slideshow controls"
             >
-              {heroSlides.map((_, index) => (
-                <button
-                  key={index}
-                  type="button"
-                  onClick={() => setActiveIndex(index)}
-                  aria-label={`Show slide ${index + 1}`}
-                  aria-current={index === activeIndex ? 'true' : undefined}
-                  className="group relative h-1 w-8 overflow-hidden rounded-full bg-white/20 transition-all duration-300 hover:bg-white/30"
-                >
-                  <span
-                    className={`absolute inset-y-0 left-0 bg-white transition-[width] duration-500 ${
-                      index === activeIndex ? 'w-full' : 'w-0'
-                    }`}
-                  />
-                </button>
-              ))}
+              {/* Prev/Next arrows — compact on mobile, clear affordance for the carousel */}
+              <button
+                type="button"
+                onClick={() =>
+                  setActiveIndex((prev) => (prev - 1 + heroSlides.length) % heroSlides.length)
+                }
+                aria-label="Previous slide"
+                className="flex h-8 w-8 items-center justify-center rounded-full border border-white/25 bg-white/[0.06] text-white transition-all duration-300 hover:border-white/50 hover:bg-white/15 md:h-10 md:w-10"
+              >
+                <span aria-hidden="true" className="text-sm leading-none md:text-base">←</span>
+              </button>
+
+              {/* Auto-advance progress bar — scales to any number of slides */}
+              <div
+                className="relative h-[3px] w-28 overflow-hidden rounded-full bg-white/20 md:w-40"
+                aria-hidden="true"
+              >
+                <span
+                  key={activeIndex}
+                  className="absolute inset-y-0 left-0 bg-white"
+                  style={{
+                    animation: prefersReducedMotion
+                      ? 'none'
+                      : `hero-progress ${SLIDE_INTERVAL_MS}ms linear forwards`,
+                  }}
+                />
+              </div>
+
+              <button
+                type="button"
+                onClick={() => setActiveIndex((prev) => (prev + 1) % heroSlides.length)}
+                aria-label="Next slide"
+                className="flex h-8 w-8 items-center justify-center rounded-full border border-white/25 bg-white/[0.06] text-white transition-all duration-300 hover:border-white/50 hover:bg-white/15 md:h-10 md:w-10"
+              >
+                <span aria-hidden="true" className="text-sm leading-none md:text-base">→</span>
+              </button>
+
+              <span
+                className="ml-auto font-mono text-[10px] uppercase tracking-[0.22em] text-white/75 md:text-[11px] md:tracking-[0.28em]"
+                aria-live="polite"
+              >
+                {String(activeIndex + 1).padStart(2, '0')} / {String(heroSlides.length).padStart(2, '0')}
+              </span>
             </motion.div>
           </div>
 

@@ -373,3 +373,13 @@
   opacity: 0.96;
   transform: translateY(0);
 }
+
+/* Home hero slide progress bar — fills over SLIDE_INTERVAL_MS (see HomeHero.tsx). */
+@keyframes hero-progress {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
