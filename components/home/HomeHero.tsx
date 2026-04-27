@@ -156,13 +156,6 @@ export default function HomeHero() {
               >
                 <span aria-hidden="true" className="text-sm leading-none md:text-base">→</span>
               </button>
-
-              <span
-                className="ml-auto font-mono text-[10px] uppercase tracking-[0.22em] text-white/75 md:text-[11px] md:tracking-[0.28em]"
-                aria-live="polite"
-              >
-                {String(activeIndex + 1).padStart(2, '0')} / {String(heroSlides.length).padStart(2, '0')}
-              </span>
             </motion.div>
           </div>
 

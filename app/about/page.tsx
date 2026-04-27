@@ -40,6 +40,7 @@ export default function AboutPage() {
     <>
       <PageHero
         priority
+        showCta={false}
         image={aboutHeroImage}
         eyebrow="About Us"
         title="About Concepto Solutions Ltd"
