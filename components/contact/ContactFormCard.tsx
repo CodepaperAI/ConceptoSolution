@@ -47,7 +47,7 @@ export default function ContactFormCard() {
     return (
       <div className="lux-panel p-8 md:p-10">
         <span className="lux-eyebrow text-primary">Thank You</span>
-        <h2 className="mt-6 font-sans font-semibold text-[2.3rem] leading-[0.95] tracking-[-0.05em] text-text-primary md:text-[3rem]">
+        <h2 className="mt-6 font-sans font-semibold text-[1.9rem] leading-[1.02] tracking-[-0.04em] text-text-primary md:text-[3rem] md:leading-[0.95] md:tracking-[-0.05em]">
           Enquiry Sent
         </h2>
         <p className="mt-5 max-w-xl text-base leading-8 text-text-secondary">
@@ -70,7 +70,7 @@ export default function ContactFormCard() {
   return (
     <div className="lux-panel p-8 md:p-10">
       <span className="lux-eyebrow text-primary">Get a Free Quote</span>
-      <h2 className="mt-6 font-sans font-semibold text-[2.3rem] leading-[0.95] tracking-[-0.05em] text-text-primary md:text-[3rem]">
+      <h2 className="mt-6 font-sans font-semibold text-[1.9rem] leading-[1.02] tracking-[-0.04em] text-text-primary md:text-[3rem] md:leading-[0.95] md:tracking-[-0.05em]">
         Book a Survey
       </h2>
       <p className="mt-5 max-w-xl text-base leading-8 text-text-secondary">

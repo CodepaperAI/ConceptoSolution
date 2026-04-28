@@ -21,7 +21,10 @@ const heroTaglines = [
   "We don't just install systems — we create environments that are intuitive, efficient, and built to last.",
 ] as const
 
-const SLIDE_INTERVAL_MS = 6000
+// 9 s between slides (was 6 s). Lets each photo settle as a backdrop instead
+// of feeling like a rolling slideshow — particularly important on mobile
+// where the photo crops aggressively to portrait.
+const SLIDE_INTERVAL_MS = 9000
 const IMAGES_PER_TAGLINE = 2
 
 export default function HomeHero() {
@@ -45,7 +48,7 @@ export default function HomeHero() {
   const activeTagline = heroTaglines[taglineIndex]
 
   return (
-    <section className="relative -mt-16 min-h-[calc(100svh+4rem)] overflow-hidden pt-16 lg:-mt-20 lg:min-h-[calc(100svh+5rem)] lg:pt-20">
+    <section className="relative -mt-16 min-h-[calc(88svh+4rem)] overflow-hidden pt-16 md:min-h-[calc(96svh+4rem)] lg:-mt-20 lg:min-h-[calc(100svh+5rem)] lg:pt-20">
       <motion.div className="absolute inset-0" style={{ y: mediaY, scale: mediaScale }}>
         <AnimatePresence initial={false} mode="sync">
           <motion.div
@@ -53,7 +56,7 @@ export default function HomeHero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 1.4, ease: motionEasing.standard }}
+            transition={{ duration: 1.8, ease: motionEasing.standard }}
             className="absolute inset-0"
           >
             <Image
@@ -65,8 +68,12 @@ export default function HomeHero() {
               blurDataURL={activeSlide.blurDataURL}
               sizes="100vw"
               quality={72}
-              className="object-cover"
-              style={{ objectPosition: activeSlide.objectPosition }}
+              // Slight desaturation + lift — landscape interior shots keep their
+              // best framing in the upper-middle, so we anchor the crop there.
+              // The result reads as atmosphere on mobile rather than a hard
+              // photo competing with the text.
+              className="object-cover saturate-[0.92] brightness-[0.96]"
+              style={{ objectPosition: activeSlide.objectPosition ?? 'center 38%' }}
             />
           </motion.div>
         </AnimatePresence>
@@ -78,7 +85,7 @@ export default function HomeHero() {
       <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(14,11,10,0.70)_0%,rgba(14,11,10,0.48)_28%,rgba(14,11,10,0.22)_58%,rgba(14,11,10,0.08)_88%,rgba(14,11,10,0.04)_100%)]" />
       <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(14,11,10,0.18)_0%,rgba(14,11,10,0.06)_40%,rgba(14,11,10,0.46)_100%)]" />
 
-      <Container className="relative z-10 flex min-h-[calc(100svh-4rem)] items-center py-14 md:py-20 lg:min-h-[calc(100svh-5rem)] lg:py-24">
+      <Container className="relative z-10 flex min-h-[calc(88svh-4rem)] items-center py-14 md:min-h-[calc(96svh-4rem)] md:py-20 lg:min-h-[calc(100svh-5rem)] lg:py-24">
         <motion.div
           initial="hidden"
           animate="visible"

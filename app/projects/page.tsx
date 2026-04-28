@@ -23,7 +23,7 @@ export default function ProjectsPage() {
         description="A curated selection of our recent work, showcasing precision-led installations across residential, retail, and commercial spaces."
       />
 
-      <section className="section-defer py-24 md:py-32 lg:py-36">
+      <section className="section-defer py-16 md:py-24 lg:py-32 xl:py-36">
         <Container>
           <ProjectGallery projects={projectEntries} />
         </Container>

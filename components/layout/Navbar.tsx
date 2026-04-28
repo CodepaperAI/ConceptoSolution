@@ -46,27 +46,52 @@ export default function Navbar() {
     }
   }, [isMobileMenuOpen])
 
+  // ESC closes the open mobile menu — belt-and-suspenders alongside the X button.
+  useEffect(() => {
+    if (!isMobileMenuOpen) return
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setIsMobileMenuOpen(false)
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [isMobileMenuOpen])
+
   return (
     <>
       <header
         className={cn(
-          'fixed left-0 right-0 top-0 z-50 px-4 pt-4 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] lg:px-6',
+          // z-[110] sits above the mobile-menu overlay (z-[100]) so the X / close
+          // affordance and Logo stay tappable while the menu is open.
+          'fixed left-0 right-0 top-0 z-[110] px-4 pt-4 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] lg:px-6',
           isHeaderVisible ? 'translate-y-0' : '-translate-y-[120%]'
         )}
       >
         <nav
           className={cn(
             'mx-auto flex h-[4.5rem] max-w-[1480px] items-center gap-4 rounded-full border px-5 shadow-[0_18px_40px_rgba(24,18,15,0.08)] backdrop-blur-xl lg:h-[5.5rem] lg:px-7',
-            isScrolled ? 'border-border/90 bg-[rgba(252,248,243,0.9)]' : 'border-white/12 bg-[rgba(17,13,12,0.28)]'
+            // While the mobile menu is open, force the dark navbar styling so
+            // the Logo + close X stay legible on top of the dark menu backdrop.
+            isMobileMenuOpen
+              ? 'border-white/16 bg-[rgba(17,13,12,0.6)]'
+              : isScrolled
+                ? 'border-border/90 bg-[rgba(252,248,243,0.9)]'
+                : 'border-white/12 bg-[rgba(17,13,12,0.28)]'
           )}
         >
-          <Logo isScrolled={isScrolled} />
-          <DesktopNav currentPath={pathname} isScrolled={isScrolled} />
+          {/* Mobile: menu button on the left → Logo centered → invisible
+              spacer matches the button width for symmetry. Desktop: menu
+              button + spacer are hidden, Logo sits at the left, DesktopNav
+              fills the rest. */}
           <MobileMenuButton
             isOpen={isMobileMenuOpen}
             onClick={() => setIsMobileMenuOpen((prev) => !prev)}
-            isScrolled={isScrolled}
+            isScrolled={isScrolled && !isMobileMenuOpen}
           />
+          <Logo isScrolled={isScrolled && !isMobileMenuOpen} />
+          {/* Right-side spacer that matches the 44 px MobileMenuButton — keeps
+              the centred logo visually balanced on mobile. */}
+          <div className="h-11 w-11 shrink-0 lg:hidden" aria-hidden="true" />
+          <DesktopNav currentPath={pathname} isScrolled={isScrolled} />
         </nav>
       </header>
 
@@ -86,13 +111,16 @@ export default function Navbar() {
 
 function Logo({ isScrolled }: { isScrolled: boolean }) {
   return (
-    <Link href="/" className="flex items-center gap-3 rounded-full">
+    // mx-auto on mobile centres the logo between the menu button (left) and the
+    // edge of the pill (right) so the navbar feels balanced instead of left-heavy.
+    // lg:mx-0 returns it to flush-left at desktop where the DesktopNav uses flex-1.
+    <Link href="/" className="mx-auto flex items-center gap-3 rounded-full lg:mx-0">
       <Image
         src="/assets/images/logo-200x42.png"
         alt="Concepto Solutions Ltd"
         width={200}
         height={42}
-        className={cn('h-10 w-auto transition-opacity duration-300 lg:h-12', isScrolled ? 'opacity-100' : 'opacity-92')}
+        className={cn('h-9 w-auto transition-opacity duration-300 sm:h-10 lg:h-12', isScrolled ? 'opacity-100' : 'opacity-92')}
       />
     </Link>
   )
@@ -221,9 +249,14 @@ function MobileMenu({
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: motionDurations.fast }}
+      // Tap on the backdrop (anything outside the inner <nav>) closes the menu.
+      // Header sits at z-[110] above this so the X button is always tappable.
+      onClick={(e) => {
+        if (e.target === e.currentTarget) onClose()
+      }}
       className="fixed inset-0 z-[100] bg-[rgba(20,15,13,0.98)] pt-24 text-white backdrop-blur-2xl lg:hidden"
     >
-      <nav className="flex h-full flex-col px-8 pb-12">
+      <nav className="flex h-full flex-col px-6 pb-12 sm:px-8">
         <ul className="flex flex-col gap-2">
           {links.map((link, index) => (
             <motion.li
@@ -239,7 +272,7 @@ function MobileMenu({
               <Link
                 href={link.href}
                 className={cn(
-                  'block border-b border-white/8 py-4 font-sans font-semibold text-[2.4rem] leading-none tracking-[-0.04em] transition-colors',
+                  'block border-b border-white/8 py-4 font-sans font-semibold text-[2rem] leading-tight tracking-[-0.035em] transition-colors sm:text-[2.4rem] sm:leading-none sm:tracking-[-0.04em]',
                   currentPath === link.href ? 'text-primary' : 'overlay-copy hover:text-white'
                 )}
                 onClick={onClose}

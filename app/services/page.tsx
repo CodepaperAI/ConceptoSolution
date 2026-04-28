@@ -197,7 +197,7 @@ export default function ServicesPage() {
 
 function ServicesDetailSection() {
   return (
-    <section className="section-defer py-24 md:py-32 lg:py-36">
+    <section className="section-defer py-16 md:py-24 lg:py-32 xl:py-36">
       <Container>
         <div className="space-y-14 md:space-y-16">
           {services.map((service, index) => (
@@ -211,7 +211,7 @@ function ServicesDetailSection() {
                   <div className="flex h-12 w-12 items-center justify-center rounded-full border border-primary/20 bg-primary/7 text-primary">
                     <service.icon className="h-5 w-5" strokeWidth={1.8} />
                   </div>
-                  <h2 className="mt-7 font-sans font-semibold text-[2.5rem] leading-[0.94] tracking-[-0.05em] text-text-primary md:text-[3rem]">
+                  <h2 className="mt-5 font-sans font-semibold text-[2rem] leading-[1] tracking-[-0.04em] text-text-primary md:mt-7 md:text-[3rem] md:leading-[0.94] md:tracking-[-0.05em]">
                     {service.title}
                   </h2>
                   <p className="mt-4 max-w-xl text-lg leading-8 text-text-secondary">
@@ -257,7 +257,7 @@ function ServicesDetailSection() {
 
 function AdvantagesSection() {
   return (
-    <section className="section-defer bg-[#120f0d] py-24 md:py-32 lg:py-36">
+    <section className="section-defer bg-[#120f0d] py-16 md:py-24 lg:py-32 xl:py-36">
       <Container>
         <Reveal>
           <SectionHeading
@@ -288,7 +288,7 @@ function AdvantagesSection() {
 
 function ServicesCtaSection() {
   return (
-    <section className="section-defer py-24 md:py-32 lg:py-36">
+    <section className="section-defer py-16 md:py-24 lg:py-32 xl:py-36">
       <Container>
         <Reveal>
           <div className="overflow-hidden rounded-[2.2rem] border border-primary/20 bg-[linear-gradient(135deg,#7c2633_0%,#4e1821_100%)] px-8 py-12 text-white shadow-[0_28px_70px_rgba(124,38,51,0.26)] md:px-12 md:py-14 lg:flex lg:items-end lg:justify-between lg:gap-10">
@@ -296,7 +296,7 @@ function ServicesCtaSection() {
               <span className="font-mono text-[10px] uppercase tracking-[0.28em] overlay-eyebrow">
                 Next Step
               </span>
-              <h2 className="mt-7 font-sans font-semibold text-[2.6rem] leading-[0.94] tracking-[-0.05em] text-white md:text-[3.4rem]">
+              <h2 className="mt-5 font-sans font-semibold text-[2.05rem] leading-[1] tracking-[-0.04em] text-white md:mt-7 md:text-[3.4rem] md:leading-[0.94] md:tracking-[-0.05em]">
                 Need the right service mix for your project?
               </h2>
               <p className="mt-5 max-w-2xl text-base leading-8 overlay-copy md:text-lg">

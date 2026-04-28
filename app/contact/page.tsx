@@ -56,7 +56,7 @@ export default function ContactPage() {
         description="Speak to our team about smart home automation, electrical work, CCTV, data wiring or business IT support. We are based at Unit 23, Westmoreland Road, NW9 9BW."
       />
 
-      <section className="section-defer py-24 md:py-32 lg:py-36">
+      <section className="section-defer py-16 md:py-24 lg:py-32 xl:py-36">
         <Container>
           <div className="grid gap-10 lg:grid-cols-[minmax(0,1.05fr)_minmax(360px,0.95fr)] lg:items-start lg:gap-12">
             <Reveal>

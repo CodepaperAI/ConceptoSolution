@@ -60,7 +60,7 @@ export default function AboutPage() {
 
 function ChapterOneBuiltOnBelief() {
   return (
-    <section className="section-defer py-24 md:py-32 lg:py-36">
+    <section className="section-defer py-16 md:py-24 lg:py-32 xl:py-36">
       <Container>
         <div className="grid gap-12 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:items-start lg:gap-20">
           <Reveal direction="left">
@@ -145,7 +145,7 @@ function StatDivider() {
 
 function ChapterTwoNewChapter() {
   return (
-    <section className="section-defer py-24 md:py-32 lg:py-36">
+    <section className="section-defer py-16 md:py-24 lg:py-32 xl:py-36">
       <Container>
         <div className="grid gap-12 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:items-center lg:gap-16">
           <Reveal direction="right">
@@ -206,7 +206,7 @@ function ChapterTwoNewChapter() {
 
 function ChapterThreeOurReach() {
   return (
-    <section className="section-defer bg-bg-secondary/30 py-24 md:py-32 lg:py-36">
+    <section className="section-defer bg-bg-secondary/30 py-16 md:py-24 lg:py-32 xl:py-36">
       <Container>
         <Reveal>
           <span className="font-mono text-[11px] uppercase tracking-[0.32em] text-primary">
@@ -395,7 +395,7 @@ function ClosingTagline() {
 
 function OurFounderSection() {
   return (
-    <section className="section-defer bg-[#0d0a09] py-24 md:py-32 lg:py-36">
+    <section className="section-defer bg-[#0d0a09] py-16 md:py-24 lg:py-32 xl:py-36">
       <Container>
         <div className="grid gap-12 lg:grid-cols-[minmax(0,0.88fr)_minmax(0,1.12fr)] lg:items-center lg:gap-16">
           <Reveal direction="right">

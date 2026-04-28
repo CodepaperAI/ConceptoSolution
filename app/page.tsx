@@ -84,7 +84,7 @@ const bentoLayout = [
   {
     span: 'md:col-span-2 xl:col-span-8',
     aspect: 'aspect-[16/9]',
-    titleSize: 'text-[2.4rem] md:text-[2.8rem]',
+    titleSize: 'text-[1.95rem] md:text-[2.8rem]',
     tag: 'Featured',
     imageSizes: '(min-width: 1280px) 65vw, (min-width: 768px) 100vw, 100vw',
   },
@@ -148,7 +148,7 @@ export default function HomePage() {
 
 function FeaturedProjectsSection() {
   return (
-    <section className="section-defer py-24 md:py-32 lg:py-36">
+    <section className="section-defer py-16 md:py-24 lg:py-32 xl:py-36">
       <Container>
         <Reveal>
           <SectionHeading
@@ -211,13 +211,14 @@ function FeaturedProjectsSection() {
                         {project.category}
                       </span>
                       <span className="overlay-chip-soft rounded-full px-3 py-1.5 font-mono text-[9px] uppercase tracking-[0.2em]">
-                        {project.location} / {project.year}
+                        {project.location}
+                        {project.year ? ` / ${project.year}` : ''}
                       </span>
                     </div>
                     <h3 className="mt-3 font-sans font-semibold text-[1.55rem] leading-[1] tracking-[-0.04em] text-white [text-shadow:0_8px_24px_rgba(0,0,0,0.4)] md:text-[1.85rem]">
                       {project.title}
                     </h3>
-                    <p className="mt-4 max-w-xl text-sm leading-7 text-white/90 [text-shadow:0_6px_20px_rgba(0,0,0,0.5)] md:text-base">
+                    <p className="mt-3 line-clamp-2 max-w-xl text-sm leading-6 text-white/90 [text-shadow:0_6px_20px_rgba(0,0,0,0.5)] md:mt-4 md:line-clamp-none md:text-base md:leading-7">
                       {project.shortDescription}
                     </p>
                   </div>
@@ -235,7 +236,7 @@ function FeaturedProjectsSection() {
                 href={`/projects/${homeFeaturedProjects[2].slug}`}
                 className="group block overflow-hidden rounded-[2rem] border border-border/70 bg-bg-secondary shadow-panel"
               >
-                <div className="relative overflow-hidden aspect-[16/7] md:aspect-[16/6]">
+                <div className="relative overflow-hidden aspect-[16/11] md:aspect-[16/7] xl:aspect-[16/6]">
                   <Image
                     src={homeFeaturedProjects[2].heroImage.src}
                     alt={homeFeaturedProjects[2].heroImage.alt}
@@ -254,13 +255,14 @@ function FeaturedProjectsSection() {
                         {homeFeaturedProjects[2].category}
                       </span>
                       <span className="overlay-chip-soft rounded-full px-3 py-1.5 font-mono text-[9px] uppercase tracking-[0.2em]">
-                        {homeFeaturedProjects[2].location} / {homeFeaturedProjects[2].year}
+                        {homeFeaturedProjects[2].location}
+                        {homeFeaturedProjects[2].year ? ` / ${homeFeaturedProjects[2].year}` : ''}
                       </span>
                     </div>
                     <h3 className="mt-3 font-sans font-semibold text-[1.55rem] leading-[1] tracking-[-0.04em] text-white [text-shadow:0_8px_24px_rgba(0,0,0,0.4)] md:text-[1.85rem]">
                       {homeFeaturedProjects[2].title}
                     </h3>
-                    <p className="mt-4 max-w-xl text-sm leading-7 text-white/90 [text-shadow:0_6px_20px_rgba(0,0,0,0.5)] md:text-base">
+                    <p className="mt-3 line-clamp-2 max-w-xl text-sm leading-6 text-white/90 [text-shadow:0_6px_20px_rgba(0,0,0,0.5)] md:mt-4 md:line-clamp-none md:text-base md:leading-7">
                       {homeFeaturedProjects[2].shortDescription}
                     </p>
                   </div>
@@ -298,13 +300,14 @@ function FeaturedProjectsSection() {
                           {project.category}
                         </span>
                         <span className="overlay-chip-soft rounded-full px-3 py-1.5 font-mono text-[9px] uppercase tracking-[0.2em]">
-                          {project.location} / {project.year}
+                          {project.location}
+                        {project.year ? ` / ${project.year}` : ''}
                         </span>
                       </div>
                       <h3 className="mt-3 font-sans font-semibold text-[1.55rem] leading-[1] tracking-[-0.04em] text-white [text-shadow:0_8px_24px_rgba(0,0,0,0.4)] md:text-[1.85rem]">
                         {project.title}
                       </h3>
-                      <p className="mt-4 max-w-xl text-sm leading-7 text-white/90 [text-shadow:0_6px_20px_rgba(0,0,0,0.5)] md:text-base">
+                      <p className="mt-3 line-clamp-2 max-w-xl text-sm leading-6 text-white/90 [text-shadow:0_6px_20px_rgba(0,0,0,0.5)] md:mt-4 md:line-clamp-none md:text-base md:leading-7">
                         {project.shortDescription}
                       </p>
                     </div>
@@ -321,7 +324,7 @@ function FeaturedProjectsSection() {
 
 function ServicesSection() {
   return (
-    <section className="section-defer relative overflow-hidden bg-[#120f0d] py-24 md:py-32 lg:py-36">
+    <section className="section-defer relative overflow-hidden bg-[#120f0d] py-16 md:py-24 lg:py-32 xl:py-36">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(202,174,145,0.12),transparent_24%),radial-gradient(circle_at_bottom_right,rgba(124,38,51,0.26),transparent_30%)]" />
       <Container className="relative z-10">
         <Reveal>
@@ -389,7 +392,7 @@ function ServicesSection() {
 
 function EditorialSection() {
   return (
-    <section className="section-defer relative overflow-hidden bg-[#0d0a09] py-24 md:py-32 lg:py-36">
+    <section className="section-defer relative overflow-hidden bg-[#0d0a09] py-16 md:py-24 lg:py-32 xl:py-36">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(124,38,51,0.22),transparent_32%),radial-gradient(circle_at_bottom_left,rgba(200,171,141,0.1),transparent_32%)]" />
       <Container className="relative z-10">
         <div className="grid gap-12 lg:grid-cols-[minmax(0,0.88fr)_minmax(0,1.12fr)] lg:items-center lg:gap-16">

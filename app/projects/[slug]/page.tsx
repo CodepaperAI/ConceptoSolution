@@ -88,7 +88,7 @@ export default function ProjectDetailPage({
         showCta={false}
       />
 
-      <section className="section-defer py-24 md:py-32 lg:py-36">
+      <section className="section-defer py-16 md:py-24 lg:py-32 xl:py-36">
         <Container>
           <Reveal>
             <Link
@@ -313,13 +313,13 @@ export default function ProjectDetailPage({
         </Container>
       </section>
 
-      <section className="section-defer pb-24 md:pb-32 lg:pb-36">
+      <section className="section-defer pb-16 md:pb-24 lg:pb-32 xl:pb-36">
         <Container>
           <Reveal>
             <div className="lux-panel px-8 py-10 md:px-10 md:py-12 lg:flex lg:items-end lg:justify-between lg:gap-10">
               <div className="max-w-3xl">
                 <span className="lux-eyebrow text-primary">Next Step</span>
-                <h2 className="mt-7 font-sans font-semibold text-[2.5rem] leading-[0.94] tracking-[-0.05em] text-text-primary md:text-[3.25rem]">
+                <h2 className="mt-5 font-sans font-semibold text-[2rem] leading-[1] tracking-[-0.04em] text-text-primary md:mt-7 md:text-[3.25rem] md:leading-[0.94] md:tracking-[-0.05em]">
                   {isComingSoon
                     ? 'Interested in a similar project?'
                     : 'Need support on a similar project?'}

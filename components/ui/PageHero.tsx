@@ -37,7 +37,7 @@ export default function PageHero({
 }: PageHeroProps) {
   const subtle = overlay === 'subtle'
   return (
-    <section className="relative -mt-16 min-h-[calc(100svh+4rem)] overflow-hidden border-b border-border/70 bg-[#120f0d] pt-16 lg:-mt-20 lg:min-h-[calc(100svh+5rem)] lg:pt-20">
+    <section className="relative -mt-16 min-h-[calc(88svh+4rem)] overflow-hidden border-b border-border/70 bg-[#120f0d] pt-16 md:min-h-[calc(96svh+4rem)] lg:-mt-20 lg:min-h-[calc(100svh+5rem)] lg:pt-20">
       <div className="absolute inset-0">
         {image.src ? (
           <Image
@@ -68,7 +68,7 @@ export default function PageHero({
           </>
         )}
       </div>
-      <Container className="relative z-10 flex min-h-[calc(100svh-4rem)] items-center py-14 md:py-20 lg:min-h-[calc(100svh-5rem)] lg:py-24">
+      <Container className="relative z-10 flex min-h-[calc(88svh-4rem)] items-center py-14 md:min-h-[calc(96svh-4rem)] md:py-20 lg:min-h-[calc(100svh-5rem)] lg:py-24">
         <div className="grid w-full gap-10 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-end xl:gap-16">
           <div className="max-w-4xl min-w-0">
             <Reveal>
