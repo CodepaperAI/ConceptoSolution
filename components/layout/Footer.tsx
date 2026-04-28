@@ -40,7 +40,7 @@ export default function Footer() {
                     rel="noopener noreferrer"
                     aria-label={social.label}
                     style={{ '--brand-color': social.hoverColor } as React.CSSProperties}
-                    className="overlay-card group flex h-10 w-10 items-center justify-center rounded-full overlay-meta transition-all duration-300 hover:border-[var(--brand-color)] hover:bg-[color-mix(in_srgb,var(--brand-color)_18%,transparent)] hover:text-[var(--brand-color)]"
+                    className="overlay-card group flex h-10 w-10 items-center justify-center rounded-full text-[var(--brand-color)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[var(--brand-color)] hover:bg-[color-mix(in_srgb,var(--brand-color)_18%,transparent)]"
                   >
                     <Icon className="h-4 w-4 transition-transform duration-300 group-hover:scale-110" />
                   </a>

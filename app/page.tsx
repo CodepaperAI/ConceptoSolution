@@ -204,7 +204,7 @@ function FeaturedProjectsSection() {
                     className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                     style={{ objectPosition: project.heroImage.objectPosition }}
                   />
-                  <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(14,11,10,0.5)_0%,rgba(14,11,10,0.3)_28%,rgba(14,11,10,0.46)_56%,rgba(14,11,10,0.92)_100%)]" />
+                  <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(14,11,10,0.18)_0%,rgba(14,11,10,0.06)_28%,rgba(14,11,10,0.32)_60%,rgba(14,11,10,0.78)_100%)]" />
                   <div className="absolute inset-x-0 bottom-0 p-7 md:p-8">
                     <div className="flex flex-wrap items-center gap-3">
                       <span className="overlay-chip rounded-full px-3 py-1.5 font-mono text-[9px] uppercase tracking-[0.2em]">
@@ -214,7 +214,7 @@ function FeaturedProjectsSection() {
                         {project.location} / {project.year}
                       </span>
                     </div>
-                    <h3 className="mt-5 font-sans font-semibold text-[2rem] leading-[0.94] tracking-[-0.05em] text-white [text-shadow:0_8px_24px_rgba(0,0,0,0.36)] md:text-[2.35rem]">
+                    <h3 className="mt-3 font-sans font-semibold text-[1.55rem] leading-[1] tracking-[-0.04em] text-white [text-shadow:0_8px_24px_rgba(0,0,0,0.4)] md:text-[1.85rem]">
                       {project.title}
                     </h3>
                     <p className="mt-4 max-w-xl text-sm leading-7 text-white/90 [text-shadow:0_6px_20px_rgba(0,0,0,0.5)] md:text-base">
@@ -247,7 +247,7 @@ function FeaturedProjectsSection() {
                     className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                     style={{ objectPosition: homeFeaturedProjects[2].heroImage.objectPosition }}
                   />
-                  <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(14,11,10,0.5)_0%,rgba(14,11,10,0.3)_28%,rgba(14,11,10,0.46)_56%,rgba(14,11,10,0.92)_100%)]" />
+                  <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(14,11,10,0.18)_0%,rgba(14,11,10,0.06)_28%,rgba(14,11,10,0.32)_60%,rgba(14,11,10,0.78)_100%)]" />
                   <div className="absolute inset-x-0 bottom-0 p-7 md:p-8">
                     <div className="flex flex-wrap items-center gap-3">
                       <span className="overlay-chip rounded-full px-3 py-1.5 font-mono text-[9px] uppercase tracking-[0.2em]">
@@ -257,7 +257,7 @@ function FeaturedProjectsSection() {
                         {homeFeaturedProjects[2].location} / {homeFeaturedProjects[2].year}
                       </span>
                     </div>
-                    <h3 className="mt-5 font-sans font-semibold text-[2rem] leading-[0.94] tracking-[-0.05em] text-white [text-shadow:0_8px_24px_rgba(0,0,0,0.36)] md:text-[2.35rem]">
+                    <h3 className="mt-3 font-sans font-semibold text-[1.55rem] leading-[1] tracking-[-0.04em] text-white [text-shadow:0_8px_24px_rgba(0,0,0,0.4)] md:text-[1.85rem]">
                       {homeFeaturedProjects[2].title}
                     </h3>
                     <p className="mt-4 max-w-xl text-sm leading-7 text-white/90 [text-shadow:0_6px_20px_rgba(0,0,0,0.5)] md:text-base">
@@ -291,7 +291,7 @@ function FeaturedProjectsSection() {
                       className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                       style={{ objectPosition: project.heroImage.objectPosition }}
                     />
-                    <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(14,11,10,0.5)_0%,rgba(14,11,10,0.3)_28%,rgba(14,11,10,0.46)_56%,rgba(14,11,10,0.92)_100%)]" />
+                    <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(14,11,10,0.18)_0%,rgba(14,11,10,0.06)_28%,rgba(14,11,10,0.32)_60%,rgba(14,11,10,0.78)_100%)]" />
                     <div className="absolute inset-x-0 bottom-0 p-7 md:p-8">
                       <div className="flex flex-wrap items-center gap-3">
                         <span className="overlay-chip rounded-full px-3 py-1.5 font-mono text-[9px] uppercase tracking-[0.2em]">
@@ -301,7 +301,7 @@ function FeaturedProjectsSection() {
                           {project.location} / {project.year}
                         </span>
                       </div>
-                      <h3 className="mt-5 font-sans font-semibold text-[2rem] leading-[0.94] tracking-[-0.05em] text-white [text-shadow:0_8px_24px_rgba(0,0,0,0.36)] md:text-[2.35rem]">
+                      <h3 className="mt-3 font-sans font-semibold text-[1.55rem] leading-[1] tracking-[-0.04em] text-white [text-shadow:0_8px_24px_rgba(0,0,0,0.4)] md:text-[1.85rem]">
                         {project.title}
                       </h3>
                       <p className="mt-4 max-w-xl text-sm leading-7 text-white/90 [text-shadow:0_6px_20px_rgba(0,0,0,0.5)] md:text-base">

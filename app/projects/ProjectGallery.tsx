@@ -100,6 +100,7 @@ function ProjectCard({ project }: { project: ProjectEntry }) {
 
   const inner = (
     <div className="group flex h-full flex-col overflow-hidden rounded-[1.9rem] border border-border/70 bg-bg-secondary shadow-panel">
+      {/* Photo — clean, no heavy text overlay so the property reads as a property. */}
       <div className="relative aspect-[16/11] w-full overflow-hidden">
         {hasImage ? (
           <Image
@@ -121,43 +122,47 @@ function ProjectCard({ project }: { project: ProjectEntry }) {
         ) : (
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(200,171,141,0.18),transparent_45%),radial-gradient(circle_at_bottom_right,rgba(124,38,51,0.26),transparent_40%),linear-gradient(135deg,#1a1512_0%,#0f0c0b_100%)]" />
         )}
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(13,10,9,0.52)_0%,rgba(13,10,9,0.28)_26%,rgba(13,10,9,0.42)_52%,rgba(13,10,9,0.92)_100%)]" />
-        <div className="absolute inset-x-0 bottom-0 p-6 md:p-7">
-          <div className="flex flex-wrap items-center gap-3">
-            <span className="overlay-chip rounded-full px-3 py-1.5 font-mono text-[9px] uppercase tracking-[0.2em]">
-              {project.category}
-            </span>
-            <span className="overlay-chip-soft rounded-full px-3 py-1.5 font-mono text-[9px] uppercase tracking-[0.18em]">
-              {project.location}
-              {project.year ? ` / ${project.year}` : ''}
-            </span>
-            {isComingSoon && (
-              <span className="rounded-full bg-primary/90 px-3 py-1.5 font-mono text-[9px] uppercase tracking-[0.2em] text-white">
-                Coming Soon
-              </span>
-            )}
-          </div>
-          <h2 className="mt-5 font-sans font-semibold text-[2rem] leading-[0.95] tracking-[-0.045em] text-white [text-shadow:0_8px_24px_rgba(0,0,0,0.36)] md:text-[2.3rem]">
+
+        {/* Small category badge — top-left corner, doesn't crowd the photo. */}
+        <span className="absolute left-4 top-4 overlay-chip rounded-full px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.2em]">
+          {project.category}
+        </span>
+        {isComingSoon && (
+          <span className="absolute right-4 top-4 rounded-full bg-primary/90 px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.2em] text-white shadow-[0_4px_12px_rgba(124,38,51,0.4)]">
+            Coming Soon
+          </span>
+        )}
+      </div>
+
+      {/* Body — title, meta, description, service tags, CTA all in their own clean space. */}
+      <div className="flex flex-1 flex-col p-6">
+        <div className="flex items-baseline justify-between gap-3">
+          <h2 className="font-sans font-semibold text-[1.4rem] leading-[1.05] tracking-[-0.035em] text-text-primary md:text-[1.6rem]">
             {project.title}
           </h2>
-          {project.services.length > 0 && (
-            <div className="mt-4 flex flex-wrap gap-2">
-              {project.services.map((service) => (
-                <span
-                  key={service}
-                  className="overlay-chip-soft rounded-full px-3 py-2 text-[10px] uppercase tracking-[0.16em]"
-                >
-                  {service}
-                </span>
-              ))}
-            </div>
-          )}
+          <span className="whitespace-nowrap font-mono text-[10px] uppercase tracking-[0.22em] text-text-muted">
+            {project.location}
+            {project.year ? ` · ${project.year}` : ''}
+          </span>
         </div>
-      </div>
-      <div className="flex flex-1 flex-col p-6">
-        <p className="text-sm leading-7 text-text-secondary">
+
+        <p className="mt-3 text-sm leading-7 text-text-secondary">
           {project.shortDescription}
         </p>
+
+        {project.services.length > 0 && (
+          <div className="mt-5 flex flex-wrap gap-1.5">
+            {project.services.map((service) => (
+              <span
+                key={service}
+                className="rounded-full border border-border/60 bg-white/[0.03] px-2.5 py-1 font-mono text-[9.5px] uppercase tracking-[0.16em] text-text-muted"
+              >
+                {service}
+              </span>
+            ))}
+          </div>
+        )}
+
         <span
           className={cn(
             'mt-6 inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.18em]',

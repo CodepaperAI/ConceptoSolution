@@ -85,7 +85,7 @@ export default function ProjectDetailPage({
             ? `A ${project.category.toLowerCase()} project in ${project.location}. Full case study is being prepared — photography is available below.`
             : project.summary
         }
-        showCta={!isComingSoon}
+        showCta={false}
       />
 
       <section className="section-defer py-24 md:py-32 lg:py-36">

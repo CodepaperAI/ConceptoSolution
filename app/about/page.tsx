@@ -259,7 +259,7 @@ function ChapterThreeOurReach() {
                   {londonLocations.map((loc) => (
                     <span
                       key={loc}
-                      className="rounded-full border border-primary/30 bg-primary/5 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.2em] text-primary"
+                      className="rounded-full border border-border bg-bg-secondary/70 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.2em] text-text-primary"
                     >
                       {loc}
                     </span>
